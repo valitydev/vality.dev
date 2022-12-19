@@ -1,15 +1,20 @@
 import * as React from "react";
 import type { HeadFC, PageProps } from "gatsby";
 import styled from "styled-components";
-import Logo from "../assets/logo.svg";
+import UnstyledLogo from "../assets/logo.svg";
 
-const Main = styled.div`
-  padding: 0;
-  margin: 0;
+const Main = styled.div``;
+
+const Logo = styled(UnstyledLogo)`
+  height: 32px;
 `;
 
 const Header = styled.header`
   background-color: #000c1f;
+`;
+
+const Menu = styled.ul`
+  color: #fff;
 `;
 
 const IndexPage: React.FC<PageProps> = () => {
@@ -17,15 +22,13 @@ const IndexPage: React.FC<PageProps> = () => {
     <Main>
       <Header>
         <Logo />
-        <ul>
+        <Menu>
           <li>a</li>
           <li>a</li>
           <li>a</li>
           <li>a</li>
-        </ul>
+        </Menu>
       </Header>
-      <div className="emoji">👀</div>
-      <p className="text">Check back soon...</p>
     </Main>
   );
 };
