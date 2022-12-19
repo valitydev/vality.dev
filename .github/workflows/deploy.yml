@@ -2,7 +2,10 @@ name: Deploy Gatsby site to Pages
 
 on:
   push:
-    branches: ["*"]
+    branches: ["master"]
+  pull_request:
+    branches:
+      - "*"
 
 permissions:
   contents: read
