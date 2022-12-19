@@ -1,1 +1,1 @@
-# Vality.Dev
+# Vality
