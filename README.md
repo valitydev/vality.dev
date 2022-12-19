@@ -1,1 +1,1 @@
-# vality.dev
+# Vality
