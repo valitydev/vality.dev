@@ -1,7 +1,7 @@
 import * as React from "react";
 import type { HeadFC, PageProps } from "gatsby";
-import styled from "styled-components";
 import UnstyledLogo from "../assets/logo.svg";
+import styled from "@emotion/styled";
 
 const Main = styled.div``;
 

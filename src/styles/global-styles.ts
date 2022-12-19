@@ -1,11 +1,9 @@
-import { createGlobalStyle } from "styled-components";
+import { css } from "@emotion/react";
 
-const GlobalStyle = createGlobalStyle`
+export const GLOBAL_STYLE = css`
   body {
     margin: 0;
     padding: 0;
     font-family: sans-serif;
   }
 `;
-
-export default GlobalStyle;
