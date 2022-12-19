@@ -2,7 +2,7 @@ name: Deploy Gatsby site to Pages
 
 on:
   push:
-    branches: ["master"]
+    branches: ["*"]
   workflow_dispatch:
 
 permissions:
