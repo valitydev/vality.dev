@@ -51,10 +51,18 @@ const Header: React.FC = () => {
             >
               <Logo />
               <Stack direction="row" spacing={2}>
-                <Box>Наши продукты</Box>
-                <Box>Процессинг</Box>
-                <Box>Антифрод</Box>
-                <Box>Контакты</Box>
+                <Box>
+                  <Trans>Our Products</Trans>
+                </Box>
+                <Box>
+                  <Trans>Processing</Trans>
+                </Box>
+                <Box>
+                  <Trans>Antifraud</Trans>
+                </Box>
+                <Box>
+                  <Trans>Contacts</Trans>
+                </Box>
               </Stack>
               <Box>RU | EN</Box>
             </Stack>
@@ -64,21 +72,29 @@ const Header: React.FC = () => {
                 <Stack spacing={6}>
                   <Stack spacing={3}>
                     <Box sx={{ typography: "h1" }}>
-                      Мы it-команда, делающая fintech{" "}
-                      <span style={{ color: "#FD932B" }}>доступным</span>
+                      <Trans>
+                        We are an IT team that makes fintech{" "}
+                        <span style={{ color: "#FD932B" }}>accessible</span>
+                      </Trans>
                     </Box>
                     <Box>
-                      Наши продукты распространяются по модели{" "}
-                      <span style={{ whiteSpace: "nowrap" }}>Open-Source</span>{" "}
-                      Software и позволяют каждому построить свой бизнес на
-                      основе нашего кода.
+                      <Trans>
+                        Our products are distributed by model{" "}
+                        <span style={{ whiteSpace: "nowrap" }}>
+                          Open-Source
+                        </span>{" "}
+                        Software and allow everyone to build their own business
+                        based on our code.
+                      </Trans>
                     </Box>
                   </Stack>
                   <Stack direction="row" spacing={3}>
                     <Button>
                       <Trans>Contact us</Trans>
                     </Button>
-                    <Button>Наш GitHub</Button>
+                    <Button>
+                      <Trans>Our GitHub</Trans>
+                    </Button>
                   </Stack>
                 </Stack>
                 <Box>
