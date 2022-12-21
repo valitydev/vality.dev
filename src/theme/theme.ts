@@ -23,6 +23,7 @@ const theme = createTheme({
       100: "#D4DCF1",
       300: "#7D97D5",
       400: "#5274C7",
+      900: "#000C1F",
     },
     text: {
       primary: "#181818",

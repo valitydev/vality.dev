@@ -12,6 +12,11 @@ import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 import { Link } from "../components/Link";
 import GitHubIcon from "../assets/svg/github.svg";
+import ProcessingImg from "../assets/svg/processing.svg";
+import FraudbustersImg from "../assets/svg/fraudbusters.svg";
+import CONFIG from "../../config.json";
+import { Card } from "../components/Card";
+import { Block } from "../components/Block";
 
 const Logo = styled(UnstyledLogo)(
   ({ theme }: { theme: Theme }) => css`
@@ -123,9 +128,11 @@ const Header: React.FC = () => {
                   <HeaderButton color="primary">
                     <Trans>Contact us</Trans>
                   </HeaderButton>
-                  <HeaderButton endIcon={<GitHubIcon />}>
-                    <Trans>Our GitHub</Trans>
-                  </HeaderButton>
+                  <a href={CONFIG.contacts.github} target="_blank">
+                    <HeaderButton endIcon={<GitHubIcon />}>
+                      <Trans>Our GitHub</Trans>
+                    </HeaderButton>
+                  </a>
                 </Stack>
               </Stack>
               <Box>
@@ -146,20 +153,41 @@ const IndexPage: React.FC<PageProps> = () => {
     <>
       <Header />
 
-      <Box id={PAGE_IDS.ourProducts}>
-        <Trans>Our products</Trans>
-      </Box>
+      <Block id={PAGE_IDS.ourProducts} title={<Trans>Our products</Trans>}>
+        <Stack spacing={2} direction="row">
+          <Card
+            flex="1"
+            title={<Trans>Processing</Trans>}
+            image={<ProcessingImg />}
+          >
+            <Trans>processing:description</Trans>
+          </Card>
+          <Card
+            flex="1"
+            title={<Trans>Antifraud</Trans>}
+            image={<FraudbustersImg />}
+          >
+            <Trans>antifraud:description</Trans>
+          </Card>
+        </Stack>
+      </Block>
 
       <Box id={PAGE_IDS.processing}>
-        <Trans>Processing</Trans>
+        <Box sx={{ typography: "h2" }}>
+          <Trans>Processing</Trans>
+        </Box>
       </Box>
 
       <Box id={PAGE_IDS.antifraud}>
-        <Trans>Antifraud</Trans>
+        <Box sx={{ typography: "h2" }}>
+          <Trans>Antifraud</Trans>
+        </Box>
       </Box>
 
       <Box id={PAGE_IDS.contacts}>
-        <Trans>Contacts</Trans>
+        <Box sx={{ typography: "h2" }}>
+          <Trans>Contacts</Trans>
+        </Box>
       </Box>
     </>
   );
