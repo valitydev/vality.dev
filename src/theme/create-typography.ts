@@ -68,7 +68,10 @@ export function createTypography(
     subtitle2: createPart(16, 28, typography.fontWeightMedium),
     body1: createPart(16, 28, typography.fontWeightRegular),
     body2: createPart(16, 28, typography.fontWeightRegular),
-    button: createPart(16, 24, typography.fontWeightMedium),
+    button: {
+      ...createPart(16, 24, typography.fontWeightMedium),
+      textTransform: "none",
+    },
     caption: createPart(16, 20, typography.fontWeightRegular),
     overline: createPart(16, 20, typography.fontWeightRegular),
   };

@@ -11,6 +11,7 @@ import { graphql } from "gatsby";
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 import { Link } from "../components/Link";
+import GitHubIcon from "../assets/svg/github.svg";
 
 const Logo = styled(UnstyledLogo)(
   ({ theme }: { theme: Theme }) => css`
@@ -72,7 +73,7 @@ const Header: React.FC = () => {
             <Logo />
             <Stack direction="row" spacing={3.5}>
               <Link inverted to={`#${PAGE_IDS.ourProducts}`}>
-                <Trans>Our Products</Trans>
+                <Trans>Our products</Trans>
               </Link>
               <Link inverted to={`#${PAGE_IDS.processing}`}>
                 <Trans>Processing</Trans>
@@ -91,6 +92,7 @@ const Header: React.FC = () => {
                   to="/"
                   language={lang}
                   active={lang === language}
+                  key={lang}
                 >
                   {lang?.toUpperCase()}
                 </Link>
@@ -121,7 +123,7 @@ const Header: React.FC = () => {
                   <HeaderButton color="primary">
                     <Trans>Contact us</Trans>
                   </HeaderButton>
-                  <HeaderButton>
+                  <HeaderButton endIcon={<GitHubIcon />}>
                     <Trans>Our GitHub</Trans>
                   </HeaderButton>
                 </Stack>

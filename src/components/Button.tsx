@@ -1,8 +1,14 @@
-import { styled } from "@mui/system";
 import { ButtonUnstyled, buttonUnstyledClasses } from "@mui/base";
 import { css } from "@emotion/react";
+import React, { ReactNode } from "react";
+import styled from "@emotion/styled";
+import { Stack, Box } from "@mui/system";
 
-export const Button = styled(ButtonUnstyled)(
+interface Props {
+  endIcon?: ReactNode;
+}
+
+const StyledButton = styled(ButtonUnstyled)(
   ({ theme, color }) => css`
     ${css(theme.typography.button)}
 
@@ -16,11 +22,22 @@ export const Button = styled(ButtonUnstyled)(
     cursor: pointer;
     border: none;
 
+    * {
+      fill: ${color === "primary" ? undefined : theme.palette.grey?.[800]};
+      transition: fill 200ms ease;
+    }
+
     &:hover {
       box-shadow: ${color === "primary"
         ? "0px 5px 15px rgba(82, 116, 199, 0.7)"
         : undefined};
       color: ${color === "primary" ? undefined : theme.palette.grey?.[800]};
+
+      * {
+        fill: ${color
+          ? theme.palette[color].contrastText
+          : theme.palette.text.primary};
+      }
     }
 
     &.${buttonUnstyledClasses.active} {
@@ -30,6 +47,10 @@ export const Button = styled(ButtonUnstyled)(
       box-shadow: ${color
         ? undefined
         : `0px 0px 0px 1px ${theme.palette.grey?.[800]}`};
+
+      * {
+        fill: ${color === "primary" ? undefined : theme.palette.grey?.[800]};
+      }
     }
 
     &.${buttonUnstyledClasses.focusVisible} {
@@ -42,3 +63,16 @@ export const Button = styled(ButtonUnstyled)(
     }
   `
 );
+
+export const Button: React.FC<
+  React.ComponentProps<typeof StyledButton> & Props
+> = ({ endIcon, children, ...props }) => {
+  return (
+    <StyledButton {...props}>
+      <Stack direction="row" spacing={1.5} sx={{ alignItems: "center" }}>
+        <Box>{children}</Box>
+        {endIcon}
+      </Stack>
+    </StyledButton>
+  );
+};
