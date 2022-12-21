@@ -6,6 +6,8 @@ import UnstyledFintech from "../assets/svg/fintech.svg";
 import headerBgGlowingBallSrc from "../images/header-bg-glowing-ball.svg";
 import ghSrc from "../images/gh.png";
 import { Button } from "../components/Button";
+import { Trans } from "gatsby-plugin-react-i18next";
+import { graphql } from "gatsby";
 
 const Logo = styled(UnstyledLogo)(({ theme }: { theme: Theme }) => ({
   width: "auto",
@@ -73,7 +75,9 @@ const Header: React.FC = () => {
                     </Box>
                   </Stack>
                   <Stack direction="row" spacing={3}>
-                    <Button>Связаться с нами</Button>
+                    <Button>
+                      <Trans>Contact us</Trans>
+                    </Button>
                     <Button>Наш GitHub</Button>
                   </Stack>
                 </Stack>
@@ -102,3 +106,17 @@ const IndexPage: React.FC<PageProps> = () => {
 export default IndexPage;
 
 export const Head: HeadFC = () => <title>Vality</title>;
+
+export const query = graphql`
+  query ($language: String!) {
+    locales: allLocale(filter: { language: { eq: $language } }) {
+      edges {
+        node {
+          ns
+          data
+          language
+        }
+      }
+    }
+  }
+`;

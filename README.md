@@ -11,6 +11,7 @@ Vality team [website](https://vality.dev)
 - [MUI Base](https://mui.com/base) library of headless UI components and low-level hooks
 - [MUI System](https://mui.com/system) CSS utilities
 - [Emotion](https://emotion.sh) library for writing CSS styles with JS
+- [i18next](https://www.i18next.com) internationalization-framework
 
 ## Prerequisites
 
@@ -23,4 +24,12 @@ To use this repository, you need the following installed locally:
 ```shell
 npm ci
 npm start
+```
+
+## Internationalization
+
+[Traverse code in order to find i18next translation keys](https://i18next-extract.netlify.app):
+
+```shell
+npm run extract-locales
 ```
