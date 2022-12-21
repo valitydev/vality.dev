@@ -8,6 +8,7 @@ export const Button = styled(ButtonUnstyled)(
 
     background-color: ${color ? theme.palette[color]?.A400 : "#fff"};
     color: ${color ? theme.palette[color].contrastText : undefined};
+    white-space: nowrap;
 
     border-radius: ${theme.spacing(1.5)};
     padding: ${theme.spacing(1.5)} ${theme.spacing(3)};

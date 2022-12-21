@@ -1,5 +1,6 @@
 import { createTypography } from "./create-typography";
 import createTheme from "@mui/material/styles/createTheme";
+import type { Color } from "@mui/material";
 
 const OFFSET = 24 * 2;
 const HTML_FONT_SIZE = 16;
@@ -19,6 +20,8 @@ const theme = createTheme({
     primary: {
       main: "#1D5BF6",
       A400: "#1D5BF6",
+      100: "#D4DCF1",
+      300: "#7D97D5",
       400: "#5274C7",
     },
     text: {
@@ -33,4 +36,5 @@ const theme = createTheme({
 
 console.log(theme);
 
+export type AppTheme = typeof theme & { palette: { primary: Color } };
 export { theme };
