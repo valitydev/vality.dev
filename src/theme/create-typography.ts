@@ -43,6 +43,7 @@ export function createTypography(
     lineHeight: lineSize / size,
     fontWeight,
     fontFamily: fontWeight >= 500 ? headersFontFamily : fontFamily,
+    color: "#181818",
   });
 
   const typography = {

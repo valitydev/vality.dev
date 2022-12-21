@@ -13,6 +13,8 @@ Vality team [website](https://vality.dev)
 - [Emotion](https://emotion.sh) library for writing CSS styles with JS
 - [i18next](https://www.i18next.com) internationalization-framework
 
+Only utilities are used from the `@mui/material` (for themes), you should not import from it from the root.
+
 ## Prerequisites
 
 To use this repository, you need the following installed locally:

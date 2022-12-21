@@ -1,47 +1,43 @@
 import { styled } from "@mui/system";
 import { ButtonUnstyled, buttonUnstyledClasses } from "@mui/base";
+import { css } from "@emotion/react";
 
-const blue = {
-  500: "#007FFF",
-  600: "#0072E5",
-  700: "#0059B2",
-};
+export const Button = styled(ButtonUnstyled)(
+  ({ theme, color }) => css`
+    ${css(theme.typography.button)}
 
-const grey = {
-  100: "#eaeef2",
-  300: "#afb8c1",
-  900: "#24292f",
-};
+    background-color: ${color ? theme.palette[color]?.A400 : "#fff"};
+    color: ${color ? theme.palette[color].contrastText : undefined};
 
-export const Button = styled(
-  styled(ButtonUnstyled)(({ theme }) => ({
-    ...theme.typography.button,
-  }))
-)(
-  ({ theme }) => `
-  background-color: #1D5BF6;
-  border-radius: ${theme.spacing(1.5)};
-  padding: ${theme.spacing(1.5)} ${theme.spacing(3)};
-  color: white;
-  transition: all 150ms ease;
-  cursor: pointer;
-  border: none;
+    border-radius: ${theme.spacing(1.5)};
+    padding: ${theme.spacing(1.5)} ${theme.spacing(3)};
+    transition: all 200ms ease;
+    cursor: pointer;
+    border: none;
 
-  &:hover {
-    background-color: ${blue[600]};
-  }
+    &:hover {
+      box-shadow: ${color === "primary"
+        ? "0px 5px 15px rgba(82, 116, 199, 0.7)"
+        : undefined};
+      color: ${color === "primary" ? undefined : theme.palette.grey?.[800]};
+    }
 
-  &.${buttonUnstyledClasses.active} {
-    background-color: ${blue[700]};
-  }
+    &.${buttonUnstyledClasses.active} {
+      background-color: ${color
+        ? theme.palette[color]?.[400]
+        : theme.palette.grey?.[100]};
+      box-shadow: ${color
+        ? undefined
+        : `0px 0px 0px 1px ${theme.palette.grey?.[800]}`};
+    }
 
-  &.${buttonUnstyledClasses.focusVisible} {
-    outline: none;
-  }
+    &.${buttonUnstyledClasses.focusVisible} {
+      outline: none;
+    }
 
-  &.${buttonUnstyledClasses.disabled} {
-    opacity: 0.5;
-    cursor: not-allowed;
-  }
+    &.${buttonUnstyledClasses.disabled} {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
   `
 );

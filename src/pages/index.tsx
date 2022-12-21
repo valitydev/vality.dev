@@ -71,7 +71,7 @@ const Header: React.FC = () => {
               <Stack direction="row" spacing={2}>
                 <Stack spacing={6}>
                   <Stack spacing={3}>
-                    <Box sx={{ typography: "h1" }}>
+                    <Box sx={{ typography: "h1", color: "#fff" }}>
                       <Trans>
                         We are an IT team that makes fintech{" "}
                         <span style={{ color: "#FD932B" }}>accessible</span>
@@ -89,7 +89,7 @@ const Header: React.FC = () => {
                     </Box>
                   </Stack>
                   <Stack direction="row" spacing={3}>
-                    <Button>
+                    <Button color="primary">
                       <Trans>Contact us</Trans>
                     </Button>
                     <Button>
