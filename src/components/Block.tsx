@@ -29,9 +29,11 @@ export const Block: React.FC<React.ComponentProps<typeof StyledBlock>> = ({
     <StyledBlock {...props}>
       <Container fixed>
         <Stack spacing={5.5}>
-          <Box className="text" sx={{ typography: "h2" }}>
-            <Trans>Our products</Trans>
-          </Box>
+          {title && (
+            <Box className="text" sx={{ typography: "h2" }}>
+              {title}
+            </Box>
+          )}
           <Box className="text">{children}</Box>
         </Stack>
       </Container>

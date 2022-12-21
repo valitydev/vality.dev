@@ -14,6 +14,13 @@ import { Link } from "../components/Link";
 import GitHubIcon from "../assets/svg/github.svg";
 import ProcessingImg from "../assets/svg/processing.svg";
 import FraudbustersImg from "../assets/svg/fraudbusters.svg";
+import ApplicationsImg from "../assets/svg/application.svg";
+import ShopIcon from "../assets/svg/shop-icon.svg";
+import GatewayIcon from "../assets/svg/gateway-icon.svg";
+import ControlImg from "../assets/svg/control.svg";
+import CapabilityImg from "../assets/svg/capability.svg";
+import BankIcon from "../assets/svg/bank-icon.svg";
+import ContactsImg from "../assets/svg/contacts.svg";
 import CONFIG from "../../config.json";
 import { Card } from "../components/Card";
 import { Block } from "../components/Block";
@@ -154,41 +161,129 @@ const IndexPage: React.FC<PageProps> = () => {
       <Header />
 
       <Block id={PAGE_IDS.ourProducts} title={<Trans>Our products</Trans>}>
-        <Stack spacing={2} direction="row">
-          <Card
-            flex="1"
-            title={<Trans>Processing</Trans>}
-            image={<ProcessingImg />}
-          >
-            <Trans>processing:description</Trans>
-          </Card>
-          <Card
-            flex="1"
-            title={<Trans>Antifraud</Trans>}
-            image={<FraudbustersImg />}
-          >
-            <Trans>antifraud:description</Trans>
-          </Card>
+        <Stack spacing={17}>
+          <Stack spacing={2} direction="row">
+            <Card
+              flex="1"
+              title={<Trans>Processing</Trans>}
+              image={<ProcessingImg />}
+            >
+              <Trans>processing:description</Trans>
+            </Card>
+            <Card
+              flex="1"
+              title={<Trans>Antifraud</Trans>}
+              image={<FraudbustersImg />}
+            >
+              <Trans>antifraud:description</Trans>
+            </Card>
+          </Stack>
+
+          <Stack direction="row">
+            <Stack flex={1} spacing={5.5}>
+              <Box sx={{ typography: "h3" }}>
+                <Trans>For whom</Trans>
+              </Box>
+              <Stack spacing={3}>
+                <Stack direction="row" spacing={2} alignItems="center">
+                  <Box width={64} height={64}>
+                    <ShopIcon />
+                  </Box>
+                  <Box>
+                    <Trans>Online stores and large retailers</Trans>
+                  </Box>
+                </Stack>
+                <Stack direction="row" spacing={2} alignItems="center">
+                  <Box width={64} height={64}>
+                    <BankIcon />
+                  </Box>
+                  <Box>
+                    <Trans>Processing solution for banks</Trans>
+                  </Box>
+                </Stack>
+                <Stack direction="row" spacing={2} alignItems="center">
+                  <Box width={64} height={64}>
+                    <GatewayIcon />
+                  </Box>
+                  <Box>
+                    <Trans>Payment gateways</Trans>
+                  </Box>
+                </Stack>
+              </Stack>
+            </Stack>
+            <Box flex={1}>
+              <ApplicationsImg />
+            </Box>
+          </Stack>
         </Stack>
       </Block>
 
-      <Box id={PAGE_IDS.processing}>
-        <Box sx={{ typography: "h2" }}>
-          <Trans>Processing</Trans>
-        </Box>
-      </Box>
+      <Block
+        id={PAGE_IDS.processing}
+        title={<Trans>Processing</Trans>}
+        inverted
+      >
+        <Stack spacing={17}>
+          <Stack spacing={2} direction="row">
+            <Card
+              inverted
+              flex="1"
+              title={<Trans>Control</Trans>}
+              image={<ControlImg />}
+            >
+              <Trans>
+                control:description-1
+                <br />
+                control:description-2
+              </Trans>
+            </Card>
+            <Card
+              inverted
+              flex="1"
+              title={<Trans>Possibilities</Trans>}
+              image={<CapabilityImg />}
+            >
+              <Trans>possibilities:description</Trans>
+            </Card>
+          </Stack>
 
-      <Box id={PAGE_IDS.antifraud}>
-        <Box sx={{ typography: "h2" }}>
-          <Trans>Antifraud</Trans>
-        </Box>
-      </Box>
+          <Box>
+            <Box sx={{ typography: "h3", color: "#fff" }}>
+              <Trans>Support for all payment methods</Trans>
+            </Box>
+          </Box>
 
-      <Box id={PAGE_IDS.contacts}>
-        <Box sx={{ typography: "h2" }}>
-          <Trans>Contacts</Trans>
-        </Box>
-      </Box>
+          <Box>
+            <Box sx={{ typography: "h3", color: "#fff" }}>
+              <Trans>Intuitive payment process</Trans>
+            </Box>
+          </Box>
+        </Stack>
+      </Block>
+
+      <Block id={PAGE_IDS.antifraud} title={<Trans>Antifraud</Trans>}></Block>
+
+      <Block id={PAGE_IDS.contacts} inverted>
+        <Stack direction="row">
+          <Stack flex={1} spacing={5.5}>
+            <Box sx={{ typography: "h3", color: "#fff" }}>
+              <Trans>Contacts</Trans>
+            </Box>
+            <Stack spacing={4.5}>
+              <Box>
+                <Trans>Email</Trans>
+                <Trans>Telegram</Trans>
+              </Box>
+              <Box>
+                <Trans>Social media</Trans>
+              </Box>
+            </Stack>
+          </Stack>
+          <Box flex={1}>
+            <ContactsImg />
+          </Box>
+        </Stack>
+      </Block>
     </>
   );
 };

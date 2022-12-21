@@ -39,7 +39,7 @@ export const Card: React.FC<React.ComponentProps<typeof StyledCard>> = ({
   return (
     <StyledCard {...props}>
       <Stack justifyContent="space-between" height="100%">
-        <Stack>
+        <Stack spacing={2}>
           <Box typography="h3" className="text">
             {title}
           </Box>
