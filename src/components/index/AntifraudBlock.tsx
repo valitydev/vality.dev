@@ -1,27 +1,59 @@
 import { Block } from "../../components/Block";
 import { Trans } from "gatsby-plugin-react-i18next";
-import { Stack } from "@mui/system";
+import { Box } from "@mui/system";
 import { Card } from "../Card";
-import ProcessingImg from "../../assets/svg/processing.svg";
-import FraudbustersImg from "../../assets/svg/fraudbusters.svg";
+import FlexibilityImg from "../../assets/svg/flexibility.svg";
+import ScaleImg from "../../assets/svg/scale.svg";
+import SafetySvg from "../../assets/svg/safety.svg";
 import * as React from "react";
+import Grid from "@mui/system/Unstable_Grid";
 
 export const AntifraudBlock: React.FC<React.ComponentProps<typeof Block>> = (
   props
 ) => {
   return (
     <Block {...props} title={<Trans>Antifraud</Trans>}>
-      <Stack spacing={2} direction="row">
-        <Card flex="1" image={<ProcessingImg />}>
-          <Trans>antifraud.info:1</Trans>
-        </Card>
-        <Card flex="1" image={<FraudbustersImg />}>
-          <Trans>antifraud.info:2</Trans>
-        </Card>
-        <Card flex="1" image={<FraudbustersImg />}>
-          <Trans>antifraud.info:3</Trans>
-        </Card>
-      </Stack>
+      <Grid spacing={2} container>
+        <Grid xs={4}>
+          <Card
+            height="100%"
+            boxSizing="border-box"
+            image={
+              <Box display="flex" height={222}>
+                <FlexibilityImg />
+              </Box>
+            }
+          >
+            <Trans>antifraud.info:flexibility</Trans>
+          </Card>
+        </Grid>
+        <Grid xs={4}>
+          <Card
+            height="100%"
+            boxSizing="border-box"
+            image={
+              <Box display="flex" height={222}>
+                <ScaleImg />
+              </Box>
+            }
+          >
+            <Trans>antifraud.info:scale</Trans>
+          </Card>
+        </Grid>
+        <Grid xs={4}>
+          <Card
+            height="100%"
+            boxSizing="border-box"
+            image={
+              <Box display="flex" height={222}>
+                <SafetySvg />
+              </Box>
+            }
+          >
+            <Trans>antifraud.info:safety</Trans>
+          </Card>
+        </Grid>
+      </Grid>
     </Block>
   );
 };

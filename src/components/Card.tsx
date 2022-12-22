@@ -11,8 +11,15 @@ interface Props {
 export const StyledCard = styled(Box)<Props>`
   background-color: ${({ theme, inverted }) =>
     inverted ? theme.palette.common.white : theme.palette.primary[900]};
-  padding: ${({ theme }) => `${theme.spacing(3)} ${theme.spacing(2.5)}`};
   border-radius: ${({ theme }) => `${theme.spacing(2.5)}`};
+
+  &.title {
+    padding: ${({ theme }) => `${theme.spacing(3)} ${theme.spacing(2.5)}`};
+  }
+
+  &.no-title {
+    padding: ${({ theme }) => `${theme.spacing(2)}`};
+  }
 
   &,
   .text {
@@ -37,16 +44,23 @@ export const Card: React.FC<React.ComponentProps<typeof StyledCard>> = ({
   ...props
 }) => {
   return (
-    <StyledCard {...props}>
-      <Stack justifyContent="space-between" height="100%">
-        <Stack spacing={2}>
-          <Box typography="h3" className="text">
-            {title}
-          </Box>
+    <StyledCard {...props} className={title ? "title" : "no-title"}>
+      {title ? (
+        <Stack justifyContent="space-between" height="100%">
+          <Stack spacing={2}>
+            <Box typography="h3" className="text">
+              {title}
+            </Box>
+            <Box className="text">{children}</Box>
+          </Stack>
+          <Box className="image">{image}</Box>
+        </Stack>
+      ) : (
+        <Stack spacing={0.5}>
+          <Box>{image}</Box>
           <Box className="text">{children}</Box>
         </Stack>
-        <Box className="image">{image}</Box>
-      </Stack>
+      )}
     </StyledCard>
   );
 };
