@@ -24,6 +24,14 @@ import ContactsImg from "../assets/svg/contacts.svg";
 import CONFIG from "../../config.json";
 import { Card } from "../components/Card";
 import { Block } from "../components/Block";
+import { AntifraudBlock } from "./landing/AntifraudBlock";
+
+const PAGE_IDS = {
+  ourProducts: "our-products",
+  processing: "processing",
+  antifraud: "antifraud",
+  contacts: "contacts",
+};
 
 const Logo = styled(UnstyledLogo)(
   ({ theme }: { theme: Theme }) => css`
@@ -47,13 +55,6 @@ const Fintech = styled(UnstyledFintech)(
   },
 `
 );
-
-const PAGE_IDS = {
-  ourProducts: "our-products",
-  processing: "processing",
-  antifraud: "antifraud",
-  contacts: "contacts",
-};
 
 const HeaderButton = styled(Button)`
   padding-left: ${({ theme }) => theme.spacing(6.5)};
@@ -261,7 +262,7 @@ const IndexPage: React.FC<PageProps> = () => {
         </Stack>
       </Block>
 
-      <Block id={PAGE_IDS.antifraud} title={<Trans>Antifraud</Trans>}></Block>
+      <AntifraudBlock id={PAGE_IDS.antifraud} />
 
       <Block id={PAGE_IDS.contacts} inverted>
         <Stack direction="row">

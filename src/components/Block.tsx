@@ -1,7 +1,6 @@
 import styled from "@emotion/styled";
 import { Box, Container, Stack } from "@mui/system";
 import React, { ReactNode } from "react";
-import { Trans } from "gatsby-plugin-react-i18next";
 
 interface Props {
   title?: ReactNode;

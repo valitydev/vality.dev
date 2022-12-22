@@ -7,14 +7,16 @@ export const createGlobalStyle = (theme: Theme) =>
       font-family: "Mont";
       //font-style: normal;
       //font-weight: 500;
-      src: url("/fonts/mont_semibold.woff2") format("woff2");
+      src: url("https://valitydev-statics.s3.eu-central-1.amazonaws.com/Mont/mont_semibold.woff2")
+        format("woff2");
     }
 
     @font-face {
       font-family: "Code Next";
       //font-style: normal;
       //font-weight: 500;
-      src: url("/fonts/code-next_regular.otf") format("opentype");
+      src: url("https://valitydev-statics.s3.eu-central-1.amazonaws.com/Code-Next/code-next_regular.woff2")
+        format("woff2");
     }
 
     html {
