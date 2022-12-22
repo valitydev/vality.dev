@@ -5,6 +5,33 @@ import { Stack, Box } from "@mui/system";
 import { Card } from "../Card";
 import ControlImg from "../../assets/svg/control.svg";
 import CapabilityImg from "../../assets/svg/capability.svg";
+import VisaIcon from "../../assets/svg/visa-icon.svg";
+import MirIcon from "../../assets/svg/mir-icon.svg";
+import GoogleIcon from "../../assets/svg/google-icon.svg";
+import SbpIcon from "../../assets/svg/sbp-icon.svg";
+import MastercardIcon from "../../assets/svg/mastercard-icon.svg";
+import AppleIcon from "../../assets/svg/apple-icon.svg";
+import MobileIcon from "../../assets/svg/mobile-icon.svg";
+import EwalletIcon from "../../assets/svg/ewallet-icon.svg";
+import CryptoIcon from "../../assets/svg/crypto-icon.svg";
+import SamsungPayIcon from "../../assets/svg/samsung-pay-icon.svg";
+import UnionPayIcon from "../../assets/svg/union-pay-icon.svg";
+import { Chip } from "../Chip";
+import Grid from "@mui/system/Unstable_Grid";
+
+const PAYMENT_METHODS = [
+  { icon: <VisaIcon /> },
+  { name: "MasterCard", icon: <MastercardIcon /> },
+  { icon: <MirIcon /> },
+  { name: <Trans>СБП</Trans>, icon: <SbpIcon /> },
+  { name: "ApplePay", icon: <AppleIcon /> },
+  { name: "GooglePay", icon: <GoogleIcon /> },
+  { name: "UnionPay", icon: <UnionPayIcon /> },
+  { name: "SamsungPay", icon: <SamsungPayIcon /> },
+  { name: <Trans>SMS / Мобильная коммерция</Trans>, icon: <MobileIcon /> },
+  { name: <Trans>Электронные деньги</Trans>, icon: <EwalletIcon /> },
+  { name: <Trans>Криптовалюты</Trans>, icon: <CryptoIcon /> },
+];
 
 export const ProcessingBlock: React.FC<
   React.ComponentProps<typeof Block>
@@ -34,11 +61,20 @@ export const ProcessingBlock: React.FC<
         </Card>
       </Stack>
 
-      <Box>
+      <Stack spacing={5.5}>
         <Box sx={{ typography: "h3", color: "#fff" }}>
           <Trans>Support for all payment methods</Trans>
         </Box>
-      </Box>
+        <Grid container spacing={2}>
+          {PAYMENT_METHODS.map((pm) => (
+            <Grid>
+              <Chip key={pm} startIcon={pm.icon}>
+                {pm.name}
+              </Chip>
+            </Grid>
+          ))}
+        </Grid>
+      </Stack>
 
       <Box>
         <Box sx={{ typography: "h3", color: "#fff" }}>
