@@ -10,6 +10,7 @@ import styled from "@emotion/styled";
 import UnstyledLogo from "../../assets/svg/logo.svg";
 import UnstyledFintech from "../../assets/svg/fintech.svg";
 import { Button } from "../Button";
+import { Block } from "../Block";
 
 export const PAGE_IDS = {
   ourProducts: "our-products",
@@ -46,10 +47,10 @@ export const HeaderBlock: React.FC = () => {
   const { languages, language } = useI18next();
 
   return (
-    <Box
+    <Block
+      inverted
       sx={{
-        backgroundColor: "#000c1f",
-        color: "#fff",
+        padding: "0px !important",
         backgroundImage: `url(${headerBgGlowingBallSrc})`,
         backgroundPosition: "calc(50% + 400px) 0%",
         backgroundRepeat: "no-repeat",
@@ -133,6 +134,6 @@ export const HeaderBlock: React.FC = () => {
           </Stack>
         </Stack>
       </Container>
-    </Box>
+    </Block>
   );
 };
