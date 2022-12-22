@@ -42,7 +42,7 @@ const HeaderButton = styled(Button)`
   padding-right: ${({ theme }) => theme.spacing(6.5)};
 `;
 
-export const Header: React.FC = () => {
+export const HeaderBlock: React.FC = () => {
   const { languages, language } = useI18next();
 
   return (

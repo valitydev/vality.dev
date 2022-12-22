@@ -2,7 +2,7 @@ import * as React from "react";
 import type { HeadFC, PageProps } from "gatsby";
 import { graphql } from "gatsby";
 import { AntifraudBlock } from "../components/index/AntifraudBlock";
-import { Header, PAGE_IDS } from "../components/index/Header";
+import { HeaderBlock, PAGE_IDS } from "../components/index/HeaderBlock";
 import { OurProductsBlock } from "../components/index/OurProductsBlock";
 import { ProcessingBlock } from "../components/index/ProcessingBlock";
 import { ContactsBlock } from "../components/index/ContactsBlock";
@@ -10,7 +10,7 @@ import { ContactsBlock } from "../components/index/ContactsBlock";
 const IndexPage: React.FC<PageProps> = () => {
   return (
     <>
-      <Header />
+      <HeaderBlock />
       <OurProductsBlock id={PAGE_IDS.ourProducts} />
       <ProcessingBlock id={PAGE_IDS.processing} />
       <AntifraudBlock id={PAGE_IDS.antifraud} />
