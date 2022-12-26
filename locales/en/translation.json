@@ -39,7 +39,8 @@
   "antifraud.info:safety": "Allows you to exclude even the most sophisticated fraud, thanks to a specially designed language of rules.",
   "antifraud.info:scale": "At each stage there is the possibility of horizontal scaling with a linear increase in iron costs\nand staff.",
   "antifraud:description": "Universal tool for determining\nand blocking fraudulent transactions,\nwith the ability to take into account the conversion\nand risks.",
-  "control:description-1<br/>control:description-2": "The platform is specially designed\nto conduct and manage financial transactions.<br/>Conforms to all world safety standards.",
+  "control:description-1": "The platform is specially designed\nto conduct and manage financial transactions.",
+  "control:description-2": "Conforms to all world safety standards.",
   "possibilities:description": "Can work as the main processing,\nas preprocessing or as a payment router between different processors at the same time.",
   "processing:description": "Fault-tolerant high-performance distributed payment system,\nwith which you can manage any transactions online."
 }

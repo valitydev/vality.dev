@@ -23,7 +23,7 @@ const Logo = styled(UnstyledLogo)`
 `;
 
 const Fintech = styled(UnstyledFintech)`
-  margin-right: -47px;
+  margin-right: -100px;
   margin-top: -20px;
   height: 330px;
 

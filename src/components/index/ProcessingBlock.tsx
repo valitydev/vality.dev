@@ -64,11 +64,14 @@ export const ProcessingBlock: React.FC<React.ComponentProps<typeof Block>> = (
             title={<Trans>Control</Trans>}
             image={<ControlImg />}
           >
-            <Trans>
-              control:description-1
-              <br />
-              control:description-2
-            </Trans>
+            <Stack spacing={1}>
+              <Box>
+                <Trans>control:description-1</Trans>
+              </Box>
+              <Box>
+                <Trans>control:description-2</Trans>
+              </Box>
+            </Stack>
           </Card>
           <Card
             inverted
