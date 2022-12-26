@@ -13,6 +13,7 @@
     "extract-locales": "npx babel --config-file ./babel-extract.config.js -o tmp/chunk.js 'src/**/*.{js,jsx,ts,tsx}' && rm -rf tmp"
   },
   "dependencies": {
+    "@emotion/css": "^11.10.5",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
     "@mdx-js/react": "^2.2.1",

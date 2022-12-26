@@ -18,12 +18,17 @@ import SamsungPayIcon from "../../assets/svg/samsung-pay-icon.svg";
 import UnionPayIcon from "../../assets/svg/union-pay-icon.svg";
 import { Chip } from "../Chip";
 import caruselSrc from "../../images/carusel.png";
+import processingBgSrc from "../../images/processing-bg.svg";
+import paymentSystemsBgSrc from "../../images/payment-systems-bg.svg";
+import paymentBgSrc from "../../images/payment-bg.svg";
+import { css } from "@emotion/css";
+import { BackgroundImageBox } from "../BackgroundImageBox";
 
 const PAYMENT_METHODS_GROUPS = [
   [
     { icon: <VisaIcon /> },
     { name: "MasterCard", icon: <MastercardIcon /> },
-    { name: <Trans>MIR</Trans>, icon: <MirIcon /> },
+    { icon: <MirIcon /> },
     { name: <Trans>Faster Payments System (SBP)</Trans>, icon: <SbpIcon /> },
   ],
   [
@@ -44,54 +49,67 @@ export const ProcessingBlock: React.FC<React.ComponentProps<typeof Block>> = (
 ) => (
   <Block {...props} title={<Trans>Processing</Trans>} inverted>
     <Stack spacing={17}>
-      <Stack spacing={2} direction="row">
-        <Card
-          inverted
-          flex="1"
-          title={<Trans>Control</Trans>}
-          image={<ControlImg />}
+      <BackgroundImageBox src={processingBgSrc} left={-765} top={-200}>
+        <Stack
+          spacing={2}
+          direction="row"
+          className={css`
+            position: relative;
+            z-index: 1;
+          `}
         >
-          <Trans>
-            control:description-1
-            <br />
-            control:description-2
-          </Trans>
-        </Card>
-        <Card
-          inverted
-          flex="1"
-          title={<Trans>Possibilities</Trans>}
-          image={<CapabilityImg />}
-        >
-          <Trans>possibilities:description</Trans>
-        </Card>
-      </Stack>
-
-      <Stack spacing={5.5}>
-        <Box sx={{ typography: "h3", color: "#fff" }}>
-          <Trans>Support for all payment methods</Trans>
-        </Box>
-        <Stack spacing={2.5}>
-          {PAYMENT_METHODS_GROUPS.map((group, idx) => (
-            <Stack spacing={2} direction="row" key={idx}>
-              {group.map((pm, k) => (
-                <Chip key={k} startIcon={pm.icon}>
-                  {pm.name}
-                </Chip>
-              ))}
-            </Stack>
-          ))}
+          <Card
+            inverted
+            flex="1"
+            title={<Trans>Control</Trans>}
+            image={<ControlImg />}
+          >
+            <Trans>
+              control:description-1
+              <br />
+              control:description-2
+            </Trans>
+          </Card>
+          <Card
+            inverted
+            flex="1"
+            title={<Trans>Possibilities</Trans>}
+            image={<CapabilityImg />}
+          >
+            <Trans>possibilities:description</Trans>
+          </Card>
         </Stack>
-      </Stack>
+      </BackgroundImageBox>
 
-      <Stack spacing={5.5}>
-        <Box sx={{ typography: "h3", color: "#fff" }}>
-          <Trans>Intuitive payment process</Trans>
-        </Box>
-        <Box>
-          <img style={{ width: "100%", height: "100%" }} src={caruselSrc} />
-        </Box>
-      </Stack>
+      <BackgroundImageBox src={paymentSystemsBgSrc} right={-500} top={-100}>
+        <Stack spacing={5.5}>
+          <Box sx={{ typography: "h3", color: "#fff" }}>
+            <Trans>Support for all payment methods</Trans>
+          </Box>
+          <Stack spacing={2.5}>
+            {PAYMENT_METHODS_GROUPS.map((group, idx) => (
+              <Stack spacing={2} direction="row" key={idx}>
+                {group.map((pm, k) => (
+                  <Chip key={k} startIcon={pm.icon}>
+                    {pm.name}
+                  </Chip>
+                ))}
+              </Stack>
+            ))}
+          </Stack>
+        </Stack>
+      </BackgroundImageBox>
+
+      <BackgroundImageBox src={paymentBgSrc} left={-450} bottom={-200}>
+        <Stack spacing={5.5}>
+          <Box sx={{ typography: "h3", color: "#fff" }}>
+            <Trans>Intuitive payment process</Trans>
+          </Box>
+          <Box>
+            <img style={{ width: "100%", height: "100%" }} src={caruselSrc} />
+          </Box>
+        </Stack>
+      </BackgroundImageBox>
     </Stack>
   </Block>
 );

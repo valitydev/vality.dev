@@ -7,16 +7,17 @@ import { OurProductsBlock } from "../components/index/OurProductsBlock";
 import { ProcessingBlock } from "../components/index/ProcessingBlock";
 import { ContactsBlock } from "../components/index/ContactsBlock";
 import { PAGE_IDS } from "../components/AppNav";
+import { Box } from "@mui/system";
 
 const IndexPage: React.FC<PageProps> = () => {
   return (
-    <>
+    <Box sx={{ overflow: "hidden" }}>
       <HeaderBlock />
       <OurProductsBlock id={PAGE_IDS.ourProducts} />
       <ProcessingBlock id={PAGE_IDS.processing} />
       <AntifraudBlock id={PAGE_IDS.antifraud} />
       <ContactsBlock id={PAGE_IDS.contacts} />
-    </>
+    </Box>
   );
 };
 
