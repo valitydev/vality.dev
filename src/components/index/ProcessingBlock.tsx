@@ -17,20 +17,25 @@ import CryptoIcon from "../../assets/svg/crypto-icon.svg";
 import SamsungPayIcon from "../../assets/svg/samsung-pay-icon.svg";
 import UnionPayIcon from "../../assets/svg/union-pay-icon.svg";
 import { Chip } from "../Chip";
-import Grid from "@mui/system/Unstable_Grid";
 
-const PAYMENT_METHODS = [
-  { icon: <VisaIcon /> },
-  { name: "MasterCard", icon: <MastercardIcon /> },
-  { icon: <MirIcon /> },
-  { name: <Trans>СБП</Trans>, icon: <SbpIcon /> },
-  { name: "ApplePay", icon: <AppleIcon /> },
-  { name: "GooglePay", icon: <GoogleIcon /> },
-  { name: "UnionPay", icon: <UnionPayIcon /> },
-  { name: "SamsungPay", icon: <SamsungPayIcon /> },
-  { name: <Trans>SMS / Мобильная коммерция</Trans>, icon: <MobileIcon /> },
-  { name: <Trans>Электронные деньги</Trans>, icon: <EwalletIcon /> },
-  { name: <Trans>Криптовалюты</Trans>, icon: <CryptoIcon /> },
+const PAYMENT_METHODS_GROUPS = [
+  [
+    { icon: <VisaIcon /> },
+    { name: "MasterCard", icon: <MastercardIcon /> },
+    { name: <Trans>MIR</Trans>, icon: <MirIcon /> },
+    { name: <Trans>Faster Payments System (SBP)</Trans>, icon: <SbpIcon /> },
+  ],
+  [
+    { name: "GooglePay", icon: <GoogleIcon /> },
+    { name: "ApplePay", icon: <AppleIcon /> },
+    { name: "UnionPay", icon: <UnionPayIcon /> },
+    { name: "SamsungPay", icon: <SamsungPayIcon /> },
+  ],
+  [
+    { name: <Trans>SMS / Mobile Commerce</Trans>, icon: <MobileIcon /> },
+    { name: <Trans>Electronic money</Trans>, icon: <EwalletIcon /> },
+    { name: <Trans>Cryptocurrencies</Trans>, icon: <CryptoIcon /> },
+  ],
 ];
 
 export const ProcessingBlock: React.FC<
@@ -65,15 +70,17 @@ export const ProcessingBlock: React.FC<
         <Box sx={{ typography: "h3", color: "#fff" }}>
           <Trans>Support for all payment methods</Trans>
         </Box>
-        <Grid container spacing={2}>
-          {PAYMENT_METHODS.map((pm) => (
-            <Grid>
-              <Chip key={pm} startIcon={pm.icon}>
-                {pm.name}
-              </Chip>
-            </Grid>
+        <Stack spacing={2.5}>
+          {PAYMENT_METHODS_GROUPS.map((group, idx) => (
+            <Stack spacing={2} direction="row" key={idx}>
+              {group.map((pm, k) => (
+                <Chip key={k} startIcon={pm.icon}>
+                  {pm.name}
+                </Chip>
+              ))}
+            </Stack>
           ))}
-        </Grid>
+        </Stack>
       </Stack>
 
       <Box>
