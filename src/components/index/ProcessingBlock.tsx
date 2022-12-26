@@ -17,6 +17,7 @@ import CryptoIcon from "../../assets/svg/crypto-icon.svg";
 import SamsungPayIcon from "../../assets/svg/samsung-pay-icon.svg";
 import UnionPayIcon from "../../assets/svg/union-pay-icon.svg";
 import { Chip } from "../Chip";
+import caruselSrc from "../../images/carusel.png";
 
 const PAYMENT_METHODS_GROUPS = [
   [
@@ -83,11 +84,14 @@ export const ProcessingBlock: React.FC<React.ComponentProps<typeof Block>> = (
         </Stack>
       </Stack>
 
-      <Box>
+      <Stack spacing={5.5}>
         <Box sx={{ typography: "h3", color: "#fff" }}>
           <Trans>Intuitive payment process</Trans>
         </Box>
-      </Box>
+        <Box>
+          <img style={{ width: "100%", height: "100%" }} src={caruselSrc} />
+        </Box>
+      </Stack>
     </Stack>
   </Block>
 );
