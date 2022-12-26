@@ -38,10 +38,10 @@ const PAYMENT_METHODS_GROUPS = [
   ],
 ];
 
-export const ProcessingBlock: React.FC<
-  React.ComponentProps<typeof Block>
-> = () => (
-  <Block title={<Trans>Processing</Trans>} inverted>
+export const ProcessingBlock: React.FC<React.ComponentProps<typeof Block>> = (
+  props
+) => (
+  <Block {...props} title={<Trans>Processing</Trans>} inverted>
     <Stack spacing={17}>
       <Stack spacing={2} direction="row">
         <Card

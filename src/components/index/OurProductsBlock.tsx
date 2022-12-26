@@ -10,10 +10,10 @@ import BankIcon from "../../assets/svg/bank-icon.svg";
 import GatewayIcon from "../../assets/svg/gateway-icon.svg";
 import ApplicationsImg from "../../assets/svg/application.svg";
 
-export const OurProductsBlock: React.FC<
-  React.ComponentProps<typeof Block>
-> = () => (
-  <Block title={<Trans>Our products</Trans>}>
+export const OurProductsBlock: React.FC<React.ComponentProps<typeof Block>> = ({
+  ...props
+}) => (
+  <Block {...props} title={<Trans>Our products</Trans>}>
     <Stack spacing={17}>
       <Stack spacing={2} direction="row">
         <Card

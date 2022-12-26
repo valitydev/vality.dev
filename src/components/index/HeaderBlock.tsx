@@ -43,7 +43,9 @@ const HeaderButton = styled(Button)`
   padding-right: ${({ theme }) => theme.spacing(6.5)};
 `;
 
-export const HeaderBlock: React.FC = () => {
+export const HeaderBlock: React.FC<React.ComponentProps<typeof Block>> = (
+  props
+) => {
   const { languages, language } = useI18next();
 
   return (
@@ -55,6 +57,7 @@ export const HeaderBlock: React.FC = () => {
         backgroundPosition: "calc(50% + 400px) 0%",
         backgroundRepeat: "no-repeat",
       }}
+      {...props}
     >
       <Container fixed>
         <Stack spacing={6}>
