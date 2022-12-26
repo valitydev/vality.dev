@@ -84,7 +84,7 @@ export const AntifraudBlock: React.FC<React.ComponentProps<typeof Block>> = (
               style={{ width: "100%", height: "100%" }}
             />
             <Stack spacing={3} alignItems="top" direction="row">
-              <Box>
+              <Box flex="0 1 35%" sx={{ textAlign: "center" }}>
                 <Trans>Historical data per day</Trans>
               </Box>
             </Stack>
