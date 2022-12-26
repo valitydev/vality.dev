@@ -2,10 +2,11 @@ import * as React from "react";
 import type { HeadFC, PageProps } from "gatsby";
 import { graphql } from "gatsby";
 import { AntifraudBlock } from "../components/index/AntifraudBlock";
-import { HeaderBlock, PAGE_IDS } from "../components/index/HeaderBlock";
+import { HeaderBlock } from "../components/index/HeaderBlock";
 import { OurProductsBlock } from "../components/index/OurProductsBlock";
 import { ProcessingBlock } from "../components/index/ProcessingBlock";
 import { ContactsBlock } from "../components/index/ContactsBlock";
+import { PAGE_IDS } from "../components/AppNav";
 
 const IndexPage: React.FC<PageProps> = () => {
   return (

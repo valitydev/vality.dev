@@ -1,8 +1,7 @@
 import * as React from "react";
-import { useI18next, Trans } from "gatsby-plugin-react-i18next";
+import { Trans } from "gatsby-plugin-react-i18next";
 import { Box, Container, Stack } from "@mui/system";
 import headerBgGlowingBallSrc from "../../images/header-bg-glowing-ball.svg";
-import { Link } from "../Link";
 import CONFIG from "../../../config.json";
 import GitHubIcon from "../../assets/svg/github.svg";
 import ghSrc from "../../images/gh.png";
@@ -11,13 +10,8 @@ import UnstyledLogo from "../../assets/svg/logo.svg";
 import UnstyledFintech from "../../assets/svg/fintech.svg";
 import { Button } from "../Button";
 import { Block } from "../Block";
-
-export const PAGE_IDS = {
-  ourProducts: "our-products",
-  processing: "processing",
-  antifraud: "antifraud",
-  contacts: "contacts",
-};
+import { LanguageSelector } from "../LanguageSelector";
+import { AppNav } from "../AppNav";
 
 const Logo = styled(UnstyledLogo)`
   width: auto;
@@ -46,8 +40,6 @@ const HeaderButton = styled(Button)`
 export const HeaderBlock: React.FC<React.ComponentProps<typeof Block>> = (
   props
 ) => {
-  const { languages, language } = useI18next();
-
   return (
     <Block
       inverted
@@ -69,33 +61,8 @@ export const HeaderBlock: React.FC<React.ComponentProps<typeof Block>> = (
             sx={{ pt: 2, pb: 2 }}
           >
             <Logo />
-            <Stack direction="row" spacing={3.5}>
-              <Link inverted to={`#${PAGE_IDS.ourProducts}`}>
-                <Trans>Our products</Trans>
-              </Link>
-              <Link inverted to={`#${PAGE_IDS.processing}`}>
-                <Trans>Processing</Trans>
-              </Link>
-              <Link inverted to={`#${PAGE_IDS.antifraud}`}>
-                <Trans>Antifraud</Trans>
-              </Link>
-              <Link inverted to={`#${PAGE_IDS.contacts}`}>
-                <Trans>Contacts</Trans>
-              </Link>
-            </Stack>
-            <Stack spacing={1.5} direction="row">
-              {languages.map((lang) => (
-                <Link
-                  inverted
-                  to="/"
-                  language={lang}
-                  active={lang === language}
-                  key={lang}
-                >
-                  {lang?.toUpperCase()}
-                </Link>
-              ))}
-            </Stack>
+            <AppNav />
+            <LanguageSelector />
           </Stack>
 
           <Stack spacing={14}>

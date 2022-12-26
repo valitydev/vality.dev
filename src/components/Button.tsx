@@ -27,6 +27,11 @@ const StyledButton = styled(ButtonUnstyled)(
       transition: fill 200ms ease;
     }
 
+    & svg {
+      height: ${theme.spacing(3)};
+      width: auto;
+    }
+
     &:hover {
       box-shadow: ${color === "primary"
         ? "0px 5px 15px rgba(82, 116, 199, 0.7)"
