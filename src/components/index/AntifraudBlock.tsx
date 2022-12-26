@@ -1,10 +1,13 @@
 import { Block } from "../../components/Block";
 import { Trans } from "gatsby-plugin-react-i18next";
-import { Box } from "@mui/system";
+import { Box, Stack } from "@mui/system";
 import { Card } from "../Card";
 import FlexibilityImg from "../../assets/svg/flexibility.svg";
 import ScaleImg from "../../assets/svg/scale.svg";
 import SafetySvg from "../../assets/svg/safety.svg";
+import customizableNotificationsSrc from "../../images/customizable-notifications.png";
+import dashboardInRealTimeSrc from "../../images/dashboard-in-real-time.png";
+import flexibleSystemOfRulesSrc from "../../images/flexible-system-of-rules.png";
 import * as React from "react";
 import Grid from "@mui/system/Unstable_Grid";
 
@@ -13,47 +16,141 @@ export const AntifraudBlock: React.FC<React.ComponentProps<typeof Block>> = (
 ) => {
   return (
     <Block {...props} title={<Trans>Antifraud</Trans>}>
-      <Grid spacing={2} container>
-        <Grid xs={4}>
-          <Card
-            height="100%"
-            boxSizing="border-box"
-            image={
-              <Box display="flex" height={222}>
-                <FlexibilityImg />
-              </Box>
-            }
-          >
-            <Trans>antifraud.info:flexibility</Trans>
-          </Card>
+      <Stack spacing={17}>
+        <Grid spacing={2} container>
+          <Grid xs={4}>
+            <Card
+              height="100%"
+              boxSizing="border-box"
+              image={
+                <Box display="flex" height={222}>
+                  <FlexibilityImg />
+                </Box>
+              }
+            >
+              <Trans>antifraud.info:flexibility</Trans>
+            </Card>
+          </Grid>
+          <Grid xs={4}>
+            <Card
+              height="100%"
+              boxSizing="border-box"
+              image={
+                <Box display="flex" height={222}>
+                  <ScaleImg />
+                </Box>
+              }
+            >
+              <Trans>antifraud.info:scale</Trans>
+            </Card>
+          </Grid>
+          <Grid xs={4}>
+            <Card
+              height="100%"
+              boxSizing="border-box"
+              image={
+                <Box display="flex" height={222}>
+                  <SafetySvg />
+                </Box>
+              }
+            >
+              <Trans>antifraud.info:safety</Trans>
+            </Card>
+          </Grid>
         </Grid>
-        <Grid xs={4}>
-          <Card
-            height="100%"
-            boxSizing="border-box"
-            image={
-              <Box display="flex" height={222}>
-                <ScaleImg />
+
+        <Stack spacing={5.5}>
+          <Box sx={{ typography: "h3" }}>
+            <Trans>Dashboard in real time</Trans>
+          </Box>
+          <Stack spacing={1.5}>
+            <Stack spacing={3} alignItems="end" direction="row">
+              <Box flex={1}>
+                <Trans>
+                  Number of payments
+                  <br />
+                  for the selected period
+                </Trans>
               </Box>
-            }
-          >
-            <Trans>antifraud.info:scale</Trans>
-          </Card>
-        </Grid>
-        <Grid xs={4}>
-          <Card
-            height="100%"
-            boxSizing="border-box"
-            image={
-              <Box display="flex" height={222}>
-                <SafetySvg />
+              <Box flex={1} sx={{ textAlign: "center" }}>
+                <Trans>Percent blocked transaction system</Trans>
               </Box>
-            }
-          >
-            <Trans>antifraud.info:safety</Trans>
-          </Card>
-        </Grid>
-      </Grid>
+              <Box flex={1} sx={{ textAlign: "right" }}>
+                <Trans>Amount of blocked payments</Trans>
+              </Box>
+            </Stack>
+            <img
+              src={dashboardInRealTimeSrc}
+              style={{ width: "100%", height: "100%" }}
+            />
+            <Stack spacing={3} alignItems="top" direction="row">
+              <Box>
+                <Trans>Historical data per day</Trans>
+              </Box>
+            </Stack>
+          </Stack>
+        </Stack>
+        <Stack spacing={5.5}>
+          <Box sx={{ typography: "h3" }}>
+            <Trans>Flexible system of rules</Trans>
+          </Box>
+          <Stack spacing={1.5}>
+            <Stack spacing={3} alignItems="end" direction="row">
+              <Box flex={1}>
+                <Trans>
+                  Black, white and gray lists according to various criteria
+                </Trans>
+              </Box>
+              <Box flex={1} sx={{ textAlign: "right" }}>
+                <Trans>
+                  Country restrictions, currencies, payer location, etc.
+                </Trans>
+              </Box>
+            </Stack>
+            <img
+              src={flexibleSystemOfRulesSrc}
+              style={{ width: "100%", height: "100%" }}
+            />
+            <Stack spacing={3} alignItems="top" direction="row">
+              <Box flex={1}>
+                <Trans>
+                  Making a decision based on any available system payment
+                  parameters
+                </Trans>
+              </Box>
+              <Box flex={1} sx={{ textAlign: "center" }}>
+                <Trans>Complex custom rules</Trans>
+              </Box>
+            </Stack>
+          </Stack>
+        </Stack>
+        <Stack spacing={5.5}>
+          <Box sx={{ typography: "h3" }}>
+            <Trans>Customizable notifications</Trans>
+          </Box>
+          <Stack spacing={1.5}>
+            <Stack spacing={3} alignItems="end" direction="row">
+              <Box flex={1}>
+                <Trans>Grouping rules for a more comfortable setup</Trans>
+              </Box>
+              <Box flex={1} sx={{ textAlign: "center" }}>
+                <Trans>Sending alerts with a given frequency</Trans>
+              </Box>
+            </Stack>
+            <img
+              src={customizableNotificationsSrc}
+              style={{ width: "100%", height: "100%" }}
+            />
+            <Stack spacing={3} alignItems="top" direction="row">
+              <Box flex={1}>
+                <Trans>
+                  Different notification channels for different teams
+                </Trans>
+              </Box>
+            </Stack>
+          </Stack>
+        </Stack>
+      </Stack>
     </Block>
   );
 };
