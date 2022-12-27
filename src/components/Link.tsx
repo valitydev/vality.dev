@@ -9,10 +9,11 @@ interface Props {
 
 const StyledGatsbyLink = styled(GatsbyLink)<Props>`
   color: ${({ theme, inverted }) =>
-    inverted ? "#FFF" : theme.palette.text.primary};
+    inverted ? theme.palette.common.white : theme.palette.text.primary};
   text-decoration: none;
   transition: all 200ms ease;
-  border-bottom: ${({ active }) => (active ? "1px solid #FFF" : undefined)};
+  border-bottom: ${({ active, theme }) =>
+    active ? `1px solid ${theme.palette.common.white}` : undefined};
 
   &:hover {
     color: ${({ theme }) => theme.palette.primary[300]};

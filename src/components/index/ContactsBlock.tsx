@@ -11,9 +11,10 @@ import Github from "../../assets/svg/github.svg";
 import Logo from "../../assets/svg/logo.svg";
 import { LanguageSelector } from "../LanguageSelector";
 import { AppNav } from "../AppNav";
-import { css } from "@emotion/css";
 import contactsBgSrc from "../../images/contacts-bg.svg";
 import { BackgroundImageBox } from "../BackgroundImageBox";
+import { IconButton } from "../IconButton";
+import config from "../../../config.json";
 
 export const ContactsBlock: React.FC<React.ComponentProps<typeof Block>> = (
   props
@@ -26,60 +27,45 @@ export const ContactsBlock: React.FC<React.ComponentProps<typeof Block>> = (
             <Box sx={{ typography: "h3", color: "#fff" }}>
               <Trans>Contacts</Trans>
             </Box>
-            {/*<Stack spacing={4.5} direction="row">*/}
-            {/*  <Stack spacing={2}>*/}
-            {/*    <Box>*/}
-            {/*      <Trans>Email</Trans>*/}
-            {/*    </Box>*/}
-            {/*    <Button*/}
-            {/*      endIcon={<Email />}*/}
-            {/*      onClick={() => {*/}
-            {/*        window.open("mailto:", "_blank");*/}
-            {/*      }}*/}
-            {/*    >*/}
-            {/*      vality@rambler.su*/}
-            {/*    </Button>*/}
-            {/*  </Stack>*/}
-            {/*  <Stack spacing={2}>*/}
-            {/*    <Box>*/}
-            {/*      <Trans>Telegram</Trans>*/}
-            {/*    </Box>*/}
-            {/*    <Button*/}
-            {/*      endIcon={<Telegram />}*/}
-            {/*      onClick={() => {*/}
-            {/*        window.open("https://t.me/", "_blank");*/}
-            {/*      }}*/}
-            {/*    >*/}
-            {/*      Vality*/}
-            {/*    </Button>*/}
-            {/*  </Stack>*/}
-            {/*</Stack>*/}
+            <Stack spacing={4.5} direction="row">
+              {config.contacts.email && (
+                <Stack spacing={2}>
+                  <Box>
+                    <Trans>Email</Trans>
+                  </Box>
+                  <Button
+                    endIcon={<Email />}
+                    href={`mailto:${config.contacts.email}`}
+                  >
+                    {config.contacts.email}
+                  </Button>
+                </Stack>
+              )}
+              {config.contacts.telegram && (
+                <Stack spacing={2}>
+                  <Box>
+                    <Trans>Telegram</Trans>
+                  </Box>
+                  <Button
+                    endIcon={<Telegram />}
+                    href={config.contacts.telegram}
+                  >
+                    Vality
+                  </Button>
+                </Stack>
+              )}
+            </Stack>
             <Stack spacing={2}>
               <Box>
                 <Trans>Social media</Trans>
               </Box>
               <Stack spacing={4} direction="row">
-                <Linkedin
-                  style={{ fill: "#fff" }}
-                  height={44}
-                  onClick={() => {
-                    window.open(
-                      "https://www.linkedin.com/company/valitydev",
-                      "_blank"
-                    );
-                  }}
-                />
-                <Github
-                  className={css`
-                    * {
-                      fill: #fff;
-                    }
-                  `}
-                  height={44}
-                  onClick={() => {
-                    window.open("http://github.com/valitydev", "_blank");
-                  }}
-                />
+                <IconButton inverted href={config.contacts.linkedin}>
+                  <Linkedin />
+                </IconButton>
+                <IconButton inverted href={config.contacts.github}>
+                  <Github />
+                </IconButton>
               </Stack>
             </Stack>
           </Stack>

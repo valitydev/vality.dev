@@ -11,7 +11,7 @@ import { Box } from "@mui/system";
 
 const IndexPage: React.FC<PageProps> = () => {
   return (
-    <Box sx={{ overflow: "hidden" }}>
+    <Box>
       <HeaderBlock />
       <OurProductsBlock id={PAGE_IDS.ourProducts} />
       <ProcessingBlock id={PAGE_IDS.processing} />

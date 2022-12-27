@@ -6,6 +6,7 @@ import { Stack, Box } from "@mui/system";
 
 interface Props {
   endIcon?: ReactNode;
+  href?: string;
 }
 
 const StyledButton = styled(ButtonUnstyled)(
@@ -71,9 +72,15 @@ const StyledButton = styled(ButtonUnstyled)(
 
 export const Button: React.FC<
   React.ComponentProps<typeof StyledButton> & Props
-> = ({ endIcon, children, ...props }) => {
+> = ({ endIcon, children, href, ...props }) => {
+  const clickHandler = href
+    ? () => {
+        window.open(href, "_blank");
+      }
+    : undefined;
+
   return (
-    <StyledButton {...props}>
+    <StyledButton {...props} onClick={clickHandler}>
       <Stack direction="row" spacing={1.5} sx={{ alignItems: "center" }}>
         <Box>{children}</Box>
         {endIcon}
