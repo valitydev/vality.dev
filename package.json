@@ -10,8 +10,10 @@
     "clean": "gatsby clean",
     "typecheck": "tsc --noEmit",
     "prettier": "prettier . --list-different",
+    "prettier-fix": "npm run prettier -- --write",
     "lint": "eslint \"src/**/*.{ts,js,tsx,jsx}\"",
     "lint-fix": "npm run lint -- --fix",
+    "fix": "npm run lint-fix && npm run prettier-fix",
     "extract-locales": "npx babel --config-file ./babel-extract.config.js -o tmp/chunk.js 'src/**/*.{js,jsx,ts,tsx}' && rm -rf tmp"
   },
   "dependencies": {
