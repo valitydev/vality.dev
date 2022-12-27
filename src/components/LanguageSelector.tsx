@@ -1,7 +1,9 @@
 import React from "react";
+
 import { Stack } from "@mui/system";
-import { Link } from "./Link";
 import { useI18next } from "gatsby-plugin-react-i18next";
+
+import { Link } from "./Link";
 
 export const LanguageSelector: React.FC = () => {
   const { languages, language } = useI18next();

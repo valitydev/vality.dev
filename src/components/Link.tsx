@@ -1,6 +1,7 @@
-import { Link as GatsbyLink } from "gatsby-plugin-react-i18next";
 import React from "react";
+
 import styled from "@emotion/styled";
+import { Link as GatsbyLink } from "gatsby-plugin-react-i18next";
 
 interface Props {
   inverted?: boolean;

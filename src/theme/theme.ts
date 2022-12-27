@@ -1,6 +1,7 @@
-import { createTypography } from "./create-typography";
-import createTheme from "@mui/material/styles/createTheme";
 import type { Color } from "@mui/material";
+import createTheme from "@mui/material/styles/createTheme";
+
+import { createTypography } from "./create-typography";
 
 const OFFSET = 24 * 2;
 const HTML_FONT_SIZE = 16;

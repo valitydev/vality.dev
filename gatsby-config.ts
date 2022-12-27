@@ -79,6 +79,14 @@ const config: GatsbyConfig = {
         ],
       },
     },
+    {
+      resolve: `gatsby-plugin-alias-imports`,
+      options: {
+        alias: {
+          "~": "src",
+        },
+      },
+    },
   ],
 };
 
