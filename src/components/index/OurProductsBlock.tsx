@@ -3,12 +3,13 @@ import * as React from "react";
 import { Stack, Box } from "@mui/system";
 import { Trans } from "gatsby-plugin-react-i18next";
 
-import ApplicationsImg from "../../assets/svg/application.svg";
-import BankIcon from "../../assets/svg/bank-icon.svg";
-import FraudbustersImg from "../../assets/svg/fraudbusters.svg";
-import GatewayIcon from "../../assets/svg/gateway-icon.svg";
-import ProcessingImg from "../../assets/svg/processing.svg";
-import ShopIcon from "../../assets/svg/shop-icon.svg";
+import ApplicationsImg from "~/assets/svg/application.svg";
+import BankIcon from "~/assets/svg/bank-icon.svg";
+import FraudbustersImg from "~/assets/svg/fraudbusters.svg";
+import GatewayIcon from "~/assets/svg/gateway-icon.svg";
+import ProcessingImg from "~/assets/svg/processing.svg";
+import ShopIcon from "~/assets/svg/shop-icon.svg";
+
 import { Block } from "../Block";
 import { Card } from "../Card";
 
