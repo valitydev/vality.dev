@@ -11,6 +11,7 @@
     "typecheck": "tsc --noEmit",
     "prettier": "prettier . --list-different",
     "lint": "eslint \"src/**/*.{ts,js,tsx,jsx}\"",
+    "lint-fix": "npm run lint -- --fix",
     "extract-locales": "npx babel --config-file ./babel-extract.config.js -o tmp/chunk.js 'src/**/*.{js,jsx,ts,tsx}' && rm -rf tmp"
   },
   "dependencies": {

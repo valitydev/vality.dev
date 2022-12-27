@@ -1,14 +1,16 @@
 import * as React from "react";
-import { Block } from "../Block";
-import { Trans } from "gatsby-plugin-react-i18next";
+
 import { Stack, Box } from "@mui/system";
-import { Card } from "../Card";
-import ProcessingImg from "../../assets/svg/processing.svg";
-import FraudbustersImg from "../../assets/svg/fraudbusters.svg";
-import ShopIcon from "../../assets/svg/shop-icon.svg";
-import BankIcon from "../../assets/svg/bank-icon.svg";
-import GatewayIcon from "../../assets/svg/gateway-icon.svg";
+import { Trans } from "gatsby-plugin-react-i18next";
+
 import ApplicationsImg from "../../assets/svg/application.svg";
+import BankIcon from "../../assets/svg/bank-icon.svg";
+import FraudbustersImg from "../../assets/svg/fraudbusters.svg";
+import GatewayIcon from "../../assets/svg/gateway-icon.svg";
+import ProcessingImg from "../../assets/svg/processing.svg";
+import ShopIcon from "../../assets/svg/shop-icon.svg";
+import { Block } from "../Block";
+import { Card } from "../Card";
 
 export const OurProductsBlock: React.FC<React.ComponentProps<typeof Block>> = ({
   ...props

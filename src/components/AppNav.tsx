@@ -1,7 +1,9 @@
-import { Stack } from "@mui/system";
-import { Link } from "./Link";
-import { Trans } from "gatsby-plugin-react-i18next";
 import * as React from "react";
+
+import { Stack } from "@mui/system";
+import { Trans } from "gatsby-plugin-react-i18next";
+
+import { Link } from "./Link";
 
 export const PAGE_IDS = {
   ourProducts: "our-products",

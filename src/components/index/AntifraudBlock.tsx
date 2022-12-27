@@ -1,19 +1,21 @@
-import { Block } from "../../components/Block";
-import { Trans } from "gatsby-plugin-react-i18next";
+import * as React from "react";
+
 import { Box, Stack } from "@mui/system";
-import { Card } from "../Card";
+import Grid from "@mui/system/Unstable_Grid";
+import { Trans } from "gatsby-plugin-react-i18next";
+
 import FlexibilityImg from "../../assets/svg/flexibility.svg";
-import ScaleImg from "../../assets/svg/scale.svg";
 import SafetySvg from "../../assets/svg/safety.svg";
+import ScaleImg from "../../assets/svg/scale.svg";
+import { Block } from "../../components/Block";
+import antifraudBgSrc from "../../images/antifraud-bg.svg";
+import customizableBgSrc from "../../images/customizable-bg.svg";
 import customizableNotificationsSrc from "../../images/customizable-notifications.png";
 import dashboardInRealTimeSrc from "../../images/dashboard-in-real-time.png";
-import flexibleSystemOfRulesSrc from "../../images/flexible-system-of-rules.png";
-import * as React from "react";
-import Grid from "@mui/system/Unstable_Grid";
-import antifraudBgSrc from "../../images/antifraud-bg.svg";
 import flexibilityBgSrc from "../../images/flexibility-bg.svg";
-import customizableBgSrc from "../../images/customizable-bg.svg";
+import flexibleSystemOfRulesSrc from "../../images/flexible-system-of-rules.png";
 import { BackgroundImageBox } from "../BackgroundImageBox";
+import { Card } from "../Card";
 
 export const AntifraudBlock: React.FC<React.ComponentProps<typeof Block>> = (
   props

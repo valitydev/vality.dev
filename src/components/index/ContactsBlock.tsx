@@ -1,21 +1,23 @@
 import * as React from "react";
-import { Block } from "../Block";
+import { useState, useEffect } from "react";
+
 import { Stack, Box } from "@mui/system";
 import { Trans } from "gatsby-plugin-react-i18next";
-import ContactsImg from "../../assets/svg/contacts.svg";
-import { Button } from "../Button";
-import Email from "../../assets/svg/email.svg";
-import Telegram from "../../assets/svg/telegram.svg";
-import Linkedin from "../../assets/svg/linkedin.svg";
-import Github from "../../assets/svg/github.svg";
-import Logo from "../../assets/svg/logo.svg";
-import { LanguageSelector } from "../LanguageSelector";
-import { AppNav } from "../AppNav";
-import contactsBgSrc from "../../images/contacts-bg.svg";
-import { BackgroundImageBox } from "../BackgroundImageBox";
-import { IconButton } from "../IconButton";
+
 import config from "../../../config.json";
-import { useState, useEffect } from "react";
+import ContactsImg from "../../assets/svg/contacts.svg";
+import Email from "../../assets/svg/email.svg";
+import Github from "../../assets/svg/github.svg";
+import Linkedin from "../../assets/svg/linkedin.svg";
+import Logo from "../../assets/svg/logo.svg";
+import Telegram from "../../assets/svg/telegram.svg";
+import contactsBgSrc from "../../images/contacts-bg.svg";
+import { AppNav } from "../AppNav";
+import { BackgroundImageBox } from "../BackgroundImageBox";
+import { Block } from "../Block";
+import { Button } from "../Button";
+import { IconButton } from "../IconButton";
+import { LanguageSelector } from "../LanguageSelector";
 
 export const ContactsBlock: React.FC<React.ComponentProps<typeof Block>> = (
   props
