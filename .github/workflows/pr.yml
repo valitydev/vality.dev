@@ -55,7 +55,3 @@ jobs:
         env:
           PREFIX_PATHS: 'true'
         run: npm run build
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1
-        with:
-          path: ./public
