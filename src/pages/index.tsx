@@ -1,36 +1,40 @@
 import * as React from "react";
 import type { HeadFC, PageProps } from "gatsby";
-import styled from "styled-components";
-
-const Main = styled.div`
-  background-color: #fff;
-  color: #000;
-  font-family: helvetica, arial, sans-serif;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-
-  .emoji {
-    font-size: 9rem;
-    text-align: center;
-  }
-  .text {
-    font-size: 1.5rem;
-    text-transform: uppercase;
-    color: grey;
-  }
-`;
+import { graphql } from "gatsby";
+import { AntifraudBlock } from "../components/index/AntifraudBlock";
+import { HeaderBlock } from "../components/index/HeaderBlock";
+import { OurProductsBlock } from "../components/index/OurProductsBlock";
+import { ProcessingBlock } from "../components/index/ProcessingBlock";
+import { ContactsBlock } from "../components/index/ContactsBlock";
+import { PAGE_IDS } from "../components/AppNav";
+import { Box } from "@mui/system";
 
 const IndexPage: React.FC<PageProps> = () => {
   return (
-    <Main>
-      <div className="emoji">👀</div>
-      <p className="text">Check back soon...</p>
-    </Main>
+    <Box>
+      <HeaderBlock />
+      <OurProductsBlock id={PAGE_IDS.ourProducts} />
+      <ProcessingBlock id={PAGE_IDS.processing} />
+      <AntifraudBlock id={PAGE_IDS.antifraud} />
+      <ContactsBlock id={PAGE_IDS.contacts} />
+    </Box>
   );
 };
 
 export default IndexPage;
 
 export const Head: HeadFC = () => <title>Vality</title>;
+
+export const query = graphql`
+  query ($language: String!) {
+    locales: allLocale(filter: { language: { eq: $language } }) {
+      edges {
+        node {
+          ns
+          data
+          language
+        }
+      }
+    }
+  }
+`;
