@@ -4,6 +4,10 @@ import { css } from "@emotion/css";
 import { Stack, Box } from "@mui/system";
 import { Trans } from "gatsby-plugin-react-i18next";
 
+import caruselSrc from "~/assets/images/carusel.png";
+import paymentBgSrc from "~/assets/images/payment-bg.svg";
+import paymentSystemsBgSrc from "~/assets/images/payment-systems-bg.svg";
+import processingBgSrc from "~/assets/images/processing-bg.svg";
 import AppleIcon from "~/assets/svg/apple-icon.svg";
 import CapabilityImg from "~/assets/svg/capability.svg";
 import ControlImg from "~/assets/svg/control.svg";
@@ -18,10 +22,6 @@ import SbpIcon from "~/assets/svg/sbp-icon.svg";
 import UnionPayIcon from "~/assets/svg/union-pay-icon.svg";
 import VisaIcon from "~/assets/svg/visa-icon.svg";
 
-import caruselSrc from "../../images/carusel.png";
-import paymentBgSrc from "../../images/payment-bg.svg";
-import paymentSystemsBgSrc from "../../images/payment-systems-bg.svg";
-import processingBgSrc from "../../images/processing-bg.svg";
 import { BackgroundImageBox } from "../BackgroundImageBox";
 import { Block } from "../Block";
 import { Card } from "../Card";

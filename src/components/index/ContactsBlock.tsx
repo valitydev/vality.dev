@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { Stack, Box } from "@mui/system";
 import { Trans } from "gatsby-plugin-react-i18next";
 
+import contactsBgSrc from "~/assets/images/contacts-bg.svg";
 import ContactsImg from "~/assets/svg/contacts.svg";
 import Email from "~/assets/svg/email.svg";
 import Github from "~/assets/svg/github.svg";
@@ -12,7 +13,6 @@ import Logo from "~/assets/svg/logo.svg";
 import Telegram from "~/assets/svg/telegram.svg";
 
 import config from "../../../config.json";
-import contactsBgSrc from "../../images/contacts-bg.svg";
 import { AppNav } from "../AppNav";
 import { BackgroundImageBox } from "../BackgroundImageBox";
 import { Block } from "../Block";

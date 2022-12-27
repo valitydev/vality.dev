@@ -4,13 +4,13 @@ import styled from "@emotion/styled";
 import { Box, Container, Stack } from "@mui/system";
 import { Trans } from "gatsby-plugin-react-i18next";
 
+import ghSrc from "~/assets/images/gh.png";
+import headerBgGlowingBallSrc from "~/assets/images/header-bg-glowing-ball.svg";
 import UnstyledFintech from "~/assets/svg/fintech.svg";
 import GitHubIcon from "~/assets/svg/github.svg";
 import UnstyledLogo from "~/assets/svg/logo.svg";
 
 import CONFIG from "../../../config.json";
-import ghSrc from "../../images/gh.png";
-import headerBgGlowingBallSrc from "../../images/header-bg-glowing-ball.svg";
 import { AppNav } from "../AppNav";
 import { Block } from "../Block";
 import { Button } from "../Button";
