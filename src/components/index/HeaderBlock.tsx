@@ -17,7 +17,7 @@ const Logo = styled(UnstyledLogo)`
   width: auto;
   height: 32px;
 
-  ${({ theme }) => theme.breakpoints.down("lg")} {
+  ${({ theme }) => theme?.breakpoints?.down?.("lg")} {
     height: 24px;
   }
 `;
@@ -27,14 +27,14 @@ const Fintech = styled(UnstyledFintech)`
   margin-top: -20px;
   height: 330px;
 
-  ${({ theme }) => theme?.breakpoints.down("lg")} {
+  ${({ theme }) => theme?.breakpoints?.down?.("lg")} {
     height: 192px;
   },
 `;
 
 const HeaderButton = styled(Button)`
-  padding-left: ${({ theme }) => theme.spacing(6.5)};
-  padding-right: ${({ theme }) => theme.spacing(6.5)};
+  padding-left: ${({ theme }) => theme?.spacing?.(6.5)};
+  padding-right: ${({ theme }) => theme?.spacing?.(6.5)};
 `;
 
 export const HeaderBlock: React.FC<React.ComponentProps<typeof Block>> = (

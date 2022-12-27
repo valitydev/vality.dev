@@ -9,18 +9,18 @@ interface Props {
 
 const StyledGatsbyLink = styled(GatsbyLink)<Props>`
   color: ${({ theme, inverted }) =>
-    inverted ? theme.palette.common.white : theme.palette.text.primary};
+    inverted ? theme?.palette?.common?.white : theme?.palette?.text?.primary};
   text-decoration: none;
   transition: all 200ms ease;
   border-bottom: ${({ active, theme }) =>
-    active ? `1px solid ${theme.palette.common.white}` : undefined};
+    active ? `1px solid ${theme?.palette?.common?.white}` : undefined};
 
   &:hover {
-    color: ${({ theme }) => theme.palette.primary[300]};
+    color: ${({ theme }) => theme?.palette?.primary?.[300]};
   }
 
   &:active {
-    color: ${({ theme }) => theme.palette.primary[100]};
+    color: ${({ theme }) => theme?.palette?.primary?.[100]};
   }
 `;
 

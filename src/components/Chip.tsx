@@ -8,12 +8,12 @@ interface Props {
 }
 
 const Wrapper = styled(Stack)<Props>`
-  ${({ theme }) => css(theme.typography.body1)};
+  ${({ theme }) => css(theme?.typography?.body1)};
 
-  background-color: ${({ theme }) => theme.palette.common.white};
-  border-radius: ${({ theme }) => theme.spacing(10)};
-  padding: ${({ theme }) => `0 ${theme.spacing(4.5)}`};
-  height: ${({ theme }) => theme.spacing(5.5)};
+  background-color: ${({ theme }) => theme?.palette?.common?.white};
+  border-radius: ${({ theme }) => theme?.spacing?.(10)};
+  padding: ${({ theme }) => `0 ${theme?.spacing?.(4.5)}`};
+  height: ${({ theme }) => theme?.spacing?.(5.5)};
 
   & > * {
     align-items: center;
@@ -21,7 +21,7 @@ const Wrapper = styled(Stack)<Props>`
   }
 
   .icon svg {
-    height: ${({ theme }) => theme.spacing(2.75)};
+    height: ${({ theme }) => theme?.spacing?.(2.75)};
   }
 `;
 

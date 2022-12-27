@@ -9,14 +9,15 @@ interface Props {
 
 export const StyledBlock = styled(Box)<Props>`
   background-color: ${({ theme, inverted }) =>
-    inverted ? theme.palette.primary[900] : theme.palette.common.white};
-  padding: ${({ theme }) => `${theme.spacing(11)} 0 ${theme.spacing(17)}`};
+    inverted ? theme?.palette?.primary?.[900] : theme?.palette?.common?.white};
+  padding: ${({ theme }) =>
+    `${theme?.spacing?.(11)} 0 ${theme?.spacing?.(17)}`};
   overflow: hidden;
 
   &,
   .text {
     color: ${({ theme, inverted }) =>
-      inverted ? theme.palette.common.white : theme.palette.text.primary};
+      inverted ? theme?.palette?.common?.white : theme?.palette?.text?.primary};
   }
 `;
 

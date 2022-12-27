@@ -9,8 +9,8 @@ interface Props {
 }
 
 const StyledButton = styled(ButtonUnstyled)<Props>(
-  ({ theme, color, inverted }) => css`
-    ${css(theme.typography.button)}
+  ({ theme, inverted }) => css`
+    ${css(theme?.typography?.button)}
     padding: 0;
     margin: 0;
     background: transparent;
@@ -20,12 +20,12 @@ const StyledButton = styled(ButtonUnstyled)<Props>(
     * {
       transition: fill 200ms ease;
       fill: ${inverted
-        ? theme.palette.common.white
-        : theme.palette.text.primary};
+        ? theme?.palette?.common?.white
+        : theme?.palette?.text?.primary};
     }
 
     svg {
-      height: ${theme.spacing(5.5)};
+      height: ${theme?.spacing?.(5.5)};
       width: auto;
     }
 

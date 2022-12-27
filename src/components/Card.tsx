@@ -10,27 +10,28 @@ interface Props {
 
 export const StyledCard = styled(Box)<Props>`
   background-color: ${({ theme, inverted }) =>
-    inverted ? theme.palette.common.white : theme.palette.primary[900]};
-  border-radius: ${({ theme }) => `${theme.spacing(2.5)}`};
+    inverted ? theme?.palette?.common?.white : theme?.palette?.primary?.[900]};
+  border-radius: ${({ theme }) => `${theme?.spacing?.(2.5)}`};
 
   &.title {
-    padding: ${({ theme }) => `${theme.spacing(3)} ${theme.spacing(2.5)}`};
+    padding: ${({ theme }) =>
+      `${theme?.spacing?.(3)} ${theme?.spacing?.(2.5)}`};
   }
 
   &.no-title {
-    padding: ${({ theme }) => `${theme.spacing(2)}`};
+    padding: ${({ theme }) => `${theme?.spacing?.(2)}`};
   }
 
   &,
   .text {
     color: ${({ theme, inverted }) =>
-      inverted ? theme.palette.text.primary : theme.palette.common.white};
+      inverted ? theme?.palette?.text?.primary : theme?.palette?.common?.white};
   }
 
   .image {
     margin-left: auto;
-    margin-bottom: ${({ theme }) => `-${theme.spacing(3)}`};
-    margin-right: ${({ theme }) => `-${theme.spacing(2.5)}`};
+    margin-bottom: ${({ theme }) => `-${theme?.spacing?.(3)}`};
+    margin-right: ${({ theme }) => `-${theme?.spacing?.(2.5)}`};
     & > * {
       height: 138px;
     }

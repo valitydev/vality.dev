@@ -26,11 +26,11 @@ export const createGlobalStyle = (theme: Theme) =>
     html {
       font-size: 100%;
 
-      ${theme.breakpoints.down("lg")} {
+      ${theme?.breakpoints?.down?.("lg")} {
         font-size: 87.5%;
       }
 
-      ${theme.breakpoints.down("xs")} {
+      ${theme?.breakpoints?.down?.("xs")} {
         font-size: 75%;
       }
     }
