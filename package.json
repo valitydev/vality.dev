@@ -2,7 +2,6 @@
   "name": "vality.dev",
   "version": "0.1.0",
   "private": true,
-  "license": "Apache-2.0",
   "scripts": {
     "start": "gatsby develop -p 5000",
     "build": "gatsby build",
