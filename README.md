@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://raw.githubusercontent.com/valitydev/vality.dev/master/src/assets/images/shadowed-logo.svg" height="150"/>
+  <img src="./assets/images/shadowed-logo.svg" height="150"/>
 </div>
 
 > Vality team [website](https://vality.dev)
