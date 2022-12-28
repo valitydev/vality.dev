@@ -1,6 +1,7 @@
+import React, { ReactNode } from "react";
+
 import styled from "@emotion/styled";
 import { Box, Stack } from "@mui/system";
-import React, { ReactNode } from "react";
 
 interface Props {
   title?: ReactNode;

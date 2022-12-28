@@ -1,28 +1,31 @@
 import * as React from "react";
-import { Block } from "../Block";
-import { Trans } from "gatsby-plugin-react-i18next";
-import { Stack, Box } from "@mui/system";
-import { Card } from "../Card";
-import ControlImg from "../../assets/svg/control.svg";
-import CapabilityImg from "../../assets/svg/capability.svg";
-import VisaIcon from "../../assets/svg/visa-icon.svg";
-import MirIcon from "../../assets/svg/mir-icon.svg";
-import GoogleIcon from "../../assets/svg/google-icon.svg";
-import SbpIcon from "../../assets/svg/sbp-icon.svg";
-import MastercardIcon from "../../assets/svg/mastercard-icon.svg";
-import AppleIcon from "../../assets/svg/apple-icon.svg";
-import MobileIcon from "../../assets/svg/mobile-icon.svg";
-import EwalletIcon from "../../assets/svg/ewallet-icon.svg";
-import CryptoIcon from "../../assets/svg/crypto-icon.svg";
-import SamsungPayIcon from "../../assets/svg/samsung-pay-icon.svg";
-import UnionPayIcon from "../../assets/svg/union-pay-icon.svg";
-import { Chip } from "../Chip";
-import caruselSrc from "../../images/carusel.png";
-import processingBgSrc from "../../images/processing-bg.svg";
-import paymentSystemsBgSrc from "../../images/payment-systems-bg.svg";
-import paymentBgSrc from "../../images/payment-bg.svg";
+
 import { css } from "@emotion/css";
+import { Stack, Box } from "@mui/system";
+import { Trans } from "gatsby-plugin-react-i18next";
+
+import caruselSrc from "~/assets/images/carusel.png";
+import paymentBgSrc from "~/assets/images/payment-bg.svg";
+import paymentSystemsBgSrc from "~/assets/images/payment-systems-bg.svg";
+import processingBgSrc from "~/assets/images/processing-bg.svg";
+import AppleIcon from "~/assets/svg/apple-icon.svg";
+import CapabilityImg from "~/assets/svg/capability.svg";
+import ControlImg from "~/assets/svg/control.svg";
+import CryptoIcon from "~/assets/svg/crypto-icon.svg";
+import EwalletIcon from "~/assets/svg/ewallet-icon.svg";
+import GoogleIcon from "~/assets/svg/google-icon.svg";
+import MastercardIcon from "~/assets/svg/mastercard-icon.svg";
+import MirIcon from "~/assets/svg/mir-icon.svg";
+import MobileIcon from "~/assets/svg/mobile-icon.svg";
+import SamsungPayIcon from "~/assets/svg/samsung-pay-icon.svg";
+import SbpIcon from "~/assets/svg/sbp-icon.svg";
+import UnionPayIcon from "~/assets/svg/union-pay-icon.svg";
+import VisaIcon from "~/assets/svg/visa-icon.svg";
+
 import { BackgroundImageBox } from "../BackgroundImageBox";
+import { Block } from "../Block";
+import { Card } from "../Card";
+import { Chip } from "../Chip";
 
 const PAYMENT_METHODS_GROUPS = [
   [

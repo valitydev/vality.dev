@@ -1,4 +1,5 @@
 import React, { CSSProperties } from "react";
+
 import { css } from "@emotion/css";
 
 export const BackgroundImageBox: React.FC<

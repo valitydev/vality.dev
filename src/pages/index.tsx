@@ -1,13 +1,15 @@
 import * as React from "react";
+
+import { Box } from "@mui/system";
 import type { HeadFC, PageProps } from "gatsby";
 import { graphql } from "gatsby";
-import { AntifraudBlock } from "../components/index/AntifraudBlock";
-import { HeaderBlock } from "../components/index/HeaderBlock";
-import { OurProductsBlock } from "../components/index/OurProductsBlock";
-import { ProcessingBlock } from "../components/index/ProcessingBlock";
-import { ContactsBlock } from "../components/index/ContactsBlock";
-import { PAGE_IDS } from "../components/AppNav";
-import { Box } from "@mui/system";
+
+import { PAGE_IDS } from "~/components/AppNav";
+import { AntifraudBlock } from "~/components/index/AntifraudBlock";
+import { ContactsBlock } from "~/components/index/ContactsBlock";
+import { HeaderBlock } from "~/components/index/HeaderBlock";
+import { OurProductsBlock } from "~/components/index/OurProductsBlock";
+import { ProcessingBlock } from "~/components/index/ProcessingBlock";
 
 const IndexPage: React.FC<PageProps> = () => {
   return (
