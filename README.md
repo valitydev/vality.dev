@@ -1,8 +1,7 @@
 <div align="center">
-  <img src="./assets/images/shadowed-logo.svg" height="150"/>
+  <img src="https://raw.githubusercontent.com/valitydev/vality.dev/cacdd2a24aabf9a0605bfb5cec7c5e6ed3bea85a/src/assets/images/shadowed-logo.svg" height="150"/>
+  <h3>Vality team <a href="https://vality.dev">website</a></h3>
 </div>
-
-> Vality team [website](https://vality.dev)
 
 ## Stack
 
