@@ -18,10 +18,12 @@ const StyledGatsbyLink = styled(GatsbyLink)<Props>`
 
   &:hover {
     color: ${({ theme }) => theme?.palette?.primary?.[300]};
+    border-bottom-color: ${({ theme }) => theme?.palette?.primary?.[300]};
   }
 
   &:active {
     color: ${({ theme }) => theme?.palette?.primary?.[100]};
+    border-bottom-color: ${({ theme }) => theme?.palette?.primary?.[100]};
   }
 `;
 
