@@ -26,7 +26,7 @@ const Logo = styled(UnstyledLogo)`
 `;
 
 const Fintech = styled(UnstyledFintech)`
-  margin-right: -100px;
+  margin-right: -45px;
   margin-top: -20px;
   height: 330px;
 
@@ -55,13 +55,13 @@ export const HeaderBlock: React.FC<React.ComponentProps<typeof Block>> = (
       {...props}
     >
       <Container fixed>
-        <Stack spacing={6}>
+        <Stack spacing={9}>
           <Stack
             direction="row"
             justifyContent="space-between"
             spacing={2}
             alignItems="center"
-            sx={{ pt: 2, pb: 2 }}
+            sx={{ pt: 2.5, pb: 2.25 }}
           >
             <Logo />
             <AppNav />
@@ -69,8 +69,8 @@ export const HeaderBlock: React.FC<React.ComponentProps<typeof Block>> = (
           </Stack>
 
           <Stack spacing={14}>
-            <Stack direction="row" spacing={2}>
-              <Stack spacing={6}>
+            <Stack spacing={6}>
+              <Stack direction="row" spacing={2}>
                 <Stack spacing={3}>
                   <Box sx={{ typography: "h1", color: "#fff" }}>
                     <Trans>
@@ -87,24 +87,25 @@ export const HeaderBlock: React.FC<React.ComponentProps<typeof Block>> = (
                     </Trans>
                   </Box>
                 </Stack>
-                <Stack direction="row" spacing={3}>
-                  <HeaderButton color="primary">
-                    <Trans>Contact us</Trans>
-                  </HeaderButton>
-                  <a
-                    href={CONFIG.contacts.github}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    <HeaderButton endIcon={<GitHubIcon />}>
-                      <Trans>Our GitHub</Trans>
-                    </HeaderButton>
-                  </a>
-                </Stack>
+                <Box>
+                  <Fintech />
+                </Box>
               </Stack>
-              <Box>
-                <Fintech />
-              </Box>
+
+              <Stack direction="row" spacing={3}>
+                <HeaderButton color="primary">
+                  <Trans>Contact us</Trans>
+                </HeaderButton>
+                <a
+                  href={CONFIG.contacts.github}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <HeaderButton endIcon={<GitHubIcon />}>
+                    <Trans>Our GitHub</Trans>
+                  </HeaderButton>
+                </a>
+              </Stack>
             </Stack>
 
             <img src={ghSrc} style={{ width: 624 }} />

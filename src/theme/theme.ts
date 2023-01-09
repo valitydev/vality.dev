@@ -3,7 +3,7 @@ import createTheme from "@mui/material/styles/createTheme";
 
 import { createTypography } from "./create-typography";
 
-const OFFSET = 24 * 2;
+const OFFSET = 24 * 4;
 const HTML_FONT_SIZE = 16;
 
 const theme = createTheme({
