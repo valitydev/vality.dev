@@ -38,5 +38,6 @@ export const createGlobalStyle = (theme: Theme) =>
     body {
       margin: 0;
       padding: 0;
+      shape-rendering: geometricprecision;
     }
   `;
