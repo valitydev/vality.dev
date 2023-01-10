@@ -30,7 +30,7 @@ export const AntifraudBlock: React.FC<React.ComponentProps<typeof Block>> = (
               <Card
                 height="100%"
                 boxSizing="border-box"
-                image={<FlexibilityImg height={222} width="auto" />}
+                image={<FlexibilityImg height={160} width="auto" />}
               >
                 <Trans>antifraud.info:flexibility</Trans>
               </Card>
@@ -39,7 +39,7 @@ export const AntifraudBlock: React.FC<React.ComponentProps<typeof Block>> = (
               <Card
                 height="100%"
                 boxSizing="border-box"
-                image={<ScaleImg height={222} width="auto" />}
+                image={<ScaleImg height={160} width="auto" />}
               >
                 <Trans>antifraud.info:scale</Trans>
               </Card>
@@ -48,7 +48,7 @@ export const AntifraudBlock: React.FC<React.ComponentProps<typeof Block>> = (
               <Card
                 height="100%"
                 boxSizing="border-box"
-                image={<SafetySvg height={222} width="auto" />}
+                image={<SafetySvg height={160} width="auto" />}
               >
                 <Trans>antifraud.info:safety</Trans>
               </Card>

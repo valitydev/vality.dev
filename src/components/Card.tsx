@@ -20,7 +20,8 @@ export const StyledCard = styled(Box)<Props>`
   }
 
   &.no-title {
-    padding: ${({ theme }) => `${theme?.spacing?.(2)}`};
+    padding: ${({ theme }) =>
+      `${theme?.spacing?.(5.375)} ${theme?.spacing?.(2)}`};
   }
 
   &,
@@ -58,7 +59,7 @@ export const Card: React.FC<React.ComponentProps<typeof StyledCard>> = ({
           <Box className="image">{image}</Box>
         </Stack>
       ) : (
-        <Stack spacing={0.5}>
+        <Stack spacing={5.375}>
           <Box>{image}</Box>
           <Box className="text">{children}</Box>
         </Stack>
