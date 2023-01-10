@@ -129,3 +129,5 @@ export const HeaderBlock: React.FC<React.ComponentProps<typeof Block>> = (
     </Block>
   );
 };
+
+export default HeaderBlock;

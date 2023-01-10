@@ -74,3 +74,5 @@ export const OurProductsBlock: React.FC<React.ComponentProps<typeof Block>> = ({
     </Stack>
   </Block>
 );
+
+export default OurProductsBlock;

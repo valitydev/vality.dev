@@ -5,11 +5,20 @@ import type { HeadFC, PageProps } from "gatsby";
 import { graphql } from "gatsby";
 
 import { PAGE_IDS } from "~/components/AppNav";
-import { AntifraudBlock } from "~/components/index/AntifraudBlock";
-import { ContactsBlock } from "~/components/index/ContactsBlock";
 import { HeaderBlock } from "~/components/index/HeaderBlock";
-import { OurProductsBlock } from "~/components/index/OurProductsBlock";
-import { ProcessingBlock } from "~/components/index/ProcessingBlock";
+
+const AntifraudBlock = React.lazy(
+  () => import("~/components/index/AntifraudBlock")
+);
+const ContactsBlock = React.lazy(
+  () => import("~/components/index/ContactsBlock")
+);
+const ProcessingBlock = React.lazy(
+  () => import("~/components/index/ProcessingBlock")
+);
+const OurProductsBlock = React.lazy(
+  () => import("~/components/index/OurProductsBlock")
+);
 
 const IndexPage: React.FC<PageProps> = () => {
   return (

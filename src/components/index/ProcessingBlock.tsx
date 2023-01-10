@@ -119,3 +119,5 @@ export const ProcessingBlock: React.FC<React.ComponentProps<typeof Block>> = (
     </Stack>
   </Block>
 );
+
+export default ProcessingBlock;
