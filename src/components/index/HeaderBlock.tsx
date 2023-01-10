@@ -2,9 +2,9 @@ import * as React from "react";
 
 import styled from "@emotion/styled";
 import { Box, Container, Stack } from "@mui/system";
+import { StaticImage } from "gatsby-plugin-image";
 import { Trans } from "gatsby-plugin-react-i18next";
 
-import ghSrc from "~/assets/images/gh.png";
 import headerBgGlowingBallSrc from "~/assets/images/header-bg-glowing-ball.svg";
 import UnstyledFintech from "~/assets/svg/fintech.svg";
 import GitHubIcon from "~/assets/svg/github.svg";
@@ -26,7 +26,7 @@ const Logo = styled(UnstyledLogo)`
 `;
 
 const Fintech = styled(UnstyledFintech)`
-  margin-right: -45px;
+  margin-right: -49px;
   margin-top: -20px;
   height: 330px;
 
@@ -51,6 +51,9 @@ export const HeaderBlock: React.FC<React.ComponentProps<typeof Block>> = (
         backgroundImage: `url(${headerBgGlowingBallSrc})`,
         backgroundPosition: "calc(50% + 400px) 0%",
         backgroundRepeat: "no-repeat",
+        height: "100vh",
+        minHeight: 765,
+        maxHeight: 940,
       }}
       {...props}
     >
@@ -63,8 +66,10 @@ export const HeaderBlock: React.FC<React.ComponentProps<typeof Block>> = (
             alignItems="center"
             sx={{ pt: 2.5, pb: 2.25 }}
           >
-            <Logo />
-            <AppNav />
+            <Stack direction="row" alignItems="center">
+              <Logo />
+              <AppNav sx={{ marginLeft: 27.5 }} />
+            </Stack>
             <LanguageSelector />
           </Stack>
 
@@ -74,7 +79,8 @@ export const HeaderBlock: React.FC<React.ComponentProps<typeof Block>> = (
                 <Stack spacing={3}>
                   <Box sx={{ typography: "h1", color: "#fff" }}>
                     <Trans>
-                      We are an IT team that makes fintech{" "}
+                      We are an IT team that makes fintech
+                      <br />
                       <span style={{ color: "#FD932B" }}>accessible</span>
                     </Trans>
                   </Box>
@@ -108,7 +114,15 @@ export const HeaderBlock: React.FC<React.ComponentProps<typeof Block>> = (
               </Stack>
             </Stack>
 
-            <img src={ghSrc} style={{ width: 624 }} />
+            <Box>
+              <StaticImage
+                alt="Vality GitHub"
+                placeholder="blurred"
+                style={{ borderRadius: "8px 8px 0 0" }}
+                src="../../assets/images/gh.png"
+                width={624}
+              />
+            </Box>
           </Stack>
         </Stack>
       </Container>

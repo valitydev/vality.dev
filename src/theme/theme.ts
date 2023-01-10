@@ -36,7 +36,5 @@ const theme = createTheme({
   },
 });
 
-console.log(theme);
-
 export type AppTheme = typeof theme & { palette: { primary: Color } };
 export { theme };

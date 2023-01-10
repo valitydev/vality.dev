@@ -1,4 +1,5 @@
 import * as React from "react";
+import { ComponentProps } from "react";
 
 import { Stack } from "@mui/system";
 import { Trans } from "gatsby-plugin-react-i18next";
@@ -12,9 +13,9 @@ export const PAGE_IDS = {
   contacts: "contacts",
 };
 
-export const AppNav: React.FC = () => {
+export const AppNav: React.FC<ComponentProps<typeof Stack>> = (props) => {
   return (
-    <Stack direction="row" spacing={3.5}>
+    <Stack direction="row" spacing={3.5} {...props}>
       <Link inverted to={`#${PAGE_IDS.ourProducts}`}>
         <Trans>Our products</Trans>
       </Link>
