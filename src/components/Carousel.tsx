@@ -69,7 +69,8 @@ const Item = styled(Box)<{ num: number }>(({ num }) => {
       left: 100%;
       transform: translateX(-100%);
     `}
-
+    
+    cursor: pointer;
     top: ${absNum === 2 ? 36 : absNum === 1 ? 24 : 0}px;
     z-index: ${-absNum};
     border-radius: 10px;
@@ -90,21 +91,25 @@ const Item = styled(Box)<{ num: number }>(({ num }) => {
 export const Carousel: React.FC<Props> = ({ images }) => {
   const [active, setActive] = useState(0);
 
-  console.log(active);
-
   return (
     <Stack spacing={4}>
       <Box>
         <Box style={{ position: "relative" }}>
           {images.map((img, idx) => {
             return (
-              <Item key={idx} num={idx + active} onClick={() => setActive(idx)}>
+              <Item
+                key={idx}
+                num={idx + active}
+                onClick={() => setActive(-idx)}
+              >
                 {images[idx]}
               </Item>
             );
           })}
         </Box>
-        <Box sx={{ opacity: 0 }}>{images[0]}</Box>
+        <Box sx={{ opacity: 0 }} style={{ pointerEvents: "none" }}>
+          {images[0]}
+        </Box>
       </Box>
       <Stack
         direction="row"
