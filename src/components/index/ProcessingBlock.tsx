@@ -1,6 +1,7 @@
 import * as React from "react";
 
 import { css } from "@emotion/css";
+import styled from "@emotion/styled";
 import { Stack, Box } from "@mui/system";
 import { StaticImage } from "gatsby-plugin-image";
 import { Trans } from "gatsby-plugin-react-i18next";
@@ -48,6 +49,12 @@ const PAYMENT_METHODS_GROUPS = [
   ],
 ];
 
+const AutoHideBr = styled.br`
+  ${({ theme }) => theme?.breakpoints?.down?.("xl")} {
+    display: none;
+  }
+`;
+
 export const ProcessingBlock: React.FC<React.ComponentProps<typeof Block>> = (
   props
 ) => (
@@ -93,17 +100,27 @@ export const ProcessingBlock: React.FC<React.ComponentProps<typeof Block>> = (
           <Box sx={{ typography: "h3", color: "#fff" }}>
             <Trans>Support for all payment methods</Trans>
           </Box>
-          <Stack spacing={2.5}>
-            {PAYMENT_METHODS_GROUPS.map((group, idx) => (
-              <Stack spacing={2} direction="row" key={idx}>
-                {group.map((pm, k) => (
-                  <Chip key={k} startIcon={pm.icon}>
-                    {pm.name}
-                  </Chip>
-                ))}
-              </Stack>
-            ))}
-          </Stack>
+          <Box>
+            <Box marginBottom={-2.5}>
+              {PAYMENT_METHODS_GROUPS.map((group, idx) => (
+                <React.Fragment key={idx}>
+                  {group.map((pm, k) => (
+                    <Box display="inline-block">
+                      <Chip
+                        key={k}
+                        startIcon={pm.icon}
+                        marginBottom={2.5}
+                        marginRight={2}
+                      >
+                        {pm.name}
+                      </Chip>
+                    </Box>
+                  ))}
+                  <AutoHideBr />
+                </React.Fragment>
+              ))}
+            </Box>
+          </Box>
         </Stack>
       </BackgroundImageBox>
 

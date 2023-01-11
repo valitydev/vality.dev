@@ -51,9 +51,6 @@ export const HeaderBlock: React.FC<React.ComponentProps<typeof Block>> = (
         backgroundImage: `url(${headerBgGlowingBallSrc})`,
         backgroundPosition: "calc(50% + 400px) 0%",
         backgroundRepeat: "no-repeat",
-        height: "100vh",
-        minHeight: 765,
-        maxHeight: 940,
       }}
       {...props}
     >
@@ -112,7 +109,7 @@ export const HeaderBlock: React.FC<React.ComponentProps<typeof Block>> = (
               </Stack>
             </Stack>
 
-            <Box>
+            <Box height={185}>
               <StaticImage
                 alt="Vality GitHub"
                 placeholder="blurred"
