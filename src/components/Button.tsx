@@ -20,13 +20,16 @@ const StyledButton = styled(ButtonUnstyled)(
 
     border-radius: ${theme?.spacing?.(1.5)};
     padding: ${theme?.spacing?.(1.5)} ${theme?.spacing?.(3)};
-    transition: all 200ms ease;
     cursor: pointer;
     border: none;
 
+    &,
+    * {
+      transition: all 200ms ease;
+    }
+
     * {
       fill: ${color === "primary" ? undefined : theme?.palette?.grey?.[800]};
-      transition: fill 200ms ease;
     }
 
     & svg {
@@ -73,17 +76,17 @@ const StyledButton = styled(ButtonUnstyled)(
 
 export const Button: React.FC<
   React.ComponentProps<typeof StyledButton> & Props
-> = ({ endIcon, children, href, ...props }) => {
+> = ({ endIcon, children, href, onClick, ...props }) => {
   const clickHandler = href
     ? () => {
         window.open(href, "_blank");
       }
-    : undefined;
+    : onClick;
 
   return (
     <StyledButton {...props} onClick={clickHandler}>
       <Stack direction="row" spacing={1.5} sx={{ alignItems: "center" }}>
-        <Box>{children}</Box>
+        {children && <Box>{children}</Box>}
         {endIcon}
       </Stack>
     </StyledButton>

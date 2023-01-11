@@ -2,9 +2,9 @@ import * as React from "react";
 
 import { css } from "@emotion/css";
 import { Stack, Box } from "@mui/system";
+import { StaticImage } from "gatsby-plugin-image";
 import { Trans } from "gatsby-plugin-react-i18next";
 
-import caruselSrc from "~/assets/images/carusel.png";
 import paymentBgSrc from "~/assets/images/payment-bg.svg";
 import paymentSystemsBgSrc from "~/assets/images/payment-systems-bg.svg";
 import processingBgSrc from "~/assets/images/processing-bg.svg";
@@ -21,6 +21,7 @@ import SamsungPayIcon from "~/assets/svg/samsung-pay-icon.svg";
 import SbpIcon from "~/assets/svg/sbp-icon.svg";
 import UnionPayIcon from "~/assets/svg/union-pay-icon.svg";
 import VisaIcon from "~/assets/svg/visa-icon.svg";
+import { Carousel } from "~/components/Carousel";
 
 import { BackgroundImageBox } from "../BackgroundImageBox";
 import { Block } from "../Block";
@@ -112,7 +113,28 @@ export const ProcessingBlock: React.FC<React.ComponentProps<typeof Block>> = (
             <Trans>Intuitive payment process</Trans>
           </Box>
           <Box>
-            <img style={{ width: "100%", height: "100%" }} src={caruselSrc} />
+            <Carousel
+              images={[
+                <StaticImage
+                  alt="Select payment method"
+                  placeholder="blurred"
+                  src="../../assets/images/carousel-1.png"
+                  height={392}
+                />,
+                <StaticImage
+                  alt="Bank card"
+                  placeholder="blurred"
+                  src="../../assets/images/carousel-2.png"
+                  height={392}
+                />,
+                <StaticImage
+                  alt="Fully paid"
+                  placeholder="blurred"
+                  src="../../assets/images/carousel-3.png"
+                  height={392}
+                />,
+              ]}
+            />
           </Box>
         </Stack>
       </BackgroundImageBox>
