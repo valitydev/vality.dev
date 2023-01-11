@@ -26,7 +26,7 @@ export const AntifraudBlock: React.FC<React.ComponentProps<typeof Block>> = (
       <Stack spacing={17}>
         <BackgroundImageBox src={antifraudBgSrc} left={-450} top={-200}>
           <Grid spacing={2} container>
-            <Grid xs={4}>
+            <Grid lg={4} md={12}>
               <Card
                 height="100%"
                 boxSizing="border-box"
@@ -35,7 +35,7 @@ export const AntifraudBlock: React.FC<React.ComponentProps<typeof Block>> = (
                 <Trans>antifraud.info:flexibility</Trans>
               </Card>
             </Grid>
-            <Grid xs={4}>
+            <Grid lg={4} md={12}>
               <Card
                 height="100%"
                 boxSizing="border-box"
@@ -44,7 +44,7 @@ export const AntifraudBlock: React.FC<React.ComponentProps<typeof Block>> = (
                 <Trans>antifraud.info:scale</Trans>
               </Card>
             </Grid>
-            <Grid xs={4}>
+            <Grid lg={4} md={12}>
               <Card
                 height="100%"
                 boxSizing="border-box"

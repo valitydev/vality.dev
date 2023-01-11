@@ -18,7 +18,7 @@ export const OurProductsBlock: React.FC<React.ComponentProps<typeof Block>> = ({
 }) => (
   <Block {...props} title={<Trans>Our products</Trans>}>
     <Stack spacing={17}>
-      <Stack spacing={2} direction="row">
+      <Stack spacing={2} direction={{ xs: "column", md: "row" }}>
         <Card
           flex="1"
           title={<Trans>Processing</Trans>}

@@ -56,7 +56,7 @@ export const ProcessingBlock: React.FC<React.ComponentProps<typeof Block>> = (
       <BackgroundImageBox src={processingBgSrc} left={-765} top={-200}>
         <Stack
           spacing={2}
-          direction="row"
+          direction={{ xs: "column", md: "row" }}
           className={css`
             position: relative;
             z-index: 1;

@@ -66,10 +66,8 @@ export const HeaderBlock: React.FC<React.ComponentProps<typeof Block>> = (
             alignItems="center"
             sx={{ pt: 2.5, pb: 2.25 }}
           >
-            <Stack direction="row" alignItems="center">
-              <Logo />
-              <AppNav sx={{ marginLeft: 27.5 }} />
-            </Stack>
+            <Logo />
+            <AppNav sx={{ marginRight: 13.5 }} />
             <LanguageSelector />
           </Stack>
 
