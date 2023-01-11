@@ -1,7 +1,8 @@
 import * as React from "react";
 
 import styled from "@emotion/styled";
-import { Box, Container, Stack } from "@mui/system";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import { Box, Container, Stack, useTheme } from "@mui/system";
 import { StaticImage } from "gatsby-plugin-image";
 import { Trans } from "gatsby-plugin-react-i18next";
 
@@ -36,13 +37,18 @@ const Fintech = styled(UnstyledFintech)`
 `;
 
 const HeaderButton = styled(Button)`
-  padding-left: ${({ theme }) => theme?.spacing?.(6.5)};
-  padding-right: ${({ theme }) => theme?.spacing?.(6.5)};
+  padding-left: ${({ theme, children }) =>
+    theme?.spacing?.(children ? 6.5 : 1.5)};
+  padding-right: ${({ theme, children }) =>
+    theme?.spacing?.(children ? 6.5 : 1.5)};
 `;
 
 export const HeaderBlock: React.FC<React.ComponentProps<typeof Block>> = (
   props
 ) => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+
   return (
     <Block
       inverted
@@ -88,9 +94,11 @@ export const HeaderBlock: React.FC<React.ComponentProps<typeof Block>> = (
                     </Trans>
                   </Box>
                 </Stack>
-                <Box>
-                  <Fintech />
-                </Box>
+                {!isMobile && (
+                  <Box>
+                    <Fintech />
+                  </Box>
+                )}
               </Stack>
 
               <Stack direction="row" spacing={3}>
@@ -103,21 +111,29 @@ export const HeaderBlock: React.FC<React.ComponentProps<typeof Block>> = (
                   rel="noreferrer"
                 >
                   <HeaderButton endIcon={<GitHubIcon />}>
-                    <Trans>Our GitHub</Trans>
+                    {!isMobile && <Trans>Our GitHub</Trans>}
                   </HeaderButton>
                 </a>
               </Stack>
             </Stack>
 
-            <Box height={185}>
-              <StaticImage
-                alt="Vality GitHub"
-                placeholder="blurred"
-                style={{ borderRadius: "8px 8px 0 0" }}
-                src="../../assets/images/gh.png"
-                width={624}
-              />
-            </Box>
+            {isMobile ? (
+              <Box>
+                <Fintech style={{ marginBottom: -50, marginLeft: 150 }} />
+              </Box>
+            ) : (
+              <Box height={185}>
+                <StaticImage
+                  alt="Vality GitHub"
+                  placeholder="blurred"
+                  style={{
+                    borderRadius: "8px 8px 0 0",
+                  }}
+                  src="../../assets/images/gh.png"
+                  width={624}
+                />
+              </Box>
+            )}
           </Stack>
         </Stack>
       </Container>
