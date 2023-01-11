@@ -74,10 +74,18 @@ export const ContactsBlock: React.FC<React.ComponentProps<typeof Block>> = (
                   <Trans>Social media</Trans>
                 </Box>
                 <Stack spacing={4} direction="row">
-                  <IconButton inverted href={realtimeConfig.contacts.linkedin}>
+                  <IconButton
+                    size="large"
+                    inverted
+                    href={realtimeConfig.contacts.linkedin}
+                  >
                     <Linkedin />
                   </IconButton>
-                  <IconButton inverted href={realtimeConfig.contacts.github}>
+                  <IconButton
+                    size="large"
+                    inverted
+                    href={realtimeConfig.contacts.github}
+                  >
                     <Github />
                   </IconButton>
                 </Stack>

@@ -3,31 +3,44 @@ import React from "react";
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 import { ButtonUnstyled, buttonUnstyledClasses } from "@mui/base";
+import { Box } from "@mui/system";
 
 interface Props {
   href?: string;
   inverted?: boolean;
+  variant?: "text" | "contained" | "outlined";
+  size?: "medium" | "large";
+  svgColoredParams?: "fill"[];
 }
 
 const StyledButton = styled(ButtonUnstyled)<Props>(
-  ({ theme, inverted }) => css`
+  ({ theme, inverted, variant, size, svgColoredParams }) => css`
     ${css(theme?.typography?.button)}
-    padding: 0;
+    border-radius: ${theme?.spacing?.(1.5)};
+    padding: ${variant === "text" ? 0 : theme?.spacing?.(2)};
     margin: 0;
-    background: transparent;
     cursor: pointer;
     border: none;
 
+    background-color: ${variant === "contained" ? "#fff" : "transparent"};
+
     * {
       transition: fill 200ms ease;
-      fill: ${inverted
-        ? theme?.palette?.common?.white
-        : theme?.palette?.text?.primary};
+      ${css(
+        Object.fromEntries(
+          svgColoredParams?.map?.((p) => [
+            p,
+            inverted
+              ? theme?.palette?.common?.white
+              : theme?.palette?.text?.primary,
+          ]) || []
+        )
+      )}
     }
 
     svg {
-      height: ${theme?.spacing?.(5.5)};
-      width: auto;
+      height: ${theme?.spacing?.(size === "medium" ? 3 : 5.5)};
+      width: ${theme?.spacing?.(size === "medium" ? 3 : 5.5)};
     }
 
     &.${buttonUnstyledClasses.focusVisible} {
@@ -43,16 +56,30 @@ const StyledButton = styled(ButtonUnstyled)<Props>(
 
 export const IconButton: React.FC<
   React.ComponentProps<typeof StyledButton> & Props
-> = ({ children, href, ...props }) => {
+> = ({
+  children,
+  href,
+  onClick,
+  variant,
+  size,
+  svgColoredParams,
+  ...props
+}) => {
   const clickHandler = href
     ? () => {
         window.open(href, "_blank");
       }
-    : undefined;
+    : onClick;
 
   return (
-    <StyledButton {...props} onClick={clickHandler}>
-      {children}
+    <StyledButton
+      {...props}
+      variant={variant || "text"}
+      size={size || "medium"}
+      svgColoredParams={svgColoredParams || ["fill"]}
+      onClick={clickHandler}
+    >
+      <Box display="flex">{children}</Box>
     </StyledButton>
   );
 };

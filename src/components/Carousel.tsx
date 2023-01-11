@@ -2,49 +2,19 @@ import React, { ReactNode, useState } from "react";
 
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
-import { ButtonUnstyled } from "@mui/base";
 import { Box, Stack } from "@mui/system";
 
 import ArrowLeft from "~/assets/svg/arrow-left.svg";
 import ArrowRight from "~/assets/svg/arrow-right.svg";
 import Repeat from "~/assets/svg/repeat.svg";
 
+import { IconButton } from "./IconButton";
+
 interface Props {
   images: ReactNode[];
 }
 
 const WIDTH = 464;
-
-const IconButtonWrapper = styled(ButtonUnstyled)(
-  ({ theme }) => css`
-    ${css(theme?.typography?.button)}
-
-    background-color: #fff;
-    border-radius: ${theme?.spacing?.(1.5)};
-    padding: ${theme?.spacing?.(2)};
-    cursor: pointer;
-    border: none;
-
-    &,
-    * {
-      transition: all 200ms ease;
-    }
-
-    svg {
-      height: ${theme?.spacing?.(3)};
-      width: ${theme?.spacing?.(3)};
-    }
-  `
-);
-
-const IconButton: React.FC<React.ComponentProps<typeof IconButtonWrapper>> = ({
-  children,
-  ...props
-}) => (
-  <IconButtonWrapper {...props}>
-    <Box style={{ display: "flex" }}>{children}</Box>
-  </IconButtonWrapper>
-);
 
 const Item = styled(Box)<{ num: number }>(({ num }) => {
   const absNum = Math.abs(num);
@@ -116,10 +86,13 @@ export const Carousel: React.FC<Props> = ({ images }) => {
         flex={1}
         justifyContent="space-between"
         width={WIDTH}
+        maxWidth="100%"
       >
         <Box>
           {active !== 0 && (
             <IconButton
+              variant="contained"
+              svgColoredParams={[]}
               onClick={() => {
                 setActive(0);
               }}
@@ -131,6 +104,8 @@ export const Carousel: React.FC<Props> = ({ images }) => {
         <Stack direction="row" spacing={3}>
           {active < 0 && (
             <IconButton
+              variant="contained"
+              svgColoredParams={[]}
               onClick={() => {
                 setActive((a) => a + 1);
               }}
@@ -140,6 +115,8 @@ export const Carousel: React.FC<Props> = ({ images }) => {
           )}
           {active > -images.length + 1 && (
             <IconButton
+              variant="contained"
+              svgColoredParams={[]}
               onClick={() => {
                 setActive((a) => a - 1);
               }}
