@@ -3,6 +3,7 @@ import React, { ReactNode, useState } from "react";
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 import { Box, Stack } from "@mui/system";
+import { useElementSize } from "usehooks-ts";
 
 import ArrowLeft from "~/assets/svg/arrow-left.svg";
 import ArrowRight from "~/assets/svg/arrow-right.svg";
@@ -12,40 +13,47 @@ import { IconButton } from "./IconButton";
 
 interface Props {
   images: ReactNode[];
+  width: number;
 }
 
-const WIDTH = 464;
+const ITEM_SIZE_K = [1, 0.75, 0.52];
 
-const Item = styled(Box)<{ num: number }>(({ num }) => {
+const Item = styled(Box)<
+  { num: number; fullWidth: number } & Pick<Props, "width">
+>(({ num, theme, width, fullWidth }) => {
   const absNum = Math.abs(num);
+  const restWidth = fullWidth - width;
+
   return css`
     position: absolute;
     left: 0;
     ${num === -2 &&
     css`
-      transform: translateX(calc(-100% - ${WIDTH * 0.75}px - ${24 * 2}px));
+      left: calc(
+        ${-width * ITEM_SIZE_K[1]}px - ${width * ITEM_SIZE_K[2]}px -
+          ${theme.spacing(3 * 2)}
+      );
+      opacity: 0.25;
     `}
     ${num === -1 &&
     css`
-      transform: translateX(calc(-100% - 24px));
+      left: calc(${-width * ITEM_SIZE_K[1]}px - ${theme.spacing(3)});
+      opacity: 0.5;
     `}
     ${num === 1 &&
     css`
-      left: calc(50% + ${WIDTH / 4}px);
-      transform: translateX(-50%);
+      left: calc(${width - width * ITEM_SIZE_K[1] + (restWidth / 3) * 2}px);
     `}
     ${num === 2 &&
     css`
-      left: 100%;
-      transform: translateX(-100%);
+      left: calc(100% - ${width * ITEM_SIZE_K[2]}px);
     `}
     
     cursor: pointer;
-    top: ${absNum === 2 ? 36 : absNum === 1 ? 24 : 0}px;
+    top: ${absNum ? theme.spacing(absNum === 1 ? 3 : 4.5) : "0"};
     z-index: ${-absNum};
     border-radius: 10px;
     filter: drop-shadow(13px 5px 20px rgba(24, 24, 24, 0.05));
-    backdrop-filter: blur(15px);
 
     &,
     * {
@@ -53,23 +61,27 @@ const Item = styled(Box)<{ num: number }>(({ num }) => {
     }
 
     * {
-      width: ${WIDTH * (absNum === 1 ? 0.75 : absNum >= 2 ? 0.52 : 1)}px;
+      width: ${width * ITEM_SIZE_K[absNum]}px;
     }
   `;
 });
 
-export const Carousel: React.FC<Props> = ({ images }) => {
+export const Carousel: React.FC<Props> = ({ images, width }) => {
   const [active, setActive] = useState(0);
+  const [boxRef, { width: fullWidth }] = useElementSize();
+  width = Math.min(fullWidth, width);
 
   return (
     <Stack spacing={4}>
       <Box>
-        <Box style={{ position: "relative" }}>
+        <Box style={{ position: "relative" }} ref={boxRef}>
           {images.map((img, idx) => {
             return (
               <Item
                 key={idx}
                 num={idx + active}
+                width={width}
+                fullWidth={fullWidth}
                 onClick={() => setActive(-idx)}
               >
                 {images[idx]}
@@ -77,15 +89,13 @@ export const Carousel: React.FC<Props> = ({ images }) => {
             );
           })}
         </Box>
-        <Box sx={{ opacity: 0 }} style={{ pointerEvents: "none" }}>
-          {images[0]}
-        </Box>
+        <Box sx={{ opacity: 0, pointerEvents: "none", width }}>{images[0]}</Box>
       </Box>
       <Stack
         direction="row"
         flex={1}
         justifyContent="space-between"
-        width={WIDTH}
+        width={width}
         maxWidth="100%"
       >
         <Box>

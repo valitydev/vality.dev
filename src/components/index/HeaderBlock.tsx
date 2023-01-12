@@ -1,8 +1,7 @@
 import * as React from "react";
 
 import styled from "@emotion/styled";
-import useMediaQuery from "@mui/material/useMediaQuery";
-import { Box, Container, Stack, useTheme } from "@mui/system";
+import { Box, Stack } from "@mui/system";
 import { StaticImage } from "gatsby-plugin-image";
 import { Trans } from "gatsby-plugin-react-i18next";
 
@@ -10,6 +9,7 @@ import headerBgGlowingBallSrc from "~/assets/images/header-bg-glowing-ball.svg";
 import UnstyledFintech from "~/assets/svg/fintech.svg";
 import GitHubIcon from "~/assets/svg/github.svg";
 import UnstyledLogo from "~/assets/svg/logo.svg";
+import { useBreakpointDown } from "~/utils/use-breakpoints";
 
 import CONFIG from "../../../config.json";
 import { AppNav } from "../AppNav";
@@ -46,8 +46,7 @@ const HeaderButton = styled(Button)`
 export const HeaderBlock: React.FC<React.ComponentProps<typeof Block>> = (
   props
 ) => {
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const isMobile = useBreakpointDown("sm");
 
   return (
     <Block
@@ -60,83 +59,77 @@ export const HeaderBlock: React.FC<React.ComponentProps<typeof Block>> = (
       }}
       {...props}
     >
-      <Container fixed>
-        <Stack spacing={9}>
-          <Stack
-            direction="row"
-            justifyContent="space-between"
-            spacing={2}
-            alignItems="center"
-            sx={{ pt: 2.5, pb: 2.25 }}
-          >
-            <Logo />
-            <AppNav sx={{ marginRight: 13.5 }} />
-            <LanguageSelector />
-          </Stack>
+      <Stack spacing={9}>
+        <Stack
+          direction="row"
+          justifyContent="space-between"
+          spacing={2}
+          alignItems="center"
+          sx={{ pt: 2.5, pb: 2.25 }}
+        >
+          <Logo />
+          <AppNav sx={{ marginRight: 13.5 }} />
+          <LanguageSelector />
+        </Stack>
 
-          <Stack spacing={14}>
-            <Stack spacing={6}>
-              <Stack direction="row" spacing={2}>
-                <Stack spacing={3}>
-                  <Box sx={{ typography: "h1", color: "#fff" }}>
-                    <Trans>
-                      We are an IT team that makes fintech
-                      <br />
-                      <span style={{ color: "#FD932B" }}>accessible</span>
-                    </Trans>
-                  </Box>
-                  <Box>
-                    <Trans>
-                      Our products are distributed by model{" "}
-                      <span style={{ whiteSpace: "nowrap" }}>Open-Source</span>{" "}
-                      Software and allow everyone to build their own business
-                      based on our code.
-                    </Trans>
-                  </Box>
-                </Stack>
-                {!isMobile && (
-                  <Box>
-                    <Fintech />
-                  </Box>
-                )}
+        <Stack spacing={14}>
+          <Stack spacing={6}>
+            <Stack direction="row" spacing={2}>
+              <Stack spacing={3}>
+                <Box sx={{ typography: "h1", color: "#fff" }}>
+                  <Trans>
+                    We are an IT team that makes fintech
+                    <br />
+                    <span style={{ color: "#FD932B" }}>accessible</span>
+                  </Trans>
+                </Box>
+                <Box>
+                  <Trans>
+                    Our products are distributed by model{" "}
+                    <span style={{ whiteSpace: "nowrap" }}>Open-Source</span>{" "}
+                    Software and allow everyone to build their own business
+                    based on our code.
+                  </Trans>
+                </Box>
               </Stack>
-
-              <Stack direction="row" spacing={3}>
-                <HeaderButton color="primary">
-                  <Trans>Contact us</Trans>
-                </HeaderButton>
-                <a
-                  href={CONFIG.contacts.github}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <HeaderButton endIcon={<GitHubIcon />}>
-                    {!isMobile && <Trans>Our GitHub</Trans>}
-                  </HeaderButton>
-                </a>
-              </Stack>
+              {!isMobile && (
+                <Box>
+                  <Fintech />
+                </Box>
+              )}
             </Stack>
 
-            {isMobile ? (
-              <Box>
-                <Fintech style={{ marginBottom: -50, marginLeft: 150 }} />
-              </Box>
-            ) : (
-              <Box height={185}>
-                <StaticImage
-                  alt="Vality GitHub"
-                  placeholder="blurred"
-                  style={{
-                    borderRadius: "8px 8px 0 0",
-                  }}
-                  src="../../assets/images/gh.png"
-                  width={624}
-                />
-              </Box>
-            )}
+            <Stack direction="row" spacing={3}>
+              <HeaderButton color="primary">
+                <Trans>Contact us</Trans>
+              </HeaderButton>
+              <a href={CONFIG.contacts.github} target="_blank" rel="noreferrer">
+                <HeaderButton endIcon={<GitHubIcon />}>
+                  {!isMobile && <Trans>Our GitHub</Trans>}
+                </HeaderButton>
+              </a>
+            </Stack>
           </Stack>
+
+          {isMobile ? (
+            <Box>
+              <Fintech style={{ marginBottom: -50, marginLeft: 150 }} />
+            </Box>
+          ) : (
+            <Box height={185}>
+              <StaticImage
+                alt="Vality GitHub"
+                placeholder="blurred"
+                style={{
+                  borderRadius: "8px 8px 0 0",
+                }}
+                src="../../assets/images/gh.png"
+                width={624}
+              />
+            </Box>
+          )}
         </Stack>
-      </Container>
+      </Stack>
     </Block>
   );
 };

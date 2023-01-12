@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useState, useEffect } from "react";
 
 import { css } from "@emotion/css";
 import styled from "@emotion/styled";
@@ -23,6 +24,7 @@ import SbpIcon from "~/assets/svg/sbp-icon.svg";
 import UnionPayIcon from "~/assets/svg/union-pay-icon.svg";
 import VisaIcon from "~/assets/svg/visa-icon.svg";
 import { Carousel } from "~/components/Carousel";
+import { useBreakpointDown } from "~/utils/use-breakpoints";
 
 import { BackgroundImageBox } from "../BackgroundImageBox";
 import { Block } from "../Block";
@@ -57,106 +59,116 @@ const AutoHideBr = styled.br`
 
 export const ProcessingBlock: React.FC<React.ComponentProps<typeof Block>> = (
   props
-) => (
-  <Block {...props} title={<Trans>Processing</Trans>} inverted>
-    <Stack spacing={17}>
-      <BackgroundImageBox src={processingBgSrc} left={-765} top={-200}>
-        <Stack
-          spacing={2}
-          direction={{ xs: "column", md: "row" }}
-          className={css`
-            position: relative;
-            z-index: 1;
-          `}
-        >
-          <Card
-            inverted
-            flex="1"
-            title={<Trans>Control</Trans>}
-            image={<ControlImg />}
-          >
-            <Stack spacing={1}>
-              <Box>
-                <Trans>control:description-1</Trans>
-              </Box>
-              <Box>
-                <Trans>control:description-2</Trans>
-              </Box>
-            </Stack>
-          </Card>
-          <Card
-            inverted
-            flex="1"
-            title={<Trans>Possibilities</Trans>}
-            image={<CapabilityImg />}
-          >
-            <Trans>possibilities:description</Trans>
-          </Card>
-        </Stack>
-      </BackgroundImageBox>
+) => {
+  const isMobile = useBreakpointDown("sm");
+  const [carouselWidth, setCarouselWidth] = useState(464);
 
-      <BackgroundImageBox src={paymentSystemsBgSrc} right={-500} top={-100}>
-        <Stack spacing={5.5}>
-          <Box sx={{ typography: "h3", color: "#fff" }}>
-            <Trans>Support for all payment methods</Trans>
-          </Box>
-          <Box>
-            <Box marginBottom={-2.5}>
-              {PAYMENT_METHODS_GROUPS.map((group, idx) => (
-                <React.Fragment key={idx}>
-                  {group.map((pm, k) => (
-                    <Box display="inline-block">
-                      <Chip
-                        key={k}
-                        startIcon={pm.icon}
-                        marginBottom={2.5}
-                        marginRight={2}
-                      >
-                        {pm.name}
-                      </Chip>
-                    </Box>
-                  ))}
-                  <AutoHideBr />
-                </React.Fragment>
-              ))}
+  useEffect(() => {
+    setCarouselWidth(isMobile ? 213 : 464);
+  }, [isMobile]);
+
+  return (
+    <Block {...props} title={<Trans>Processing</Trans>} inverted>
+      <Stack spacing={17}>
+        <BackgroundImageBox src={processingBgSrc} left={-765} top={-200}>
+          <Stack
+            spacing={2}
+            direction={{ xs: "column", md: "row" }}
+            className={css`
+              position: relative;
+              z-index: 1;
+            `}
+          >
+            <Card
+              inverted
+              flex="1"
+              title={<Trans>Control</Trans>}
+              image={<ControlImg />}
+            >
+              <Stack spacing={1}>
+                <Box>
+                  <Trans>control:description-1</Trans>
+                </Box>
+                <Box>
+                  <Trans>control:description-2</Trans>
+                </Box>
+              </Stack>
+            </Card>
+            <Card
+              inverted
+              flex="1"
+              title={<Trans>Possibilities</Trans>}
+              image={<CapabilityImg />}
+            >
+              <Trans>possibilities:description</Trans>
+            </Card>
+          </Stack>
+        </BackgroundImageBox>
+
+        <BackgroundImageBox src={paymentSystemsBgSrc} right={-500} top={-100}>
+          <Stack spacing={5.5}>
+            <Box sx={{ typography: "h3", color: "#fff" }}>
+              <Trans>Support for all payment methods</Trans>
             </Box>
-          </Box>
-        </Stack>
-      </BackgroundImageBox>
+            <Box>
+              <Box marginBottom={-2.5}>
+                {PAYMENT_METHODS_GROUPS.map((group, idx) => (
+                  <React.Fragment key={idx}>
+                    {group.map((pm, k) => (
+                      <Box display="inline-block">
+                        <Chip
+                          key={k}
+                          startIcon={pm.icon}
+                          marginBottom={2.5}
+                          marginRight={2}
+                        >
+                          {pm.name}
+                        </Chip>
+                      </Box>
+                    ))}
+                    <AutoHideBr />
+                  </React.Fragment>
+                ))}
+              </Box>
+            </Box>
+          </Stack>
+        </BackgroundImageBox>
 
-      <BackgroundImageBox src={paymentBgSrc} left={-450} bottom={-200}>
-        <Stack spacing={5.5}>
-          <Box sx={{ typography: "h3", color: "#fff" }}>
-            <Trans>Intuitive payment process</Trans>
-          </Box>
-          <Box>
-            <Carousel
-              images={[
-                <StaticImage
-                  alt="Select payment method"
-                  placeholder="blurred"
-                  src="../../assets/images/carousel-1.png"
-                  height={392}
-                />,
-                <StaticImage
-                  alt="Bank card"
-                  placeholder="blurred"
-                  src="../../assets/images/carousel-2.png"
-                  height={392}
-                />,
-                <StaticImage
-                  alt="Fully paid"
-                  placeholder="blurred"
-                  src="../../assets/images/carousel-3.png"
-                  height={392}
-                />,
-              ]}
-            />
-          </Box>
-        </Stack>
-      </BackgroundImageBox>
-    </Stack>
-  </Block>
-);
+        <BackgroundImageBox src={paymentBgSrc} left={-450} bottom={-200}>
+          <Stack spacing={5.5}>
+            <Box sx={{ typography: "h3", color: "#fff" }}>
+              <Trans>Intuitive payment process</Trans>
+            </Box>
+            <Box>
+              <Carousel
+                width={carouselWidth}
+                images={[
+                  <StaticImage
+                    alt="Select payment method"
+                    placeholder="blurred"
+                    src="../../assets/images/carousel-1.png"
+                    width={carouselWidth}
+                  />,
+                  <StaticImage
+                    alt="Bank card"
+                    placeholder="blurred"
+                    src="../../assets/images/carousel-2.png"
+                    width={carouselWidth}
+                  />,
+                  <StaticImage
+                    alt="Fully paid"
+                    placeholder="blurred"
+                    src="../../assets/images/carousel-3.png"
+                    width={carouselWidth}
+                  />,
+                ]}
+              />
+            </Box>
+          </Stack>
+        </BackgroundImageBox>
+      </Stack>
+    </Block>
+  );
+};
 
 export default ProcessingBlock;
