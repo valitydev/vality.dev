@@ -11,6 +11,7 @@ import Github from "~/assets/svg/github.svg";
 import Linkedin from "~/assets/svg/linkedin.svg";
 import Logo from "~/assets/svg/logo.svg";
 import Telegram from "~/assets/svg/telegram.svg";
+import { useBreakpointDown } from "~/utils/use-breakpoints";
 
 import config from "../../../config.json";
 import { AppNav } from "../AppNav";
@@ -26,6 +27,7 @@ export const ContactsBlock: React.FC<React.ComponentProps<typeof Block>> = (
   const [realtimeConfig, setRealtimeConfig] = useState({
     contacts: {},
   } as typeof config);
+  const isLaptop = useBreakpointDown("md");
 
   useEffect(() => {
     /* Load contacts only in real time to hide from scrappers (which don't know how to use JS) */
@@ -102,7 +104,7 @@ export const ContactsBlock: React.FC<React.ComponentProps<typeof Block>> = (
               alignItems="center"
             >
               <Logo style={{ width: "auto" }} height={32} />
-              <LanguageSelector />
+              <LanguageSelector small={isLaptop} />
             </Stack>
             <Stack
               direction="row"
@@ -112,7 +114,7 @@ export const ContactsBlock: React.FC<React.ComponentProps<typeof Block>> = (
               <Box>
                 &copy; <Trans>All rights reserved</Trans>
               </Box>
-              <AppNav />
+              <AppNav small={isLaptop} />
             </Stack>
           </Stack>
         </Stack>

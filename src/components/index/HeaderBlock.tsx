@@ -47,6 +47,7 @@ export const HeaderBlock: React.FC<React.ComponentProps<typeof Block>> = (
   props
 ) => {
   const isMobile = useBreakpointDown("sm");
+  const isLaptop = useBreakpointDown("md");
 
   return (
     <Block
@@ -68,8 +69,17 @@ export const HeaderBlock: React.FC<React.ComponentProps<typeof Block>> = (
           sx={{ pt: 2.5, pb: 2.25 }}
         >
           <Logo />
-          <AppNav sx={{ marginRight: 13.5 }} />
-          <LanguageSelector />
+          {isLaptop ? (
+            <Stack direction="row" spacing={2}>
+              <LanguageSelector small />
+              <AppNav small />
+            </Stack>
+          ) : (
+            <>
+              <AppNav sx={{ marginRight: 13.5 }} />
+              <LanguageSelector />
+            </>
+          )}
         </Stack>
 
         <Stack spacing={14}>

@@ -20,8 +20,9 @@ const StyledButton = styled(ButtonUnstyled)<Props>(
     padding: ${variant === "text" ? 0 : theme?.spacing?.(2)};
     margin: 0;
     cursor: pointer;
-    border: none;
-
+    border: ${variant === "outlined"
+      ? `1px solid ${theme?.palette?.primary?.[700]}`
+      : "none"};
     background-color: ${variant === "contained" ? "#fff" : "transparent"};
 
     * {
