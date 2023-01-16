@@ -50,6 +50,7 @@ export const ContactsBlock: React.FC<React.ComponentProps<typeof Block>> = (
                       <Trans>Email</Trans>
                     </Box>
                     <Button
+                      variant="contained"
                       endIcon={<Email />}
                       href={`mailto:${realtimeConfig.contacts.email}`}
                     >
@@ -63,6 +64,7 @@ export const ContactsBlock: React.FC<React.ComponentProps<typeof Block>> = (
                       <Trans>Telegram</Trans>
                     </Box>
                     <Button
+                      variant="contained"
                       endIcon={<Telegram />}
                       href={realtimeConfig.contacts.telegram}
                     >
@@ -104,7 +106,7 @@ export const ContactsBlock: React.FC<React.ComponentProps<typeof Block>> = (
               alignItems="center"
             >
               <Logo style={{ width: "auto" }} height={32} />
-              <LanguageSelector small={isLaptop} />
+              <LanguageSelector small={isLaptop} direction="top" />
             </Stack>
             <Stack
               direction="row"
@@ -114,7 +116,7 @@ export const ContactsBlock: React.FC<React.ComponentProps<typeof Block>> = (
               <Box>
                 &copy; <Trans>All rights reserved</Trans>
               </Box>
-              <AppNav small={isLaptop} />
+              <AppNav small={isLaptop} direction="top" />
             </Stack>
           </Stack>
         </Stack>

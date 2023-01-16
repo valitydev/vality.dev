@@ -110,11 +110,11 @@ export const HeaderBlock: React.FC<React.ComponentProps<typeof Block>> = (
             </Stack>
 
             <Stack direction="row" spacing={3}>
-              <HeaderButton color="primary">
+              <HeaderButton color="primary" variant="contained">
                 <Trans>Contact us</Trans>
               </HeaderButton>
               <a href={CONFIG.contacts.github} target="_blank" rel="noreferrer">
-                <HeaderButton endIcon={<GitHubIcon />}>
+                <HeaderButton variant="contained" endIcon={<GitHubIcon />}>
                   {!isMobile && <Trans>Our GitHub</Trans>}
                 </HeaderButton>
               </a>

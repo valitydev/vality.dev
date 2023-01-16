@@ -25,10 +25,14 @@ const LINKS = [
 ];
 
 export const AppNav: React.FC<
-  ComponentProps<typeof Stack> & { small?: boolean }
-> = ({ small, ...props }) => {
+  Omit<ComponentProps<typeof Stack>, "direction"> & {
+    small?: boolean;
+    direction?: "top";
+  }
+> = ({ small, direction, ...props }) => {
   return small ? (
     <Menu
+      direction={direction}
       button={
         <IconButton variant="outlined">
           <MenuIcon />
@@ -36,7 +40,7 @@ export const AppNav: React.FC<
       }
     >
       {LINKS.map((link) => (
-        <MenuItem key={link.id} to={`#${link.id}`}>
+        <MenuItem key={link.id} href={`#${link.id}`} target="_self">
           {link.title}
         </MenuItem>
       ))}
