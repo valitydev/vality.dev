@@ -1,5 +1,4 @@
 import * as React from "react";
-import { useState, useEffect } from "react";
 
 import { css } from "@emotion/css";
 import styled from "@emotion/styled";
@@ -24,7 +23,6 @@ import SbpIcon from "~/assets/svg/sbp-icon.svg";
 import UnionPayIcon from "~/assets/svg/union-pay-icon.svg";
 import VisaIcon from "~/assets/svg/visa-icon.svg";
 import { Carousel } from "~/components/Carousel";
-import { useBreakpointDown } from "~/utils/use-breakpoints";
 
 import { BackgroundImageBox } from "../BackgroundImageBox";
 import { Block } from "../Block";
@@ -60,12 +58,7 @@ const AutoHideBr = styled.br`
 export const ProcessingBlock: React.FC<React.ComponentProps<typeof Block>> = (
   props
 ) => {
-  const isMobile = useBreakpointDown("sm");
-  const [carouselWidth, setCarouselWidth] = useState(464);
-
-  useEffect(() => {
-    setCarouselWidth(isMobile ? 213 : 464);
-  }, [isMobile]);
+  const carouselWidth = 464;
 
   return (
     <Block {...props} title={<Trans>Processing</Trans>} inverted>
