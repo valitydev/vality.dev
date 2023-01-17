@@ -12,7 +12,7 @@ import UnstyledLogo from "~/assets/svg/logo.svg";
 import { useBreakpointDown } from "~/utils/use-breakpoints";
 
 import CONFIG from "../../../config.json";
-import { AppNav } from "../AppNav";
+import { AppNav, PAGE_IDS } from "../AppNav";
 import { Block } from "../Block";
 import { Button } from "../Button";
 import { LanguageSelector } from "../LanguageSelector";
@@ -103,7 +103,14 @@ export const HeaderBlock: React.FC<React.ComponentProps<typeof Block>> = (
             </Stack>
 
             <Stack direction="row" spacing={3}>
-              <Button size="large" color="primary" variant="contained">
+              <Button
+                size="large"
+                color="primary"
+                variant="contained"
+                href={`/#${PAGE_IDS.contacts}`}
+                target="_self"
+                style={isMobile ? { width: "100%" } : {}}
+              >
                 <Trans>Contact us</Trans>
               </Button>
               <a href={CONFIG.contacts.github} target="_blank" rel="noreferrer">
@@ -112,7 +119,7 @@ export const HeaderBlock: React.FC<React.ComponentProps<typeof Block>> = (
                   variant="contained"
                   endIcon={<GitHubIcon />}
                 >
-                  {!isMobile && <Trans>Our GitHub</Trans>}
+                  {!isLaptop && <Trans>Our GitHub</Trans>}
                 </Button>
               </a>
             </Stack>
