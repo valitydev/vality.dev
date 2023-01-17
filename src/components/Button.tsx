@@ -82,7 +82,7 @@ const ButtonWrapper = styled(ButtonUnstyled)<Props & { hasText: boolean }>(
             variant === "text"
               ? theme?.palette?.common?.white
               : color
-              ? theme?.palette?.[color]?.contrastText
+              ? ""
               : theme?.palette?.text?.primary
           )}
         }
