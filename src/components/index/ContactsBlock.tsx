@@ -18,7 +18,6 @@ import { AppNav } from "../AppNav";
 import { BackgroundImageBox } from "../BackgroundImageBox";
 import { Block } from "../Block";
 import { Button } from "../Button";
-import { IconButton } from "../IconButton";
 import { LanguageSelector } from "../LanguageSelector";
 
 export const ContactsBlock: React.FC<React.ComponentProps<typeof Block>> = (
@@ -78,20 +77,16 @@ export const ContactsBlock: React.FC<React.ComponentProps<typeof Block>> = (
                   <Trans>Social media</Trans>
                 </Box>
                 <Stack spacing={4} direction="row">
-                  <IconButton
+                  <Button
                     size="large"
-                    inverted
                     href={realtimeConfig.contacts.linkedin}
-                  >
-                    <Linkedin />
-                  </IconButton>
-                  <IconButton
+                    endIcon={<Linkedin />}
+                  />
+                  <Button
                     size="large"
-                    inverted
                     href={realtimeConfig.contacts.github}
-                  >
-                    <Github />
-                  </IconButton>
+                    endIcon={<Github />}
+                  />
                 </Stack>
               </Stack>
             </Stack>

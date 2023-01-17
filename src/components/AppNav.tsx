@@ -5,7 +5,7 @@ import { Stack } from "@mui/system";
 import { Trans } from "gatsby-plugin-react-i18next";
 
 import MenuIcon from "~/assets/svg/menu-icon.svg";
-import { IconButton } from "~/components/IconButton";
+import { Button } from "~/components/Button";
 import { Menu, MenuItem } from "~/components/Menu";
 
 import { Link } from "./Link";
@@ -34,9 +34,7 @@ export const AppNav: React.FC<
     <Menu
       direction={direction}
       button={
-        <IconButton variant="outlined">
-          <MenuIcon />
-        </IconButton>
+        <Button variant="outlined" color="primary" endIcon={<MenuIcon />} />
       }
     >
       {LINKS.map((link) => (

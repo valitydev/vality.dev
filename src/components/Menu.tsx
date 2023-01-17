@@ -25,7 +25,8 @@ const Triangle = styled(TriangleIcon)<{ direction?: "top" }>`
   width: 10px;
   height: ${({ theme }) => theme?.spacing?.(0.5)};
   top: ${({ direction }) => (direction === "top" ? "-" : "")}${({ theme }) => theme?.spacing?.(0.5)};
-  right: 25px;
+  right: ${({ theme }) => theme?.spacing?.(3)};
+  transform: translateX(50%);
 `;
 
 export const Menu: React.FC<{

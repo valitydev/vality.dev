@@ -36,13 +36,6 @@ const Fintech = styled(UnstyledFintech)`
   },
 `;
 
-const HeaderButton = styled(Button)`
-  padding-left: ${({ theme, children }) =>
-    theme?.spacing?.(children ? 6.5 : 1.5)};
-  padding-right: ${({ theme, children }) =>
-    theme?.spacing?.(children ? 6.5 : 1.5)};
-`;
-
 export const HeaderBlock: React.FC<React.ComponentProps<typeof Block>> = (
   props
 ) => {
@@ -110,13 +103,17 @@ export const HeaderBlock: React.FC<React.ComponentProps<typeof Block>> = (
             </Stack>
 
             <Stack direction="row" spacing={3}>
-              <HeaderButton color="primary" variant="contained">
+              <Button size="large" color="primary" variant="contained">
                 <Trans>Contact us</Trans>
-              </HeaderButton>
+              </Button>
               <a href={CONFIG.contacts.github} target="_blank" rel="noreferrer">
-                <HeaderButton variant="contained" endIcon={<GitHubIcon />}>
+                <Button
+                  size="large"
+                  variant="contained"
+                  endIcon={<GitHubIcon />}
+                >
                   {!isMobile && <Trans>Our GitHub</Trans>}
-                </HeaderButton>
+                </Button>
               </a>
             </Stack>
           </Stack>

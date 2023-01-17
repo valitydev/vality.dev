@@ -5,85 +5,134 @@ import styled from "@emotion/styled";
 import { ButtonUnstyled, buttonUnstyledClasses } from "@mui/base";
 import { Stack, Box } from "@mui/system";
 
-interface Props {
+type SvgColoredParam = "fill";
+
+interface Props extends React.ComponentProps<typeof ButtonUnstyled> {
   endIcon?: ReactNode;
   href?: string;
   variant?: "text" | "contained" | "outlined";
   target?: "_self" | "_blank";
+  size?: "small" | "medium" | "large";
+  svgColoredParams?: SvgColoredParam[];
 }
 
-const StyledButton = styled(ButtonUnstyled)<Props>(
-  ({ theme, color, variant }) => css`
-    ${css(theme?.typography?.button)}
+function getColoredSvgCss(params: SvgColoredParam[] = [], color: string) {
+  return css(Object.fromEntries(params?.map?.((p) => [p, color]) || []));
+}
 
-    background-color: ${color
-      ? theme?.palette?.[color]?.[variant === "contained" ? "A400" : 900]
-      : "#fff"};
-    color: ${color ? theme?.palette?.[color]?.contrastText : undefined};
-    white-space: nowrap;
+const ButtonWrapper = styled(ButtonUnstyled)<Props & { hasText: boolean }>(
+  ({ theme, color, variant, size, svgColoredParams, hasText }) => {
+    return css`
+      ${css(theme?.typography?.button)}
 
-    border-radius: ${theme?.spacing?.(1.5)};
-    padding: ${theme?.spacing?.(1.5)} ${theme?.spacing?.(3)};
-    cursor: pointer;
+      background-color: ${variant === "text"
+        ? "transparent"
+        : color
+        ? theme?.palette?.[color]?.[variant === "contained" ? "A400" : 900]
+        : "#fff"};
+      color: ${color ? theme?.palette?.[color]?.contrastText : undefined};
+      white-space: nowrap;
 
-    border: ${variant === "outlined"
-      ? `1px solid ${theme?.palette?.primary?.[700]}`
-      : "none"};
+      border-radius: ${theme?.spacing?.(1.5)};
+      height: ${theme?.spacing?.(6)};
+      line-height: ${theme?.spacing?.(6)};
+      min-width: ${theme?.spacing?.(6)};
+      padding: 0 ${hasText ? theme?.spacing?.(size === "large" ? 6.5 : 3) : 0};
 
-    &,
-    * {
-      transition: all 200ms ease;
-    }
+      border: ${variant === "outlined"
+        ? `1px solid ${theme?.palette?.primary?.[700]}`
+        : "none"};
 
-    * {
-      fill: ${color === "primary" ? undefined : theme?.palette?.grey?.[800]};
-    }
+      cursor: pointer;
 
-    & svg {
-      height: ${theme?.spacing?.(3)};
-      width: auto;
-    }
-
-    &:hover {
-      box-shadow: ${color === "primary" && variant === "contained"
-        ? "0px 5px 15px rgba(82, 116, 199, 0.7)"
-        : undefined};
-      color: ${color === "primary" ? undefined : theme?.palette?.grey?.[800]};
+      &,
+      * {
+        transition: all 200ms ease;
+      }
 
       * {
-        fill: ${color
-          ? theme?.palette?.[color]?.contrastText
-          : theme?.palette?.text?.primary};
+        ${getColoredSvgCss(
+          svgColoredParams,
+          variant === "text"
+            ? theme?.palette?.common?.white
+            : color === "primary"
+            ? theme?.palette?.text?.primary
+            : theme?.palette?.grey?.[800]
+        )}
       }
-    }
 
-    &.${buttonUnstyledClasses.active} {
-      background-color: ${color
-        ? theme?.palette?.[color]?.[400]
-        : theme?.palette?.grey?.[100]};
-      box-shadow: ${color
-        ? undefined
-        : `0px 0px 0px 1px ${theme?.palette?.grey?.[800]}`};
-
-      * {
-        fill: ${color === "primary" ? undefined : theme?.palette?.grey?.[800]};
+      svg {
+        height: ${theme?.spacing?.(
+          size === "large" && variant === "text" ? 5.5 : 3
+        )};
+        width: ${theme?.spacing?.(
+          size === "large" && variant === "text" ? 5.5 : 3
+        )};
       }
-    }
 
-    &.${buttonUnstyledClasses.focusVisible} {
-      outline: none;
-    }
+      &:hover {
+        box-shadow: ${color === "primary" && variant === "contained"
+          ? "0px 5px 15px rgba(82, 116, 199, 0.7)"
+          : undefined};
+        color: ${color === "primary" ? undefined : theme?.palette?.grey?.[800]};
 
-    &.${buttonUnstyledClasses.disabled} {
-      opacity: 0.5;
-      cursor: not-allowed;
-    }
-  `
+        * {
+          ${getColoredSvgCss(
+            svgColoredParams,
+            variant === "text"
+              ? theme?.palette?.common?.white
+              : color
+              ? theme?.palette?.[color]?.contrastText
+              : theme?.palette?.text?.primary
+          )}
+        }
+      }
+
+      &.${buttonUnstyledClasses.active} {
+        background-color: ${variant === "text"
+          ? ""
+          : color
+          ? theme?.palette?.[color]?.[400]
+          : theme?.palette?.grey?.[100]};
+        box-shadow: ${color || variant === "text"
+          ? undefined
+          : `0px 0px 0px 1px ${theme?.palette?.grey?.[800]}`};
+
+        * {
+          ${getColoredSvgCss(
+            svgColoredParams,
+            variant === "text"
+              ? theme?.palette?.common?.white
+              : color === "primary"
+              ? theme?.palette?.text?.primary
+              : theme?.palette?.grey?.[800]
+          )}
+        }
+      }
+
+      &.${buttonUnstyledClasses.focusVisible} {
+        outline: none;
+      }
+
+      &.${buttonUnstyledClasses.disabled} {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+    `;
+  }
 );
 
-export const Button: React.FC<
-  React.ComponentProps<typeof StyledButton> & Props
-> = ({ endIcon, children, href, onClick, variant, target, ...props }) => {
+export const Button: React.FC<Props> = ({
+  endIcon,
+  children,
+  href,
+  onClick,
+  variant,
+  target,
+  size,
+  svgColoredParams,
+  ...props
+}) => {
   const clickHandler = href
     ? () => {
         window.open(href, target ?? "_blank");
@@ -91,11 +140,22 @@ export const Button: React.FC<
     : onClick;
 
   return (
-    <StyledButton {...props} variant={variant || "text"} onClick={clickHandler}>
-      <Stack direction="row" spacing={1.5} sx={{ alignItems: "center" }}>
-        {children && <Box>{children}</Box>}
+    <ButtonWrapper
+      {...props}
+      variant={variant || "text"}
+      size={size || "medium"}
+      onClick={clickHandler}
+      svgColoredParams={svgColoredParams || ["fill"]}
+      hasText={!!children}
+    >
+      <Stack
+        direction="row"
+        spacing={1.5}
+        sx={{ alignItems: "center", justifyContent: "center" }}
+      >
+        {children && <Box display="flex">{children}</Box>}
         {endIcon}
       </Stack>
-    </StyledButton>
+    </ButtonWrapper>
   );
 };

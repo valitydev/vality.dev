@@ -8,8 +8,7 @@ import { useElementSize } from "usehooks-ts";
 import ArrowLeft from "~/assets/svg/arrow-left.svg";
 import ArrowRight from "~/assets/svg/arrow-right.svg";
 import Repeat from "~/assets/svg/repeat.svg";
-
-import { IconButton } from "./IconButton";
+import { Button } from "~/components/Button";
 
 interface Props {
   images: ReactNode[];
@@ -100,39 +99,36 @@ export const Carousel: React.FC<Props> = ({ images, width }) => {
       >
         <Box>
           {active !== 0 && (
-            <IconButton
+            <Button
               variant="contained"
               svgColoredParams={[]}
               onClick={() => {
                 setActive(0);
               }}
-            >
-              <Repeat />
-            </IconButton>
+              endIcon={<Repeat />}
+            />
           )}
         </Box>
         <Stack direction="row" spacing={3}>
           {active < 0 && (
-            <IconButton
+            <Button
               variant="contained"
               svgColoredParams={[]}
               onClick={() => {
                 setActive((a) => a + 1);
               }}
-            >
-              <ArrowLeft />
-            </IconButton>
+              endIcon={<ArrowLeft />}
+            />
           )}
           {active > -images.length + 1 && (
-            <IconButton
+            <Button
               variant="contained"
               svgColoredParams={[]}
               onClick={() => {
                 setActive((a) => a - 1);
               }}
-            >
-              <ArrowRight />
-            </IconButton>
+              endIcon={<ArrowRight />}
+            />
           )}
         </Stack>
       </Stack>

@@ -4,7 +4,7 @@ import { Stack } from "@mui/system";
 import { useI18next } from "gatsby-plugin-react-i18next";
 
 import WorldIcon from "~/assets/svg/world-icon.svg";
-import { IconButton } from "~/components/IconButton";
+import { Button } from "~/components/Button";
 import { Menu, MenuItem } from "~/components/Menu";
 
 import { Link } from "./Link";
@@ -19,9 +19,7 @@ export const LanguageSelector: React.FC<{
     <Menu
       direction={direction}
       button={
-        <IconButton variant="outlined">
-          <WorldIcon />
-        </IconButton>
+        <Button variant="outlined" color="primary" endIcon={<WorldIcon />} />
       }
     >
       {languages.map((lang) => (
