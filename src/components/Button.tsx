@@ -4,6 +4,7 @@ import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 import { ButtonUnstyled, buttonUnstyledClasses } from "@mui/base";
 import { Stack, Box } from "@mui/system";
+import { useI18next } from "gatsby-plugin-react-i18next";
 
 type SvgColoredParam = "fill";
 
@@ -133,9 +134,11 @@ export const Button: React.FC<Props> = ({
   svgColoredParams,
   ...props
 }) => {
+  const { navigate } = useI18next();
   const clickHandler = href
-    ? () => {
-        window.open(href, target ?? "_blank");
+    ? async () => {
+        if (target === "_blank") window.open(href, "_blank");
+        else await navigate(href);
       }
     : onClick;
 
