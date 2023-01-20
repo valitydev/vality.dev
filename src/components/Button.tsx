@@ -23,6 +23,21 @@ function getColoredSvgCss(params: SvgColoredParam[] = [], color: string) {
 
 const ButtonWrapper = styled(ButtonUnstyled)<Props & { hasText: boolean }>(
   ({ theme, color, variant, size, svgColoredParams, hasText }) => {
+    const buttonSizes = {
+      large: 6,
+      medium: 4,
+      small: 4,
+    };
+    const iconSizes = {
+      large: 3,
+      medium: 2,
+      small: 2,
+    };
+    const buttonSize = theme?.spacing?.(buttonSizes[size ?? "medium"]);
+    const iconSize =
+      variant === "text"
+        ? buttonSize
+        : theme?.spacing?.(iconSizes[size ?? "medium"]);
     return css`
       ${css(theme?.typography?.button)}
 
@@ -34,10 +49,10 @@ const ButtonWrapper = styled(ButtonUnstyled)<Props & { hasText: boolean }>(
       color: ${color ? theme?.palette?.[color]?.contrastText : undefined};
       white-space: nowrap;
 
-      border-radius: ${theme?.spacing?.(1.5)};
-      height: ${theme?.spacing?.(6)};
-      line-height: ${theme?.spacing?.(6)};
-      min-width: ${theme?.spacing?.(6)};
+      border-radius: ${theme?.spacing?.(size === "large" ? 1.5 : 1)};
+      height: ${buttonSize};
+      line-height: ${buttonSize};
+      min-width: ${buttonSize};
       padding: 0 ${hasText ? theme?.spacing?.(size === "large" ? 6.5 : 3) : 0};
 
       border: ${variant === "outlined"
@@ -63,12 +78,8 @@ const ButtonWrapper = styled(ButtonUnstyled)<Props & { hasText: boolean }>(
       }
 
       svg {
-        height: ${theme?.spacing?.(
-          size === "large" && variant === "text" ? 5.5 : 3
-        )};
-        width: ${theme?.spacing?.(
-          size === "large" && variant === "text" ? 5.5 : 3
-        )};
+        height: ${iconSize};
+        width: ${iconSize};
       }
 
       &:hover {
