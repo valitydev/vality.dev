@@ -68,7 +68,7 @@ const Item = styled(Box)<
 export const Carousel: React.FC<Props> = ({ images, width }) => {
   const [active, setActive] = useState(0);
   const [boxRef, { width: fullWidth }] = useElementSize();
-  width = Math.min(fullWidth, width);
+  width = Math.min(fullWidth * 0.9, width);
 
   return (
     <Stack spacing={4}>

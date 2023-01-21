@@ -58,7 +58,7 @@ export function createTypography(
 
   return {
     ...typography,
-    h1: createPart(48, 56, typography.fontWeightMedium),
+    h1: createPart(42, 56, typography.fontWeightMedium),
     h2: createPart(32, 40, typography.fontWeightMedium),
     h3: createPart(28, 36, typography.fontWeightMedium),
     h4: createPart(20, 36, typography.fontWeightMedium),

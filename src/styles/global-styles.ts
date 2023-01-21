@@ -30,7 +30,11 @@ export const createGlobalStyle = (theme: Theme) =>
         font-size: 87.5%;
       }
 
-      ${theme?.breakpoints?.down?.("xs")} {
+      ${theme?.breakpoints?.down?.("md")} {
+        font-size: 80%;
+      }
+
+      ${theme?.breakpoints?.down?.("sm")} {
         font-size: 75%;
       }
     }

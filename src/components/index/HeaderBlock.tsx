@@ -27,13 +27,17 @@ const Logo = styled(UnstyledLogo)`
 `;
 
 const Fintech = styled(UnstyledFintech)`
-  margin-right: -49px;
+  margin-right: -45px;
   margin-top: -20px;
   height: 330px;
 
+  ${({ theme }) => theme?.breakpoints?.down?.("md")} {
+    margin-right: -100px;
+  }
+
   ${({ theme }) => theme?.breakpoints?.down?.("lg")} {
     height: 192px;
-  },
+  }
 `;
 
 export const HeaderBlock: React.FC<React.ComponentProps<typeof Block>> = (
@@ -81,7 +85,9 @@ export const HeaderBlock: React.FC<React.ComponentProps<typeof Block>> = (
               <Stack spacing={3}>
                 <Box sx={{ typography: "h1", color: "#fff" }}>
                   <Trans>
-                    We are an IT team that makes fintech
+                    We are an IT team
+                    <br />
+                    that makes fintech
                     <br />
                     <span style={{ color: "#FD932B" }}>accessible</span>
                   </Trans>
