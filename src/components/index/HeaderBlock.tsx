@@ -40,6 +40,10 @@ const Fintech = styled(UnstyledFintech)`
   }
 `;
 
+const HeaderButton = styled(Button)`
+  padding: 0 ${({ theme, children }) => theme?.spacing?.(children ? 6.5 : 0)};
+`;
+
 export const HeaderBlock: React.FC<React.ComponentProps<typeof Block>> = (
   props
 ) => {
@@ -109,7 +113,7 @@ export const HeaderBlock: React.FC<React.ComponentProps<typeof Block>> = (
             </Stack>
 
             <Stack direction="row" spacing={3}>
-              <Button
+              <HeaderButton
                 size="large"
                 color="primary"
                 variant="contained"
@@ -118,15 +122,15 @@ export const HeaderBlock: React.FC<React.ComponentProps<typeof Block>> = (
                 style={isMobile ? { width: "100%" } : {}}
               >
                 <Trans>Contact us</Trans>
-              </Button>
+              </HeaderButton>
               <a href={CONFIG.contacts.github} target="_blank" rel="noreferrer">
-                <Button
+                <HeaderButton
                   size="large"
                   variant="contained"
                   endIcon={<GitHubIcon />}
                 >
                   {!isLaptop && <Trans>Our GitHub</Trans>}
-                </Button>
+                </HeaderButton>
               </a>
             </Stack>
           </Stack>

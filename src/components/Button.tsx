@@ -53,7 +53,7 @@ const ButtonWrapper = styled(ButtonUnstyled)<Props & { hasText: boolean }>(
       height: ${buttonSize};
       line-height: ${buttonSize};
       min-width: ${buttonSize};
-      padding: 0 ${hasText ? theme?.spacing?.(size === "large" ? 6.5 : 3) : 0};
+      padding: 0 ${hasText ? theme?.spacing?.(3) : 0};
 
       border: ${variant === "outlined"
         ? `1px solid ${theme?.palette?.primary?.[700]}`

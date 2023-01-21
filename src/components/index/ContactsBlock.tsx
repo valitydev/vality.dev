@@ -49,6 +49,7 @@ export const ContactsBlock: React.FC<React.ComponentProps<typeof Block>> = (
                       <Trans>Email</Trans>
                     </Box>
                     <Button
+                      size="large"
                       variant="contained"
                       endIcon={<Email />}
                       href={`mailto:${realtimeConfig.contacts.email}`}
@@ -63,6 +64,7 @@ export const ContactsBlock: React.FC<React.ComponentProps<typeof Block>> = (
                       <Trans>Telegram</Trans>
                     </Box>
                     <Button
+                      size="large"
                       variant="contained"
                       endIcon={<Telegram />}
                       href={realtimeConfig.contacts.telegram}

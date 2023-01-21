@@ -11,7 +11,7 @@ interface Props {
   image?: ReactNode;
 }
 
-export const StyledCard = styled(Box)<Props>`
+const StyledCard = styled(Box)<Props>`
   background-color: ${({ theme, inverted }) =>
     inverted ? theme?.palette?.common?.white : theme?.palette?.primary?.[900]};
   border-radius: ${({ theme }) => `${theme?.spacing?.(2.5)}`};
@@ -31,18 +31,22 @@ export const StyledCard = styled(Box)<Props>`
     color: ${({ theme, inverted }) =>
       inverted ? theme?.palette?.text?.primary : theme?.palette?.common?.white};
   }
+`;
 
-  &:not(.laptop) .image {
-    margin-left: auto;
-    margin-bottom: ${({ theme }) => theme?.spacing?.(-4)};
-    margin-right: ${({ theme }) => theme?.spacing?.(-2.5)};
-  }
+const ImageWrapper = styled(Box)`
+  display: flex;
+  justify-content: center;
 
-  .image {
-    & > * {
-      height: ${({ theme }) => theme?.spacing?.(17)};
-    }
+  & > * {
+    height: ${({ theme }) => theme?.spacing?.(17)};
   }
+`;
+
+const BottomRightImageWrapper = styled(ImageWrapper)`
+  display: block;
+  margin-left: auto;
+  margin-bottom: ${({ theme }) => theme?.spacing?.(-4)};
+  margin-right: ${({ theme }) => theme?.spacing?.(-2.5)};
 `;
 
 export const Card: React.FC<React.ComponentProps<typeof StyledCard>> = ({
@@ -54,7 +58,7 @@ export const Card: React.FC<React.ComponentProps<typeof StyledCard>> = ({
   const isLaptop = useBreakpointDown("md");
   const isMobile = useBreakpointDown("sm");
   return isLaptop && !isMobile ? (
-    <StyledCard {...props} className="laptop title">
+    <StyledCard {...props} className="title">
       <Stack direction="row" spacing={2}>
         <Stack spacing={2}>
           <Box typography="h3" className="text">
@@ -62,7 +66,7 @@ export const Card: React.FC<React.ComponentProps<typeof StyledCard>> = ({
           </Box>
           <Box className="text">{children}</Box>
         </Stack>
-        <Box className="image">{image}</Box>
+        <BottomRightImageWrapper>{image}</BottomRightImageWrapper>
       </Stack>
     </StyledCard>
   ) : (
@@ -75,14 +79,14 @@ export const Card: React.FC<React.ComponentProps<typeof StyledCard>> = ({
             </Box>
             <Box className="text">{children}</Box>
           </Stack>
-          <Box className="image">{image}</Box>
+          <BottomRightImageWrapper>{image}</BottomRightImageWrapper>
         </Stack>
       ) : (
         <Stack spacing={5.375}>
           <Box typography="h3" className="text" sx={{ textAlign: "center" }}>
             {title}
           </Box>
-          <Box>{image}</Box>
+          <ImageWrapper>{image}</ImageWrapper>
           <Box className="text">{children}</Box>
         </Stack>
       )}
