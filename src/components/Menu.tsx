@@ -25,7 +25,7 @@ const Triangle = styled(TriangleIcon)<{ direction?: "top" }>`
   width: 10px;
   height: ${({ theme }) => theme?.spacing?.(0.5)};
   top: ${({ direction }) => (direction === "top" ? "-" : "")}${({ theme }) => theme?.spacing?.(0.5)};
-  right: ${({ theme }) => theme?.spacing?.(3)};
+  right: ${({ theme }) => theme?.spacing?.(2)};
   transform: translateX(50%);
 `;
 
