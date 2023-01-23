@@ -1,160 +1,20 @@
 import * as React from "react";
 
-import { Box, Stack } from "@mui/system";
+import { Stack } from "@mui/system";
 import Grid from "@mui/system/Unstable_Grid";
-import { StaticImage } from "gatsby-plugin-image";
 import { Trans } from "gatsby-plugin-react-i18next";
 
 import antifraudBgSrc from "~/assets/images/antifraud-bg.svg";
-import customizableBgSrc from "~/assets/images/customizable-bg.svg";
-import customizableNotificationsSrc from "~/assets/images/customizable-notifications.png";
-import flexibilityBgSrc from "~/assets/images/flexibility-bg.svg";
 import FlexibilityImg from "~/assets/svg/flexibility.svg";
 import SafetySvg from "~/assets/svg/safety.svg";
 import ScaleImg from "~/assets/svg/scale.svg";
-import { Breakpoint } from "~/utils/breakpoint";
+import { BackgroundImageBox } from "~/components/BackgroundImageBox";
+import { Block } from "~/components/Block";
+import { Card } from "~/components/Card";
 
-import { BackgroundImageBox } from "../../BackgroundImageBox";
-import { Block } from "../../Block";
-import { Card } from "../../Card";
+import { CustomizableNotificationsDemoBlock } from "./CustomizableNotificationsDemoBlock";
 import { DashboardInRealTimeDemoBlock } from "./DashboardInRealTimeDemoBlock";
-
-const Flexibility = () => {
-  return (
-    <BackgroundImageBox src={flexibilityBgSrc} left={-400} top={-30}>
-      <Stack spacing={5.5}>
-        <Box sx={{ typography: "h3" }}>
-          <Trans>Flexible system of rules</Trans>
-        </Box>
-        <Breakpoint up="sm">
-          <Stack spacing={1.5}>
-            <Stack spacing={3} alignItems="end" direction="row">
-              <Box flex={1}>
-                <Trans>
-                  Black, white and gray lists according to various criteria
-                </Trans>
-              </Box>
-              <Box flex={1} sx={{ textAlign: "right" }}>
-                <Trans>
-                  Country restrictions, currencies, payer location, etc.
-                </Trans>
-              </Box>
-            </Stack>
-            <StaticImage
-              src="../../../assets/images/flexible-system-of-rules.png"
-              style={{ width: "100%" }}
-              alt=""
-            />
-            <Stack spacing={3} alignItems="top" direction="row">
-              <Box flex={1}>
-                <Trans>
-                  Making a decision based on any available system payment
-                  parameters
-                </Trans>
-              </Box>
-              <Box flex={1} sx={{ textAlign: "center" }}>
-                <Trans>Complex custom rules</Trans>
-              </Box>
-            </Stack>
-          </Stack>
-        </Breakpoint>
-        <Breakpoint down="sm">
-          <Stack spacing={1.5}>
-            <Stack spacing={3} alignItems="end" direction="row">
-              <Box flex={1} textAlign="center">
-                <Trans>
-                  Black, white and gray lists according to various criteria
-                </Trans>
-              </Box>
-            </Stack>
-            <Box style={{ position: "relative" }}>
-              <StaticImage
-                alt=""
-                src="../../../assets/images/flexibility-clean.png"
-                style={{ width: "200%" }}
-              />
-              <StaticImage
-                style={{ position: "absolute", top: -12, width: "200%" }}
-                src="../../../assets/images/flexibility-arrows-1.png"
-                alt=""
-              />
-            </Box>
-            <Stack spacing={3} alignItems="top" direction="row">
-              <Box flex={1}>
-                <Trans>
-                  Making a decision based on any available system payment
-                  parameters
-                </Trans>
-              </Box>
-            </Stack>
-          </Stack>
-          <Stack spacing={1.5}>
-            <Stack spacing={3} alignItems="end" direction="row">
-              <Box flex={1} sx={{ textAlign: "right" }}>
-                <Trans>
-                  Country restrictions, currencies, payer location, etc.
-                </Trans>
-              </Box>
-            </Stack>
-            <Box style={{ position: "relative" }}>
-              <StaticImage
-                alt=""
-                src="../../../assets/images/flexibility-clean.png"
-                style={{ width: "200%", marginLeft: "-100%" }}
-              />
-              <StaticImage
-                style={{
-                  position: "absolute",
-                  top: -12,
-                  right: 0,
-                  width: "200%",
-                }}
-                src="../../../assets/images/flexibility-arrows-2.png"
-                alt=""
-              />
-            </Box>
-            <Stack spacing={3} alignItems="top" direction="row">
-              <Box flex={1}>
-                <Trans>Complex custom rules</Trans>
-              </Box>
-            </Stack>
-          </Stack>
-        </Breakpoint>
-      </Stack>
-    </BackgroundImageBox>
-  );
-};
-
-const Customizable = () => {
-  return (
-    <BackgroundImageBox src={customizableBgSrc} right={-100} bottom={-150}>
-      <Stack spacing={5.5}>
-        <Box sx={{ typography: "h3" }}>
-          <Trans>Customizable notifications</Trans>
-        </Box>
-        <Stack spacing={1.5}>
-          <Stack spacing={3} alignItems="end" direction="row">
-            <Box flex={1}>
-              <Trans>Grouping rules for a more comfortable setup</Trans>
-            </Box>
-            <Box flex={1} sx={{ textAlign: "center" }}>
-              <Trans>Sending alerts with a given frequency</Trans>
-            </Box>
-          </Stack>
-          <img
-            src={customizableNotificationsSrc}
-            style={{ width: "100%", height: "100%" }}
-          />
-          <Stack spacing={3} alignItems="top" direction="row">
-            <Box flex={1}>
-              <Trans>Different notification channels for different teams</Trans>
-            </Box>
-          </Stack>
-        </Stack>
-      </Stack>
-    </BackgroundImageBox>
-  );
-};
+import { FlexibleSystemOfRulesDemoBlock } from "./FlexibleSystemOfRulesDemoBlock";
 
 export const AntifraudBlock: React.FC<React.ComponentProps<typeof Block>> = (
   props
@@ -195,8 +55,8 @@ export const AntifraudBlock: React.FC<React.ComponentProps<typeof Block>> = (
         </BackgroundImageBox>
 
         <DashboardInRealTimeDemoBlock />
-        <Flexibility />
-        <Customizable />
+        <FlexibleSystemOfRulesDemoBlock />
+        <CustomizableNotificationsDemoBlock />
       </Stack>
     </Block>
   );

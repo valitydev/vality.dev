@@ -1,9 +1,9 @@
-import React, { ReactNode } from "react";
+import React, { ReactNode, ComponentProps } from "react";
 
 import styled from "@emotion/styled";
 import { Box, Container, Stack } from "@mui/system";
 
-interface Props {
+interface Props extends Omit<ComponentProps<typeof Box>, "title"> {
   title?: ReactNode;
   inverted?: boolean;
 }
@@ -22,11 +22,7 @@ export const StyledBlock = styled(Box)<Props>`
   }
 `;
 
-export const Block: React.FC<React.ComponentProps<typeof StyledBlock>> = ({
-  title,
-  children,
-  ...props
-}) => {
+export const Block: React.FC<Props> = ({ title, children, ...props }) => {
   return (
     <StyledBlock {...props}>
       <Container fixed>

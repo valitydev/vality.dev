@@ -29,7 +29,7 @@ export const DemoImage: React.FC<{
   return (
     <Stack spacing={1.5}>
       {topDescriptions && (
-        <Stack spacing={3} alignItems="end" direction="row">
+        <Stack spacing={isMobile ? 1 : 3} alignItems="end" direction="row">
           {topDescriptions}
         </Stack>
       )}
@@ -58,7 +58,7 @@ export const DemoImage: React.FC<{
         )}
       </Box>
       {bottomDescriptions && (
-        <Stack spacing={3} alignItems="top" direction="row">
+        <Stack spacing={isMobile ? 1 : 3} alignItems="top" direction="row">
           {bottomDescriptions}
         </Stack>
       )}
