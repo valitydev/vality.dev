@@ -14,20 +14,13 @@ interface Props {
 const StyledCard = styled(Box)<Props>`
   background-color: ${({ theme, inverted }) =>
     inverted ? theme?.palette?.common?.white : theme?.palette?.primary?.[900]};
-  border-radius: ${({ theme }) => `${theme?.spacing?.(2.5)}`};
-
-  &.title {
-    padding: ${({ theme }) =>
-      `${theme?.spacing?.(3)} ${theme?.spacing?.(2.5)}`};
+  border-radius: ${({ theme }) => theme?.spacing?.(2.5)};
+  ${({ theme }) => theme?.breakpoints?.down("sm")} {
+    border-radius: ${({ theme }) => theme?.spacing?.(2)};
   }
+  padding: ${({ theme }) => `${theme?.spacing?.(3)} ${theme?.spacing?.(2.5)}`};
 
-  &.no-title {
-    padding: ${({ theme }) =>
-      `${theme?.spacing?.(5.375)} ${theme?.spacing?.(2)}`};
-  }
-
-  &,
-  .text {
+  && * {
     color: ${({ theme, inverted }) =>
       inverted ? theme?.palette?.text?.primary : theme?.palette?.common?.white};
   }
@@ -38,7 +31,7 @@ const ImageWrapper = styled(Box)`
   justify-content: center;
 
   & > * {
-    height: ${({ theme }) => theme?.spacing?.(17)};
+    width: ${({ theme }) => theme?.spacing?.(26.5)};
   }
 `;
 
@@ -55,23 +48,27 @@ export const Card: React.FC<React.ComponentProps<typeof StyledCard>> = ({
   image,
   ...props
 }) => {
+  const isXl = useBreakpointDown("xl");
   const isLaptop = useBreakpointDown("md");
   const isMobile = useBreakpointDown("sm");
-  return isLaptop && !isMobile ? (
-    <StyledCard {...props} className="title">
-      <Stack direction="row" spacing={2}>
-        <Stack spacing={2}>
-          <Box typography="h3" className="text">
-            {title}
-          </Box>
+  const isHorizontal = (isLaptop && !isMobile) || (isXl && !title && !isLaptop);
+  const isVertical = !isHorizontal && (isMobile || !title);
+  const isVerticalTextTop = !isHorizontal && !isVertical;
+
+  return (
+    <StyledCard {...props}>
+      {isVertical && (
+        <Stack spacing={2.5}>
+          {!!title && (
+            <Box typography="h3" className="text" sx={{ textAlign: "center" }}>
+              {title}
+            </Box>
+          )}
+          <ImageWrapper>{image}</ImageWrapper>
           <Box className="text">{children}</Box>
         </Stack>
-        <BottomRightImageWrapper>{image}</BottomRightImageWrapper>
-      </Stack>
-    </StyledCard>
-  ) : (
-    <StyledCard {...props} className={title ? "title" : "no-title"}>
-      {title && !isMobile ? (
+      )}
+      {isVerticalTextTop && (
         <Stack justifyContent="space-between" height="100%">
           <Stack spacing={2}>
             <Box typography="h3" className="text">
@@ -81,13 +78,16 @@ export const Card: React.FC<React.ComponentProps<typeof StyledCard>> = ({
           </Stack>
           <BottomRightImageWrapper>{image}</BottomRightImageWrapper>
         </Stack>
-      ) : (
-        <Stack spacing={5.375}>
-          <Box typography="h3" className="text" sx={{ textAlign: "center" }}>
-            {title}
-          </Box>
-          <ImageWrapper>{image}</ImageWrapper>
-          <Box className="text">{children}</Box>
+      )}
+      {isHorizontal && (
+        <Stack direction="row" spacing={2}>
+          <Stack spacing={2}>
+            <Box typography="h3" className="text">
+              {title}
+            </Box>
+            <Box className="text">{children}</Box>
+          </Stack>
+          <BottomRightImageWrapper>{image}</BottomRightImageWrapper>
         </Stack>
       )}
     </StyledCard>
