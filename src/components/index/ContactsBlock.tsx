@@ -11,6 +11,7 @@ import Github from "~/assets/svg/github.svg";
 import Linkedin from "~/assets/svg/linkedin.svg";
 import Logo from "~/assets/svg/logo.svg";
 import Telegram from "~/assets/svg/telegram.svg";
+import { Breakpoint } from "~/utils/breakpoint";
 import { useBreakpointDown } from "~/utils/use-breakpoints";
 
 import config from "../../../config.json";
@@ -78,23 +79,27 @@ export const ContactsBlock: React.FC<React.ComponentProps<typeof Block>> = (
                 <Box>
                   <Trans>Social media</Trans>
                 </Box>
-                <Stack spacing={4} direction="row">
-                  <Button
-                    size="large"
-                    href={realtimeConfig.contacts.linkedin}
-                    endIcon={<Linkedin />}
-                  />
-                  <Button
-                    size="large"
-                    href={realtimeConfig.contacts.github}
-                    endIcon={<Github />}
-                  />
+                <Stack direction="row" spacing={4}>
+                  <Stack spacing={4} direction="row">
+                    <Button
+                      size="large"
+                      href={realtimeConfig.contacts.linkedin}
+                      endIcon={<Linkedin />}
+                    />
+                    <Button
+                      size="large"
+                      href={realtimeConfig.contacts.github}
+                      endIcon={<Github />}
+                    />
+                  </Stack>
                 </Stack>
               </Stack>
             </Stack>
-            <Box flex={1}>
-              <ContactsImg />
-            </Box>
+            <Breakpoint up="sm">
+              <Box flex={1}>
+                <ContactsImg />
+              </Box>
+            </Breakpoint>
           </Stack>
           <Stack spacing={5.5} sx={{ paddingBottom: 4.5 }}>
             <Stack
