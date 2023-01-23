@@ -5,6 +5,7 @@ import { StaticImage } from "gatsby-plugin-image";
 import { Trans } from "gatsby-plugin-react-i18next";
 
 import flexibilityBgSrc from "~/assets/images/flexibility-bg.svg";
+import imageSrc from "~/assets/images/flexibility-clean.png";
 import { BackgroundImageBox } from "~/components/BackgroundImageBox";
 import { Breakpoint } from "~/utils/breakpoint";
 
@@ -99,6 +100,7 @@ export const FlexibleSystemOfRulesDemoBlock = () => {
                 alt=""
               />
             }
+            imageSrc={imageSrc}
             right
           >
             <StaticImage

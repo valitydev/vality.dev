@@ -5,6 +5,7 @@ import { StaticImage } from "gatsby-plugin-image";
 import { Trans } from "gatsby-plugin-react-i18next";
 
 import customizableBgSrc from "~/assets/images/customizable-bg.svg";
+import imageSrc from "~/assets/images/customizable-notifications-clean.png";
 import { BackgroundImageBox } from "~/components/BackgroundImageBox";
 import { Breakpoint } from "~/utils/breakpoint";
 
@@ -71,7 +72,7 @@ export const CustomizableNotificationsDemoBlock = () => {
               alt=""
             />
           </DemoImage>
-          <DemoImage right>
+          <DemoImage right imageSrc={imageSrc}>
             <StaticImage
               src="../../../assets/images/customizable-notifications-clean.png"
               alt=""

@@ -1,8 +1,13 @@
 import * as React from "react";
-import { ReactNode } from "react";
+import { ReactNode, useState } from "react";
+import "yet-another-react-lightbox/styles.css";
 
 import { Stack, Box } from "@mui/system";
+import { Lightbox } from "yet-another-react-lightbox";
+import Zoom from "yet-another-react-lightbox/plugins/zoom";
 
+import OpenIcon from "~/assets/svg/open-icon.svg";
+import { Button } from "~/components/Button";
 import { useBreakpointDown } from "~/utils/use-breakpoints";
 
 export const DemoImageBlock: React.FC<{
@@ -23,8 +28,17 @@ export const DemoImage: React.FC<{
   bottomDescriptions?: ReactNode;
   arrows?: ReactNode;
   right?: boolean;
-}> = ({ topDescriptions, bottomDescriptions, children, arrows, right }) => {
+  imageSrc?: string;
+}> = ({
+  topDescriptions,
+  bottomDescriptions,
+  children,
+  arrows,
+  right,
+  imageSrc,
+}) => {
   const isMobile = useBreakpointDown("sm");
+  const [open, setOpen] = useState(false);
 
   return (
     <Stack spacing={1.5}>
@@ -55,6 +69,28 @@ export const DemoImage: React.FC<{
           >
             {arrows}
           </Box>
+        )}
+        {isMobile && imageSrc && (
+          <>
+            <Button
+              onClick={() => setOpen(true)}
+              color="primary"
+              endIcon={<OpenIcon />}
+              variant="contained"
+              svgColoredParams={[]}
+              style={{ position: "absolute", bottom: 20, right: 8 }}
+            ></Button>
+            <Lightbox
+              open={open}
+              close={() => setOpen(false)}
+              slides={[{ src: imageSrc }]}
+              plugins={[Zoom]}
+              render={{
+                buttonPrev: () => null,
+                buttonNext: () => null,
+              }}
+            />
+          </>
         )}
       </Box>
       {bottomDescriptions && (

@@ -4,6 +4,7 @@ import { Box } from "@mui/system";
 import { StaticImage } from "gatsby-plugin-image";
 import { Trans } from "gatsby-plugin-react-i18next";
 
+import imageSrc from "~/assets/images/dashboard-in-real-time-clean.png";
 import { Breakpoint } from "~/utils/breakpoint";
 
 import { DemoImageBlock, DemoImage } from "./DemoImageBlock";
@@ -88,6 +89,7 @@ export const DashboardInRealTimeDemoBlock = () => {
             />
           }
           right
+          imageSrc={imageSrc}
         >
           <StaticImage
             alt=""
