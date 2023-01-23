@@ -1,5 +1,4 @@
 import * as React from "react";
-import { ReactNode } from "react";
 
 import { Box, Stack } from "@mui/system";
 import Grid from "@mui/system/Unstable_Grid";
@@ -14,163 +13,11 @@ import FlexibilityImg from "~/assets/svg/flexibility.svg";
 import SafetySvg from "~/assets/svg/safety.svg";
 import ScaleImg from "~/assets/svg/scale.svg";
 import { Breakpoint } from "~/utils/breakpoint";
-import { useBreakpointDown } from "~/utils/use-breakpoints";
 
-import { BackgroundImageBox } from "../BackgroundImageBox";
-import { Block } from "../Block";
-import { Card } from "../Card";
-
-const DemoImageBlock: React.FC<{ title: ReactNode; children: ReactNode }> = ({
-  title,
-  children,
-}) => {
-  return (
-    <Stack spacing={5.5}>
-      <Box sx={{ typography: "h3" }}>{title}</Box>
-      {children}
-    </Stack>
-  );
-};
-
-const DemoImage: React.FC<{
-  children: ReactNode;
-  topDescriptions?: ReactNode;
-  bottomDescriptions?: ReactNode;
-  arrows?: ReactNode;
-  right?: boolean;
-}> = ({ topDescriptions, bottomDescriptions, children, arrows, right }) => {
-  const isMobile = useBreakpointDown("sm");
-
-  return (
-    <Stack spacing={1.5}>
-      {topDescriptions && (
-        <Stack spacing={3} alignItems="end" direction="row">
-          {topDescriptions}
-        </Stack>
-      )}
-      <Box
-        position="relative"
-        paddingTop={isMobile ? 1.5 : 0}
-        paddingBottom={isMobile ? 1.5 : 0}
-      >
-        <Box
-          width={isMobile ? "200%" : "100%"}
-          marginLeft={right ? "-100%" : 0}
-        >
-          {children}
-        </Box>
-        {arrows && (
-          <Box
-            sx={{
-              position: "absolute",
-              top: 0,
-              width: "200%",
-              right: right ? 0 : "",
-            }}
-          >
-            {arrows}
-          </Box>
-        )}
-      </Box>
-      {bottomDescriptions && (
-        <Stack spacing={3} alignItems="top" direction="row">
-          {bottomDescriptions}
-        </Stack>
-      )}
-    </Stack>
-  );
-};
-
-const DashboardInRealTime = () => {
-  return (
-    <DemoImageBlock title={<Trans>Dashboard in real time</Trans>}>
-      <Breakpoint up="sm">
-        <DemoImage
-          topDescriptions={
-            <>
-              <Box flex={1}>
-                <Trans>
-                  Number of payments
-                  <br />
-                  for the selected period
-                </Trans>
-              </Box>
-              <Box flex={1} textAlign="center">
-                <Trans>Percent blocked transaction system</Trans>
-              </Box>
-              <Box flex={1} textAlign="right">
-                <Trans>Amount of blocked payments</Trans>
-              </Box>
-            </>
-          }
-          bottomDescriptions={
-            <Box flex="0 1 35%" textAlign="center">
-              <Trans>Historical data per day</Trans>
-            </Box>
-          }
-        >
-          <StaticImage
-            src="../../assets/images/dashboard-in-real-time.png"
-            alt=""
-          />
-        </DemoImage>
-      </Breakpoint>
-      <Breakpoint down="sm">
-        <DemoImage
-          topDescriptions={
-            <Box flex={1}>
-              <Trans>
-                Number of payments
-                <br />
-                for the selected period
-              </Trans>
-            </Box>
-          }
-          bottomDescriptions={
-            <Box flex="1" textAlign="center">
-              <Trans>Historical data per day</Trans>
-            </Box>
-          }
-          arrows={
-            <StaticImage
-              src="../../assets/images/dashboard-in-real-time-arrows-1.png"
-              alt=""
-            />
-          }
-        >
-          <StaticImage
-            alt=""
-            src="../../assets/images/dashboard-in-real-time-clean.png"
-          />
-        </DemoImage>
-        <DemoImage
-          topDescriptions={
-            <>
-              <Box flex={1}>
-                <Trans>Percent blocked transaction system</Trans>
-              </Box>
-              <Box flex={1} textAlign="right">
-                <Trans>Amount of blocked payments</Trans>
-              </Box>
-            </>
-          }
-          arrows={
-            <StaticImage
-              src="../../assets/images/dashboard-in-real-time-arrows-2.png"
-              alt=""
-            />
-          }
-          right
-        >
-          <StaticImage
-            alt=""
-            src="../../assets/images/dashboard-in-real-time-clean.png"
-          />
-        </DemoImage>
-      </Breakpoint>
-    </DemoImageBlock>
-  );
-};
+import { BackgroundImageBox } from "../../BackgroundImageBox";
+import { Block } from "../../Block";
+import { Card } from "../../Card";
+import { DashboardInRealTimeDemoBlock } from "./DashboardInRealTimeDemoBlock";
 
 const Flexibility = () => {
   return (
@@ -194,7 +41,7 @@ const Flexibility = () => {
               </Box>
             </Stack>
             <StaticImage
-              src="../../assets/images/flexible-system-of-rules.png"
+              src="../../../assets/images/flexible-system-of-rules.png"
               style={{ width: "100%" }}
               alt=""
             />
@@ -223,12 +70,12 @@ const Flexibility = () => {
             <Box style={{ position: "relative" }}>
               <StaticImage
                 alt=""
-                src="../../assets/images/flexibility-clean.png"
+                src="../../../assets/images/flexibility-clean.png"
                 style={{ width: "200%" }}
               />
               <StaticImage
                 style={{ position: "absolute", top: -12, width: "200%" }}
-                src="../../assets/images/flexibility-arrows-1.png"
+                src="../../../assets/images/flexibility-arrows-1.png"
                 alt=""
               />
             </Box>
@@ -252,7 +99,7 @@ const Flexibility = () => {
             <Box style={{ position: "relative" }}>
               <StaticImage
                 alt=""
-                src="../../assets/images/flexibility-clean.png"
+                src="../../../assets/images/flexibility-clean.png"
                 style={{ width: "200%", marginLeft: "-100%" }}
               />
               <StaticImage
@@ -262,7 +109,7 @@ const Flexibility = () => {
                   right: 0,
                   width: "200%",
                 }}
-                src="../../assets/images/flexibility-arrows-2.png"
+                src="../../../assets/images/flexibility-arrows-2.png"
                 alt=""
               />
             </Box>
@@ -347,7 +194,7 @@ export const AntifraudBlock: React.FC<React.ComponentProps<typeof Block>> = (
           </Grid>
         </BackgroundImageBox>
 
-        <DashboardInRealTime />
+        <DashboardInRealTimeDemoBlock />
         <Flexibility />
         <Customizable />
       </Stack>

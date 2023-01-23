@@ -8,7 +8,7 @@ import { PAGE_IDS } from "~/components/AppNav";
 import { HeaderBlock } from "~/components/index/HeaderBlock";
 
 const AntifraudBlock = React.lazy(
-  () => import("~/components/index/AntifraudBlock")
+  () => import("~/components/index/AntifraudBlock/AntifraudBlock")
 );
 const ContactsBlock = React.lazy(
   () => import("~/components/index/ContactsBlock")
