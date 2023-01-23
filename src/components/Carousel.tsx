@@ -106,6 +106,7 @@ export const Carousel: React.FC<Props> = ({ images, width }) => {
                 setActive(0);
               }}
               endIcon={<Repeat />}
+              size="large"
             />
           )}
         </Box>
@@ -118,6 +119,7 @@ export const Carousel: React.FC<Props> = ({ images, width }) => {
                 setActive((a) => a + 1);
               }}
               endIcon={<ArrowLeft />}
+              size="large"
             />
           )}
           {active > -images.length + 1 && (
@@ -128,6 +130,7 @@ export const Carousel: React.FC<Props> = ({ images, width }) => {
                 setActive((a) => a - 1);
               }}
               endIcon={<ArrowRight />}
+              size="large"
             />
           )}
         </Stack>
