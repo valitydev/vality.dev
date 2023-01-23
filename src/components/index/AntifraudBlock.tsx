@@ -9,7 +9,6 @@ import antifraudBgSrc from "~/assets/images/antifraud-bg.svg";
 import customizableBgSrc from "~/assets/images/customizable-bg.svg";
 import customizableNotificationsSrc from "~/assets/images/customizable-notifications.png";
 import flexibilityBgSrc from "~/assets/images/flexibility-bg.svg";
-import flexibleSystemOfRulesSrc from "~/assets/images/flexible-system-of-rules.png";
 import FlexibilityImg from "~/assets/svg/flexibility.svg";
 import SafetySvg from "~/assets/svg/safety.svg";
 import ScaleImg from "~/assets/svg/scale.svg";
@@ -122,35 +121,100 @@ const Flexibility = () => {
         <Box sx={{ typography: "h3" }}>
           <Trans>Flexible system of rules</Trans>
         </Box>
-        <Stack spacing={1.5}>
-          <Stack spacing={3} alignItems="end" direction="row">
-            <Box flex={1}>
-              <Trans>
-                Black, white and gray lists according to various criteria
-              </Trans>
-            </Box>
-            <Box flex={1} sx={{ textAlign: "right" }}>
-              <Trans>
-                Country restrictions, currencies, payer location, etc.
-              </Trans>
-            </Box>
+        <Breakpoint up="sm">
+          <Stack spacing={1.5}>
+            <Stack spacing={3} alignItems="end" direction="row">
+              <Box flex={1}>
+                <Trans>
+                  Black, white and gray lists according to various criteria
+                </Trans>
+              </Box>
+              <Box flex={1} sx={{ textAlign: "right" }}>
+                <Trans>
+                  Country restrictions, currencies, payer location, etc.
+                </Trans>
+              </Box>
+            </Stack>
+            <StaticImage
+              src="../../assets/images/flexible-system-of-rules.png"
+              style={{ width: "100%" }}
+              alt=""
+            />
+            <Stack spacing={3} alignItems="top" direction="row">
+              <Box flex={1}>
+                <Trans>
+                  Making a decision based on any available system payment
+                  parameters
+                </Trans>
+              </Box>
+              <Box flex={1} sx={{ textAlign: "center" }}>
+                <Trans>Complex custom rules</Trans>
+              </Box>
+            </Stack>
           </Stack>
-          <img
-            src={flexibleSystemOfRulesSrc}
-            style={{ width: "100%", height: "100%" }}
-          />
-          <Stack spacing={3} alignItems="top" direction="row">
-            <Box flex={1}>
-              <Trans>
-                Making a decision based on any available system payment
-                parameters
-              </Trans>
+        </Breakpoint>
+        <Breakpoint down="sm">
+          <Stack spacing={1.5}>
+            <Stack spacing={3} alignItems="end" direction="row">
+              <Box flex={1} textAlign="center">
+                <Trans>
+                  Black, white and gray lists according to various criteria
+                </Trans>
+              </Box>
+            </Stack>
+            <Box style={{ position: "relative" }}>
+              <StaticImage
+                alt=""
+                src="../../assets/images/flexibility-clean.png"
+                style={{ width: "200%" }}
+              />
+              <StaticImage
+                style={{ position: "absolute", top: -12, width: "200%" }}
+                src="../../assets/images/flexibility-arrows-1.png"
+                alt=""
+              />
             </Box>
-            <Box flex={1} sx={{ textAlign: "center" }}>
-              <Trans>Complex custom rules</Trans>
-            </Box>
+            <Stack spacing={3} alignItems="top" direction="row">
+              <Box flex={1}>
+                <Trans>
+                  Making a decision based on any available system payment
+                  parameters
+                </Trans>
+              </Box>
+            </Stack>
           </Stack>
-        </Stack>
+          <Stack spacing={1.5}>
+            <Stack spacing={3} alignItems="end" direction="row">
+              <Box flex={1} sx={{ textAlign: "right" }}>
+                <Trans>
+                  Country restrictions, currencies, payer location, etc.
+                </Trans>
+              </Box>
+            </Stack>
+            <Box style={{ position: "relative" }}>
+              <StaticImage
+                alt=""
+                src="../../assets/images/flexibility-clean.png"
+                style={{ width: "200%", marginLeft: "-100%" }}
+              />
+              <StaticImage
+                style={{
+                  position: "absolute",
+                  top: -12,
+                  right: 0,
+                  width: "200%",
+                }}
+                src="../../assets/images/flexibility-arrows-2.png"
+                alt=""
+              />
+            </Box>
+            <Stack spacing={3} alignItems="top" direction="row">
+              <Box flex={1}>
+                <Trans>Complex custom rules</Trans>
+              </Box>
+            </Stack>
+          </Stack>
+        </Breakpoint>
       </Stack>
     </BackgroundImageBox>
   );
