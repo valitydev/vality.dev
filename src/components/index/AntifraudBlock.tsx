@@ -1,4 +1,5 @@
 import * as React from "react";
+import { ReactNode } from "react";
 
 import { Box, Stack } from "@mui/system";
 import Grid from "@mui/system/Unstable_Grid";
@@ -13,49 +14,91 @@ import FlexibilityImg from "~/assets/svg/flexibility.svg";
 import SafetySvg from "~/assets/svg/safety.svg";
 import ScaleImg from "~/assets/svg/scale.svg";
 import { Breakpoint } from "~/utils/breakpoint";
+import { useBreakpointDown } from "~/utils/use-breakpoints";
 
 import { BackgroundImageBox } from "../BackgroundImageBox";
 import { Block } from "../Block";
 import { Card } from "../Card";
 
-const DashboardInRealTime = () => {
+const DemoImageBlock: React.FC<{ title: ReactNode; children: ReactNode }> = ({
+  title,
+  children,
+}) => {
   return (
     <Stack spacing={5.5}>
-      <Box sx={{ typography: "h3" }}>
-        <Trans>Dashboard in real time</Trans>
+      <Box sx={{ typography: "h3" }}>{title}</Box>
+      {children}
+    </Stack>
+  );
+};
+
+const DemoImage: React.FC<{
+  topDescriptions?: ReactNode;
+  bottomDescriptions?: ReactNode;
+  children: ReactNode;
+}> = ({ topDescriptions, bottomDescriptions, children }) => {
+  const isMobile = useBreakpointDown("sm");
+
+  return (
+    <Stack spacing={1.5}>
+      {topDescriptions && (
+        <Stack spacing={3} alignItems="end" direction="row">
+          {topDescriptions}
+        </Stack>
+      )}
+      <Box
+        position="relative"
+        paddingTop={isMobile ? 1.5 : 0}
+        paddingBottom={isMobile ? 1.5 : 0}
+      >
+        {children}
       </Box>
+      {bottomDescriptions && (
+        <Stack spacing={3} alignItems="top" direction="row">
+          {bottomDescriptions}
+        </Stack>
+      )}
+    </Stack>
+  );
+};
+
+const DashboardInRealTime = () => {
+  return (
+    <DemoImageBlock title={<Trans>Dashboard in real time</Trans>}>
       <Breakpoint up="sm">
-        <Stack spacing={1.5}>
-          <Stack spacing={3} alignItems="end" direction="row">
-            <Box flex={1}>
-              <Trans>
-                Number of payments
-                <br />
-                for the selected period
-              </Trans>
+        <DemoImage
+          topDescriptions={
+            <>
+              <Box flex={1}>
+                <Trans>
+                  Number of payments
+                  <br />
+                  for the selected period
+                </Trans>
+              </Box>
+              <Box flex={1} textAlign="center">
+                <Trans>Percent blocked transaction system</Trans>
+              </Box>
+              <Box flex={1} textAlign="right">
+                <Trans>Amount of blocked payments</Trans>
+              </Box>
+            </>
+          }
+          bottomDescriptions={
+            <Box flex="0 1 35%" textAlign="center">
+              <Trans>Historical data per day</Trans>
             </Box>
-            <Box flex={1} sx={{ textAlign: "center" }}>
-              <Trans>Percent blocked transaction system</Trans>
-            </Box>
-            <Box flex={1} sx={{ textAlign: "right" }}>
-              <Trans>Amount of blocked payments</Trans>
-            </Box>
-          </Stack>
+          }
+        >
           <StaticImage
             src="../../assets/images/dashboard-in-real-time.png"
-            style={{ width: "100%" }}
             alt=""
           />
-          <Stack spacing={3} alignItems="top" direction="row">
-            <Box flex="0 1 35%" sx={{ textAlign: "center" }}>
-              <Trans>Historical data per day</Trans>
-            </Box>
-          </Stack>
-        </Stack>
+        </DemoImage>
       </Breakpoint>
       <Breakpoint down="sm">
-        <Stack spacing={1.5}>
-          <Stack spacing={3} alignItems="end" direction="row">
+        <DemoImage
+          topDescriptions={
             <Box flex={1}>
               <Trans>
                 Number of payments
@@ -63,54 +106,54 @@ const DashboardInRealTime = () => {
                 for the selected period
               </Trans>
             </Box>
-          </Stack>
-          <Box style={{ position: "relative" }}>
-            <StaticImage
-              alt=""
-              src="../../assets/images/dashboard-in-real-time-clean.png"
-              style={{ width: "200%" }}
-            />
-            <StaticImage
-              style={{ position: "absolute", top: -12, width: "200%" }}
-              src="../../assets/images/dashboard-in-real-time-arrows-1.png"
-              alt=""
-            />
-          </Box>
-          <Stack spacing={3} alignItems="top" direction="row">
-            <Box flex="1" sx={{ textAlign: "center" }}>
+          }
+          bottomDescriptions={
+            <Box flex="1" textAlign="center">
               <Trans>Historical data per day</Trans>
             </Box>
-          </Stack>
-        </Stack>
-        <Stack spacing={1.5}>
-          <Stack spacing={3} alignItems="end" direction="row">
-            <Box flex={1}>
-              <Trans>Percent blocked transaction system</Trans>
-            </Box>
-            <Box flex={1} sx={{ textAlign: "right" }}>
-              <Trans>Amount of blocked payments</Trans>
-            </Box>
-          </Stack>
-          <Box style={{ position: "relative" }}>
-            <StaticImage
-              alt=""
-              src="../../assets/images/dashboard-in-real-time-clean.png"
-              style={{ width: "200%", marginLeft: "-100%" }}
-            />
-            <StaticImage
-              style={{
-                position: "absolute",
-                top: -12,
-                right: 0,
-                width: "200%",
-              }}
-              src="../../assets/images/dashboard-in-real-time-arrows-2.png"
-              alt=""
-            />
-          </Box>
-        </Stack>
+          }
+        >
+          <StaticImage
+            alt=""
+            src="../../assets/images/dashboard-in-real-time-clean.png"
+            style={{ width: "200%" }}
+          />
+          <StaticImage
+            style={{ position: "absolute", top: 0, width: "200%" }}
+            src="../../assets/images/dashboard-in-real-time-arrows-1.png"
+            alt=""
+          />
+        </DemoImage>
+        <DemoImage
+          topDescriptions={
+            <>
+              <Box flex={1}>
+                <Trans>Percent blocked transaction system</Trans>
+              </Box>
+              <Box flex={1} textAlign="right">
+                <Trans>Amount of blocked payments</Trans>
+              </Box>
+            </>
+          }
+        >
+          <StaticImage
+            alt=""
+            src="../../assets/images/dashboard-in-real-time-clean.png"
+            style={{ width: "200%", marginLeft: "-100%" }}
+          />
+          <StaticImage
+            style={{
+              position: "absolute",
+              top: 0,
+              right: 0,
+              width: "200%",
+            }}
+            src="../../assets/images/dashboard-in-real-time-arrows-2.png"
+            alt=""
+          />
+        </DemoImage>
       </Breakpoint>
-    </Stack>
+    </DemoImageBlock>
   );
 };
 
