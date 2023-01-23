@@ -33,10 +33,12 @@ const DemoImageBlock: React.FC<{ title: ReactNode; children: ReactNode }> = ({
 };
 
 const DemoImage: React.FC<{
+  children: ReactNode;
   topDescriptions?: ReactNode;
   bottomDescriptions?: ReactNode;
-  children: ReactNode;
-}> = ({ topDescriptions, bottomDescriptions, children }) => {
+  arrows?: ReactNode;
+  right?: boolean;
+}> = ({ topDescriptions, bottomDescriptions, children, arrows, right }) => {
   const isMobile = useBreakpointDown("sm");
 
   return (
@@ -51,7 +53,24 @@ const DemoImage: React.FC<{
         paddingTop={isMobile ? 1.5 : 0}
         paddingBottom={isMobile ? 1.5 : 0}
       >
-        {children}
+        <Box
+          width={isMobile ? "200%" : "100%"}
+          marginLeft={right ? "-100%" : 0}
+        >
+          {children}
+        </Box>
+        {arrows && (
+          <Box
+            sx={{
+              position: "absolute",
+              top: 0,
+              width: "200%",
+              right: right ? 0 : "",
+            }}
+          >
+            {arrows}
+          </Box>
+        )}
       </Box>
       {bottomDescriptions && (
         <Stack spacing={3} alignItems="top" direction="row">
@@ -112,16 +131,16 @@ const DashboardInRealTime = () => {
               <Trans>Historical data per day</Trans>
             </Box>
           }
+          arrows={
+            <StaticImage
+              src="../../assets/images/dashboard-in-real-time-arrows-1.png"
+              alt=""
+            />
+          }
         >
           <StaticImage
             alt=""
             src="../../assets/images/dashboard-in-real-time-clean.png"
-            style={{ width: "200%" }}
-          />
-          <StaticImage
-            style={{ position: "absolute", top: 0, width: "200%" }}
-            src="../../assets/images/dashboard-in-real-time-arrows-1.png"
-            alt=""
           />
         </DemoImage>
         <DemoImage
@@ -135,21 +154,17 @@ const DashboardInRealTime = () => {
               </Box>
             </>
           }
+          arrows={
+            <StaticImage
+              src="../../assets/images/dashboard-in-real-time-arrows-2.png"
+              alt=""
+            />
+          }
+          right
         >
           <StaticImage
             alt=""
             src="../../assets/images/dashboard-in-real-time-clean.png"
-            style={{ width: "200%", marginLeft: "-100%" }}
-          />
-          <StaticImage
-            style={{
-              position: "absolute",
-              top: 0,
-              right: 0,
-              width: "200%",
-            }}
-            src="../../assets/images/dashboard-in-real-time-arrows-2.png"
-            alt=""
           />
         </DemoImage>
       </Breakpoint>
