@@ -9,7 +9,7 @@ import headerBgGlowingBallSrc from "~/assets/images/header-bg-glowing-ball.svg";
 import UnstyledFintech from "~/assets/svg/fintech.svg";
 import GitHubIcon from "~/assets/svg/github.svg";
 import UnstyledLogo from "~/assets/svg/logo.svg";
-import { useBreakpointDown } from "~/utils/use-breakpoints";
+import { useBreakpointDown, useBreakpointUp } from "~/utils/use-breakpoints";
 
 import CONFIG from "../../../config.json";
 import { AppNav, PAGE_IDS } from "../AppNav";
@@ -27,7 +27,7 @@ const Logo = styled(UnstyledLogo)`
 `;
 
 const Fintech = styled(UnstyledFintech)`
-  margin-right: -45px;
+  margin-right: -52px;
   margin-top: -20px;
   height: 330px;
 
@@ -49,6 +49,7 @@ export const HeaderBlock: React.FC<React.ComponentProps<typeof Block>> = (
 ) => {
   const isMobile = useBreakpointDown("sm");
   const isLaptop = useBreakpointDown("md");
+  const isLg = useBreakpointUp("lg");
 
   return (
     <Block
@@ -76,10 +77,10 @@ export const HeaderBlock: React.FC<React.ComponentProps<typeof Block>> = (
               <AppNav small />
             </Stack>
           ) : (
-            <>
-              <AppNav sx={{ marginRight: 13.5 }} />
+            <Stack direction="row" spacing={isLg ? 13.5 : 7}>
+              <AppNav />
               <LanguageSelector />
-            </>
+            </Stack>
           )}
         </Stack>
 
