@@ -1,5 +1,10 @@
-declare module "*.svg" {
-  const content: React.SVGProps<SVGSVGElement>;
+declare module "~/assets/svg/*.svg" {
+  const content: React.FC<React.SVGProps<SVGSVGElement>>;
+  export default content;
+}
+
+declare module "~/assets/images/*.svg" {
+  const content: string;
   export default content;
 }
 

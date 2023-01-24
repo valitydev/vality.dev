@@ -24,6 +24,7 @@ const theme = createTheme({
       100: "#D4DCF1",
       300: "#7D97D5",
       400: "#5274C7",
+      700: "#1F396F",
       900: "#000C1F",
     },
     text: {
@@ -35,8 +36,6 @@ const theme = createTheme({
     },
   },
 });
-
-console.log(theme);
 
 export type AppTheme = typeof theme & { palette: { primary: Color } };
 export { theme };

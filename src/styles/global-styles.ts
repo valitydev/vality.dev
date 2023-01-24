@@ -26,11 +26,21 @@ export const createGlobalStyle = (theme: Theme) =>
     html {
       font-size: 100%;
 
+      ${theme?.breakpoints?.up?.("md")} {
+        ${(theme?.typography as any)?.h1} {
+          font-size: 115%;
+        }
+      }
+
       ${theme?.breakpoints?.down?.("lg")} {
         font-size: 87.5%;
       }
 
-      ${theme?.breakpoints?.down?.("xs")} {
+      ${theme?.breakpoints?.down?.("md")} {
+        font-size: 80%;
+      }
+
+      ${theme?.breakpoints?.down?.("sm")} {
         font-size: 75%;
       }
     }
@@ -38,5 +48,6 @@ export const createGlobalStyle = (theme: Theme) =>
     body {
       margin: 0;
       padding: 0;
+      shape-rendering: geometricprecision;
     }
   `;
