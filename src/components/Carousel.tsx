@@ -30,13 +30,13 @@ const Item = styled(Box)<
     css`
       left: calc(
         ${-width * ITEM_SIZE_K[1]}px - ${width * ITEM_SIZE_K[2]}px -
-          ${theme.spacing(3 * 2)}
+          ${theme?.spacing?.(3 * 2)}
       );
       opacity: 0.25;
     `}
     ${num === -1 &&
     css`
-      left: calc(${-width * ITEM_SIZE_K[1]}px - ${theme.spacing(3)});
+      left: calc(${-width * ITEM_SIZE_K[1]}px - ${theme?.spacing?.(3)});
       opacity: 0.5;
     `}
     ${num === 1 &&
@@ -49,7 +49,7 @@ const Item = styled(Box)<
     `}
     
     cursor: pointer;
-    top: ${absNum ? theme.spacing(absNum === 1 ? 3 : 4.5) : "0"};
+    top: ${absNum ? theme?.spacing?.(absNum === 1 ? 3 : 4.5) : "0"};
     z-index: ${-absNum};
     border-radius: 10px;
     filter: drop-shadow(13px 5px 20px rgba(24, 24, 24, 0.05));
