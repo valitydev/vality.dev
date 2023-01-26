@@ -1,4 +1,5 @@
 import * as React from "react";
+import { ComponentProps } from "react";
 
 import { Stack } from "@mui/system";
 import { Trans } from "gatsby-plugin-react-i18next";
@@ -6,7 +7,6 @@ import { Trans } from "gatsby-plugin-react-i18next";
 import MenuIcon from "~/assets/svg/menu-icon.svg";
 import { Button } from "~/components/Button";
 import { Menu, MenuItem } from "~/components/Menu";
-import { BaseProps } from "~/utils/base-props";
 
 import { Link } from "./Link";
 
@@ -29,11 +29,9 @@ const LINKS = [
   { title: <Trans>Contacts</Trans>, id: PAGE_IDS.contacts },
 ];
 
-export const AppNav: React.FC<BaseProps & Props> = ({
-  small,
-  direction,
-  ...props
-}) => {
+export const AppNav: React.FC<
+  ComponentProps<typeof Menu | typeof Stack> & Props
+> = ({ small, direction, ...props }) => {
   return small ? (
     <Menu
       direction={direction}

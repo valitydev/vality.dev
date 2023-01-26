@@ -1,10 +1,9 @@
-import React, { ReactNode } from "react";
+import React, { ReactNode, ComponentProps } from "react";
 
 import styled from "@emotion/styled";
 import { Box, Container, Stack } from "@mui/system";
 
 import { theme } from "~/theme/theme";
-import { BaseProps } from "~/utils/base-props";
 
 interface Props {
   title?: ReactNode;
@@ -24,7 +23,7 @@ export const StyledBlock = styled(Box)<{ styled: Props }>`
   }
 `;
 
-export const Block: React.FC<BaseProps & Props> = ({
+export const Block: React.FC<ComponentProps<typeof Box> & Props> = ({
   title,
   inverted,
   children,
