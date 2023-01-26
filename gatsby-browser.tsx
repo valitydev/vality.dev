@@ -1,10 +1,18 @@
 import * as React from "react";
-import type { GatsbyBrowser } from "gatsby";
-import { Layout } from "./src/components/Layout";
-import { createGlobalStyle } from "./src/styles/global-styles";
+
 import { Global } from "@emotion/react";
 import { ThemeProvider } from "@mui/system";
+import type { GatsbyBrowser } from "gatsby";
+
+import { Layout } from "./src/components/Layout";
+import { createGlobalStyle } from "./src/styles/global-styles";
 import { theme } from "./src/theme/theme";
+
+import "./src/styles/global-styles.css";
+
+export const onRouteUpdate = () => {
+  document.body.style.display = "block";
+};
 
 export const wrapPageElement: GatsbyBrowser["wrapPageElement"] = ({
   element,
