@@ -61,5 +61,3 @@ export const AntifraudBlock: React.FC<React.ComponentProps<typeof Block>> = (
     </Block>
   );
 };
-
-export default AntifraudBlock;

@@ -103,5 +103,3 @@ export const OurProductsBlock: React.FC<React.ComponentProps<typeof Block>> = ({
     </Block>
   );
 };
-
-export default OurProductsBlock;
