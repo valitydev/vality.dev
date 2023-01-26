@@ -1,5 +1,4 @@
 import * as React from "react";
-import { ComponentProps } from "react";
 
 import { Stack } from "@mui/system";
 import { Trans } from "gatsby-plugin-react-i18next";
@@ -7,8 +6,14 @@ import { Trans } from "gatsby-plugin-react-i18next";
 import MenuIcon from "~/assets/svg/menu-icon.svg";
 import { Button } from "~/components/Button";
 import { Menu, MenuItem } from "~/components/Menu";
+import { BaseProps } from "~/utils/base-props";
 
 import { Link } from "./Link";
+
+interface Props {
+  small?: boolean;
+  direction?: "top";
+}
 
 export const PAGE_IDS = {
   ourProducts: "our-products",
@@ -24,18 +29,18 @@ const LINKS = [
   { title: <Trans>Contacts</Trans>, id: PAGE_IDS.contacts },
 ];
 
-export const AppNav: React.FC<
-  Omit<ComponentProps<typeof Stack>, "direction"> & {
-    small?: boolean;
-    direction?: "top";
-  }
-> = ({ small, direction, ...props }) => {
+export const AppNav: React.FC<BaseProps & Props> = ({
+  small,
+  direction,
+  ...props
+}) => {
   return small ? (
     <Menu
       direction={direction}
       button={
         <Button variant="outlined" color="primary" endIcon={<MenuIcon />} />
       }
+      {...props}
     >
       {LINKS.map((link) => (
         <MenuItem key={link.id} href={`#${link.id}`} target="_self">

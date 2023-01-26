@@ -17,9 +17,9 @@ interface Props {
 
 const ITEM_SIZE_K = [1, 0.75, 0.52];
 
-const Item = styled(Box)<
-  { num: number; fullWidth: number } & Pick<Props, "width">
->(({ num, theme, width, fullWidth }) => {
+const Item = styled(Box)<{
+  styled: { num: number; fullWidth: number } & Pick<Props, "width">;
+}>(({ theme, styled: { num, width, fullWidth } }) => {
   const absNum = Math.abs(num);
   const restWidth = fullWidth - width;
 
@@ -78,9 +78,11 @@ export const Carousel: React.FC<Props> = ({ images, width }) => {
             return (
               <Item
                 key={idx}
-                num={idx + active}
-                width={width}
-                fullWidth={fullWidth}
+                styled={{
+                  num: idx + active,
+                  width,
+                  fullWidth,
+                }}
                 onClick={() => setActive(-idx)}
               >
                 {images[idx]}

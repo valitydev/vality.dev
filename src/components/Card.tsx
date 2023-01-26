@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react";
+import React, { ReactNode, ComponentProps } from "react";
 
 import styled from "@emotion/styled";
 import { Box, Stack } from "@mui/system";
@@ -11,8 +11,8 @@ interface Props {
   image?: ReactNode;
 }
 
-const StyledCard = styled(Box)<Props>`
-  background-color: ${({ theme, inverted }) =>
+const StyledCard = styled(Box)<{ styled: Props }>`
+  background-color: ${({ theme, styled: { inverted } }) =>
     inverted ? theme?.palette?.common?.white : theme?.palette?.primary?.[900]};
   border-radius: ${({ theme }) => theme?.spacing?.(2.5)};
   ${({ theme }) => theme?.breakpoints?.down("sm")} {
@@ -21,7 +21,7 @@ const StyledCard = styled(Box)<Props>`
   padding: ${({ theme }) => `${theme?.spacing?.(3)} ${theme?.spacing?.(2.5)}`};
 
   && * {
-    color: ${({ theme, inverted }) =>
+    color: ${({ theme, styled: { inverted } }) =>
       inverted ? theme?.palette?.text?.primary : theme?.palette?.common?.white};
   }
 `;
@@ -42,10 +42,11 @@ const BottomRightImageWrapper = styled(ImageWrapper)`
   margin-right: ${({ theme }) => theme?.spacing?.(-2.5)};
 `;
 
-export const Card: React.FC<React.ComponentProps<typeof StyledCard>> = ({
+export const Card: React.FC<ComponentProps<typeof Box> & Props> = ({
   title,
   children,
   image,
+  inverted,
   ...props
 }) => {
   const isXl = useBreakpointDown("xl");
@@ -56,7 +57,7 @@ export const Card: React.FC<React.ComponentProps<typeof StyledCard>> = ({
   const isVerticalTextTop = !isHorizontal && !isVertical;
 
   return (
-    <StyledCard {...props}>
+    <StyledCard {...props} styled={{ title, inverted, image }}>
       {isVertical && (
         <Stack spacing={2.5}>
           {!!title && (

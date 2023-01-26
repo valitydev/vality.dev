@@ -8,12 +8,12 @@ interface Props {
   active?: boolean;
 }
 
-const StyledGatsbyLink = styled(GatsbyLink)<Props>`
-  color: ${({ theme, inverted }) =>
+const StyledGatsbyLink = styled(GatsbyLink)<{ styled: Props }>`
+  color: ${({ theme, styled: { inverted } }) =>
     inverted ? theme?.palette?.common?.white : theme?.palette?.text?.primary};
   text-decoration: none;
   transition: all 200ms ease;
-  border-bottom: ${({ active, theme }) =>
+  border-bottom: ${({ theme, styled: { active } }) =>
     active ? `1px solid ${theme?.palette?.common?.white}` : undefined};
 
   &:hover {
@@ -27,8 +27,8 @@ const StyledGatsbyLink = styled(GatsbyLink)<Props>`
   }
 `;
 
-export const Link: React.FC<React.ComponentProps<typeof GatsbyLink> & Props> = (
-  props
-) => {
-  return <StyledGatsbyLink {...props} />;
+export const Link: React.FC<
+  React.ComponentProps<typeof GatsbyLink> & Props
+> = ({ inverted, active, ...props }) => {
+  return <StyledGatsbyLink {...props} styled={{ inverted, active }} />;
 };
