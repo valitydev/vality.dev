@@ -10,10 +10,6 @@ import { theme } from "./src/theme/theme";
 
 import "./src/styles/global-styles.css";
 
-export const onRouteUpdate = () => {
-  document.body.style.display = "block";
-};
-
 export const wrapPageElement: GatsbyBrowser["wrapPageElement"] = ({
   element,
 }) => {
