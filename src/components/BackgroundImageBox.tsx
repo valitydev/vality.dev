@@ -30,6 +30,7 @@ export const BackgroundImageBox: React.FC<
           z-index: 0;
         `}
         style={imgStyle}
+        alt=""
       />
     </div>
   );
