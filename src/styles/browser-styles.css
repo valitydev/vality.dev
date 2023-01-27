@@ -1,6 +1,7 @@
-.loader-wrapper, .loader {
+.loader-wrapper,
+.loader {
   opacity: 1;
-  transition: opacity .2s ease-in-out;
+  transition: opacity 0.2s ease-in-out;
 }
 
 .loader-wrapper {
@@ -9,7 +10,7 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: #000C1F;
+  background: #000c1f;
   z-index: 9999;
 }
 
