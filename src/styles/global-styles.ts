@@ -19,7 +19,7 @@ export const createGlobalStyle = (theme: Theme) =>
       }
 
       ${theme?.breakpoints?.down?.("sm")} {
-        font-size: 75%;
+        font-size: 73%;
       }
     }
   `;
