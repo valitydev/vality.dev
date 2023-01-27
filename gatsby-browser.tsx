@@ -18,7 +18,7 @@ const getLoaderElements = () => {
   ];
 };
 
-export const onClientEntry = () => {
+export const onInitialClientRender = () => {
   getLoaderElements().forEach((el) => (el.style.opacity = "0"));
   setTimeout(() => {
     document.body.removeChild(getLoaderElements()[1]);
