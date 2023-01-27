@@ -126,5 +126,3 @@ export const ContactsBlock: React.FC<React.ComponentProps<typeof Block>> = (
     </Block>
   );
 };
-
-export default ContactsBlock;

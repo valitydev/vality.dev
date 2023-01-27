@@ -10,6 +10,11 @@ import { Menu, MenuItem } from "~/components/Menu";
 
 import { Link } from "./Link";
 
+interface Props {
+  small?: boolean;
+  direction?: "top";
+}
+
 export const PAGE_IDS = {
   ourProducts: "our-products",
   processing: "processing",
@@ -25,10 +30,7 @@ const LINKS = [
 ];
 
 export const AppNav: React.FC<
-  Omit<ComponentProps<typeof Stack>, "direction"> & {
-    small?: boolean;
-    direction?: "top";
-  }
+  ComponentProps<typeof Menu | typeof Stack> & Props
 > = ({ small, direction, ...props }) => {
   return small ? (
     <Menu
@@ -36,6 +38,7 @@ export const AppNav: React.FC<
       button={
         <Button variant="outlined" color="primary" endIcon={<MenuIcon />} />
       }
+      {...props}
     >
       {LINKS.map((link) => (
         <MenuItem key={link.id} href={`#${link.id}`} target="_self">

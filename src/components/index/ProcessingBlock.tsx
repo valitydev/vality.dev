@@ -108,9 +108,8 @@ export const ProcessingBlock: React.FC<React.ComponentProps<typeof Block>> = (
                 {PAYMENT_METHODS_GROUPS.map((group, idx) => (
                   <React.Fragment key={idx}>
                     {group.map((pm, k) => (
-                      <Box display="inline-block">
+                      <Box display="inline-block" key={k}>
                         <Chip
-                          key={k}
                           startIcon={pm.icon}
                           marginBottom={2.5}
                           marginRight={2}
@@ -163,5 +162,3 @@ export const ProcessingBlock: React.FC<React.ComponentProps<typeof Block>> = (
     </Block>
   );
 };
-
-export default ProcessingBlock;
