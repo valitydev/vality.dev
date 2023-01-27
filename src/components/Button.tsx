@@ -156,10 +156,10 @@ export const Button: React.FC<Props> = ({
   return (
     <StyledButton
       {...props}
+      onClick={clickHandler}
       styled={{
         variant: variant || "text",
         size: size || "medium",
-        onClick: clickHandler,
         svgColoredParams: svgColoredParams || ["fill"],
         hasText: !!children,
       }}
