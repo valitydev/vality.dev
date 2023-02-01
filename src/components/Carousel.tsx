@@ -124,17 +124,16 @@ export const Carousel: React.FC<Props> = ({ images, width }) => {
               size="large"
             />
           )}
-          {active > -images.length + 1 && (
-            <Button
-              variant="contained"
-              svgColoredParams={[]}
-              onClick={() => {
-                setActive((a) => a - 1);
-              }}
-              endIcon={<ArrowRight />}
-              size="large"
-            />
-          )}
+          <Button
+            variant="contained"
+            svgColoredParams={["stroke"]}
+            onClick={() => {
+              if (active > -images.length + 1) setActive((a) => a - 1);
+            }}
+            endIcon={<ArrowRight />}
+            size="large"
+            disabled={!(active > -images.length + 1)}
+          />
         </Stack>
       </Stack>
     </Stack>
