@@ -54,6 +54,7 @@ export const ContactsBlock: React.FC<React.ComponentProps<typeof Block>> = (
                       variant="contained"
                       endIcon={<Email />}
                       href={`mailto:${realtimeConfig.contacts.email}`}
+                      target="_blank"
                     >
                       {realtimeConfig.contacts.email}
                     </Button>
@@ -69,6 +70,7 @@ export const ContactsBlock: React.FC<React.ComponentProps<typeof Block>> = (
                       variant="contained"
                       endIcon={<Telegram />}
                       href={realtimeConfig.contacts.telegram}
+                      target="_blank"
                     >
                       Vality
                     </Button>
@@ -84,11 +86,13 @@ export const ContactsBlock: React.FC<React.ComponentProps<typeof Block>> = (
                     <Button
                       size="large"
                       href={realtimeConfig.contacts.linkedin}
+                      target="_blank"
                       endIcon={<Linkedin />}
                     />
                     <Button
                       size="large"
                       href={realtimeConfig.contacts.github}
+                      target="_blank"
                       endIcon={<Github />}
                     />
                   </Stack>
