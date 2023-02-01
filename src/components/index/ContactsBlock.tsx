@@ -20,6 +20,7 @@ import { BackgroundImageBox } from "../BackgroundImageBox";
 import { Block } from "../Block";
 import { Button } from "../Button";
 import { LanguageSelector } from "../LanguageSelector";
+import { Link } from "../Link";
 
 export const ContactsBlock: React.FC<React.ComponentProps<typeof Block>> = (
   props
@@ -111,7 +112,9 @@ export const ContactsBlock: React.FC<React.ComponentProps<typeof Block>> = (
               justifyContent="space-between"
               alignItems="center"
             >
-              <Logo style={{ width: "auto" }} height={32} />
+              <Link to="/">
+                <Logo style={{ width: "auto" }} height={32} />
+              </Link>
               <LanguageSelector small={isLaptop} direction="top" />
             </Stack>
             <Stack
