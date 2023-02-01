@@ -50,9 +50,9 @@ const Item = styled(Box)<{
     
     cursor: pointer;
     top: ${absNum ? theme?.spacing?.(absNum === 1 ? 3 : 4.5) : "0"};
-    z-index: ${-absNum};
+    z-index: ${100 - absNum};
     border-radius: 10px;
-    filter: drop-shadow(13px 5px 20px rgba(24, 24, 24, 0.05));
+    box-shadow: 15px 15px 39px 0px rgba(0, 0, 0, 0.32);
 
     &,
     * {
