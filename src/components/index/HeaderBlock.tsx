@@ -9,6 +9,7 @@ import headerBgGlowingBallSrc from "~/assets/images/header-bg-glowing-ball.svg";
 import UnstyledFintech from "~/assets/svg/fintech.svg";
 import GitHubIcon from "~/assets/svg/github.svg";
 import UnstyledLogo from "~/assets/svg/logo.svg";
+import { Link } from "~/components/Link";
 import { useBreakpointDown, useBreakpointUp } from "~/utils/use-breakpoints";
 
 import CONFIG from "../../../config.json";
@@ -70,7 +71,9 @@ export const HeaderBlock: React.FC<React.ComponentProps<typeof Block>> = (
           alignItems="center"
           sx={{ pt: 2.5, pb: 2.25 }}
         >
-          <Logo />
+          <Link to="/">
+            <Logo />
+          </Link>
           {isLaptop ? (
             <Stack direction="row" spacing={2}>
               <LanguageSelector small />

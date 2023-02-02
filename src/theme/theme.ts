@@ -32,6 +32,7 @@ const theme = createTheme({
     },
     grey: {
       100: "#ECECEC",
+      500: "#A0A0A0",
       800: "#464646",
     },
   },
