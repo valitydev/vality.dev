@@ -16,6 +16,7 @@ interface Props extends React.ComponentProps<typeof ButtonUnstyled> {
   size?: "small" | "medium" | "large";
   svgColoredParams?: SvgColoredParam[];
   disabled?: boolean;
+  textColor?: string;
 }
 
 function getColoredSvgCss(params: SvgColoredParam[] = [], color: string) {
@@ -28,7 +29,7 @@ const StyledButton = styled(ButtonUnstyled)<{
   ({
     theme,
     color,
-    styled: { variant, size, svgColoredParams, hasText, disabled },
+    styled: { variant, size, svgColoredParams, hasText, disabled, textColor },
   }) => {
     const buttonSizes = {
       large: 6,
@@ -51,7 +52,7 @@ const StyledButton = styled(ButtonUnstyled)<{
     if (disabled) {
       iconColor = theme?.palette?.grey?.[500];
     } else {
-      if (!hasText && variant === "contained")
+      if (textColor)
         hoverIconColor =
           activeIconColor =
           iconColor =
@@ -167,6 +168,7 @@ export const Button: React.FC<Props> = ({
   size,
   svgColoredParams,
   disabled,
+  textColor,
   ...props
 }) => {
   const { navigate } = useI18next();
@@ -187,6 +189,7 @@ export const Button: React.FC<Props> = ({
         svgColoredParams: svgColoredParams || ["fill"],
         hasText: !!children,
         disabled: !!disabled,
+        textColor,
       }}
     >
       <Stack
