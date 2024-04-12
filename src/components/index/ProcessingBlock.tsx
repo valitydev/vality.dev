@@ -12,7 +12,6 @@ import processingBgSrc from "~/assets/images/processing-bg.svg";
 import AppleIcon from "~/assets/svg/apple-icon.svg";
 import CapabilityImg from "~/assets/svg/capability.svg";
 import ControlImg from "~/assets/svg/control.svg";
-import CryptoIcon from "~/assets/svg/crypto-icon.svg";
 import EwalletIcon from "~/assets/svg/ewallet-icon.svg";
 import GoogleIcon from "~/assets/svg/google-icon.svg";
 import MastercardIcon from "~/assets/svg/mastercard-icon.svg";
@@ -45,7 +44,6 @@ const PAYMENT_METHODS_GROUPS = [
   [
     { name: <Trans>SMS / Mobile Commerce</Trans>, icon: <MobileIcon /> },
     { name: <Trans>Electronic money</Trans>, icon: <EwalletIcon /> },
-    { name: <Trans>Cryptocurrencies</Trans>, icon: <CryptoIcon /> },
   ],
 ];
 
